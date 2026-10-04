@@ -6,15 +6,14 @@
 <title>زاد القلوب | منصة إسلامية متكاملة</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Reem+Kufi:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
   --gold:#d4af37; --gold-2:#f7e7a3; --gold-3:#a8842a;
-  --emerald:#0d5c46; --emerald-2:#0a3d31; --emerald-3:#062019;
   --bg:#04120e; --card:rgba(255,255,255,.055); --card-brd:rgba(212,175,55,.28);
   --txt:#eef6f2; --muted:#9fb8af;
-  --ok:#22c55e; --bad:#ef4444; --warn:#f59e0b; --info:#38bdf8;
+  --ok:#22c55e; --bad:#ef4444; --warn:#f59e0b;
   --shadow:0 18px 50px rgba(0,0,0,.55); --r:22px;
 }
 html[data-theme="light"]{
@@ -28,6 +27,26 @@ html[data-theme="light"] body::before{
     radial-gradient(900px 600px at 5% 105%,rgba(13,92,70,.14),transparent 60%),
     linear-gradient(160deg,#f5f1e8 0%,#ebe4d3 45%,#f5f1e8 100%);
 }
+html[data-theme="ramadan"]{
+  --bg:#1a0f2e; --card:rgba(255,215,120,.06); --card-brd:rgba(255,215,120,.35);
+  --txt:#fff5e0; --muted:#c5b59a; --gold:#fbbf24; --gold-2:#fde68a; --gold-3:#b45309;
+}
+html[data-theme="ramadan"] body::before{
+  background:
+    radial-gradient(1100px 700px at 85% -10%,rgba(139,92,246,.35),transparent 60%),
+    radial-gradient(900px 600px at 5% 105%,rgba(251,191,36,.2),transparent 60%),
+    linear-gradient(160deg,#1a0f2e 0%,#2a1a45 45%,#1a0f2e 100%);
+}
+html[data-theme="haram"]{
+  --bg:#0a0805; --card:rgba(212,175,55,.07); --card-brd:rgba(212,175,55,.4);
+  --txt:#f5ecd5; --muted:#b8a878; --gold:#e0b84a; --gold-2:#f5e2a0; --gold-3:#8a6d20;
+}
+html[data-theme="haram"] body::before{
+  background:
+    radial-gradient(1100px 700px at 85% -10%,rgba(138,109,32,.4),transparent 60%),
+    radial-gradient(900px 600px at 5% 105%,rgba(212,175,55,.18),transparent 60%),
+    linear-gradient(160deg,#0a0805 0%,#1a1408 45%,#0a0805 100%);
+}
 *{scroll-behavior:smooth}
 body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;min-height:100vh;position:relative;transition:background .4s,color .4s}
 body::before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(1100px 700px at 85% -10%,rgba(13,92,70,.55),transparent 60%),radial-gradient(900px 600px at 5% 105%,rgba(212,175,55,.14),transparent 60%),linear-gradient(160deg,#04120e 0%,#062019 45%,#04120e 100%)}
@@ -35,7 +54,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-2;opacity:.055;background
 @keyframes bgScroll{to{background-position:120px 120px}}
 canvas#fx{position:fixed;inset:0;z-index:9;pointer-events:none}
 
-/* ============ الشريط العلوي ============ */
+/* الشريط العلوي */
 .topbar{position:sticky;top:0;z-index:50;background:rgba(4,18,14,.96);border-bottom:1px solid rgba(212,175,55,.18);transition:background .4s}
 html[data-theme="light"] .topbar{background:rgba(245,241,232,.96)}
 .topbar-inner{max-width:1250px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:nowrap}
@@ -46,25 +65,21 @@ html[data-theme="light"] .topbar{background:rgba(245,241,232,.96)}
 .brand h1 span{background:linear-gradient(90deg,var(--gold-2),var(--gold),var(--gold-3));-webkit-background-clip:text;background-clip:text;color:transparent}
 .brand small{display:block;font-size:10px;color:var(--muted);font-weight:600;margin-top:1px}
 
-/* قائمة التنقل - ديسكتوب */
 .nav-main{display:flex;gap:4px;flex:1;justify-content:center;flex-wrap:wrap}
 .nav-btn{padding:8px 12px;border-radius:10px;cursor:pointer;background:transparent;border:1px solid transparent;color:var(--txt);font-family:'Cairo';font-weight:700;font-size:13px;transition:.25s;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .nav-btn:hover{background:rgba(212,175,55,.1)}
 .nav-btn.active{background:rgba(212,175,55,.18);border-color:var(--card-brd);color:var(--gold-2)}
 
-/* الأدوات */
 .tools{display:flex;gap:6px;flex-shrink:0}
 .icon-btn{width:38px;height:38px;border-radius:11px;cursor:pointer;background:var(--card);border:1px solid var(--card-brd);color:var(--gold-2);font-size:16px;display:grid;place-items:center;transition:.25s;position:relative}
 .icon-btn:hover{background:rgba(212,175,55,.16);transform:translateY(-2px)}
 .icon-btn.off{opacity:.4}
 .menu-btn{display:none!important}
-.icon-btn .badge-n{position:absolute;top:-4px;inset-inline-start:-4px;background:var(--bad);color:#fff;font-size:10px;font-weight:800;min-width:18px;height:18px;border-radius:99px;display:grid;place-items:center;padding:0 4px;font-family:'Cairo'}
 
-/* قائمة الموبايل المنسدلة */
 .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:54;opacity:0;pointer-events:none;transition:opacity .3s}
 .nav-overlay.show{opacity:1;pointer-events:auto}
 
-/* ============ البحث ============ */
+/* البحث */
 .search-overlay{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);display:none;padding:80px 20px 20px;overflow-y:auto}
 .search-overlay.show{display:block;animation:fadeUp .3s}
 .search-box{max-width:700px;margin:0 auto}
@@ -78,13 +93,11 @@ html[data-theme="light"] .topbar{background:rgba(245,241,232,.96)}
 .sr-item .tag{display:inline-block;padding:2px 8px;border-radius:6px;background:rgba(212,175,55,.16);color:var(--gold-2);font-size:11px;font-weight:700;margin-inline-start:6px}
 .sr-close{position:absolute;top:20px;inset-inline-start:20px;width:44px;height:44px;border-radius:12px;background:var(--card);border:1px solid var(--card-brd);color:var(--gold-2);font-size:22px;cursor:pointer;z-index:2}
 
-/* ============ الحاويات ============ */
 .wrap{max-width:1250px;margin:0 auto;padding:26px 16px 90px}
 .screen{display:none;animation:fadeUp .5s cubic-bezier(.2,.8,.2,1)}
 .screen.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
-/* ============ الهيرو ============ */
 .hero{text-align:center;padding:50px 22px 40px;border-radius:30px;position:relative;overflow:hidden;background:linear-gradient(150deg,rgba(13,92,70,.35),rgba(6,32,25,.55));border:1px solid var(--card-brd);box-shadow:var(--shadow);margin-bottom:34px}
 html[data-theme="light"] .hero{background:linear-gradient(150deg,rgba(13,92,70,.14),rgba(212,175,55,.08))}
 .hero::before{content:"";position:absolute;inset:-50%;background:conic-gradient(from 0deg,transparent,rgba(212,175,55,.16),transparent 30%);animation:spin 9s linear infinite;pointer-events:none}
@@ -96,7 +109,6 @@ html[data-theme="light"] .hero{background:linear-gradient(150deg,rgba(13,92,70,.
 .hero .sub{color:var(--muted);margin-top:12px;font-size:16px;font-weight:600;line-height:1.8}
 .hero .badge{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:9px 20px;border-radius:999px;font-size:13px;font-weight:700;background:rgba(212,175,55,.12);border:1px solid var(--card-brd);color:var(--gold-2)}
 .hero .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
-
 .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:26px}
 .stat{background:rgba(0,0,0,.28);border:1px solid rgba(212,175,55,.2);border-radius:16px;padding:15px 10px;text-align:center}
 html[data-theme="light"] .stat{background:rgba(255,255,255,.6)}
@@ -104,12 +116,10 @@ html[data-theme="light"] .stat{background:rgba(255,255,255,.6)}
 html[data-theme="light"] .stat b{color:var(--gold-3)}
 .stat span{font-size:12px;color:var(--muted);font-weight:600}
 
-/* ============ العناوين ============ */
 .sec-title{display:flex;align-items:center;gap:12px;margin:34px 0 18px;font-family:'Reem Kufi';font-size:22px}
 .sec-title::before{content:"";width:5px;height:26px;border-radius:4px;background:linear-gradient(180deg,var(--gold),var(--gold-3))}
 .sec-title small{margin-inline-start:auto;font-family:'Cairo';font-size:12px;color:var(--muted);font-weight:600}
 
-/* ============ البطاقات السريعة ============ */
 .quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:14px}
 .q-card-link{padding:22px 20px;border-radius:20px;cursor:pointer;background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(0,0,0,.28));border:1px solid var(--card-brd);transition:.35s;position:relative;overflow:hidden}
 html[data-theme="light"] .q-card-link{background:linear-gradient(150deg,rgba(255,255,255,.9),rgba(245,241,232,.7))}
@@ -118,7 +128,6 @@ html[data-theme="light"] .q-card-link{background:linear-gradient(150deg,rgba(255
 .q-card-link h3{font-family:'Reem Kufi';font-size:18px;margin-bottom:6px}
 .q-card-link p{font-size:13px;color:var(--muted);font-weight:600;line-height:1.7}
 
-/* ============ شبكة المحتوى ============ */
 .cats-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .cat-btn{padding:9px 16px;border-radius:99px;cursor:pointer;background:var(--card);border:1px solid rgba(255,255,255,.1);color:var(--txt);font-family:'Cairo';font-weight:700;font-size:13px;transition:.25s}
 .cat-btn:hover{border-color:var(--gold);background:rgba(212,175,55,.1)}
@@ -135,12 +144,10 @@ html[data-theme="light"] .item-card .tag{color:var(--gold-3)}
 .item-card .foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:12px;color:var(--muted);font-weight:700}
 .item-card .fav-btn{background:transparent;border:none;font-size:20px;cursor:pointer;padding:4px;transition:.25s;color:var(--muted)}
 .item-card .fav-btn.active{color:#ef4444;transform:scale(1.15)}
-.item-card .fav-btn:hover{transform:scale(1.2)}
 .item-card.locked{filter:grayscale(.6);opacity:.65;cursor:not-allowed}
 .item-card.locked:hover{transform:none;border-color:var(--card-brd);box-shadow:none}
 .lock-overlay{position:absolute;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(2px);display:grid;place-items:center;color:var(--gold-2);font-weight:800;font-size:14px;pointer-events:none}
 
-/* ============ مودال القراءة ============ */
 .reader-modal{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);display:none;padding:20px;overflow-y:auto}
 .reader-modal.show{display:block;animation:fadeUp .3s}
 .reader-box{max-width:760px;margin:40px auto;padding:34px 30px;border-radius:24px;background:linear-gradient(150deg,#0b4a38,#04120e);border:1px solid var(--card-brd);box-shadow:var(--shadow);position:relative}
@@ -149,54 +156,46 @@ html[data-theme="light"] .reader-box{background:linear-gradient(150deg,#fff,#f5f
 .reader-box .rm-tag{display:inline-block;padding:4px 12px;border-radius:9px;background:rgba(212,175,55,.16);color:var(--gold-2);font-size:12px;font-weight:800;margin-bottom:14px}
 .reader-box h2{font-family:'Reem Kufi';font-size:28px;margin-bottom:16px;line-height:1.4;color:var(--gold-2)}
 html[data-theme="light"] .reader-box h2{color:var(--gold-3)}
-.reader-box .rm-body{font-size:16px;line-height:2.1;font-weight:500;color:var(--txt);white-space:pre-wrap}
+.reader-box .rm-body{font-size:17px;line-height:2.1;font-weight:500;color:var(--txt);white-space:pre-wrap;transition:font-size .3s,line-height .3s}
 .reader-box .rm-body p{margin-bottom:14px}
+.reader-box.reading-mode{max-width:820px;background:#fef9ee!important;color:#2a1f0a!important;box-shadow:0 25px 60px rgba(0,0,0,.5)}
+.reader-box.reading-mode h2{color:#8a6d20!important}
+.reader-box.reading-mode .rm-tag{background:rgba(212,175,55,.3);color:#5a4510}
+.reader-box.reading-mode .rm-body{color:#2a1f0a!important}
 .reader-box .rm-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid rgba(212,175,55,.2)}
 
 .comments-box{margin-top:26px;padding-top:22px;border-top:1px dashed rgba(212,175,55,.3)}
 .comments-box h4{font-family:'Reem Kufi';font-size:17px;color:var(--gold-2);margin-bottom:14px}
-html[data-theme="light"] .comments-box h4{color:var(--gold-3)}
 .c-form{display:grid;gap:10px;margin-bottom:16px}
 .c-form input,.c-form textarea{width:100%;padding:12px 14px;border-radius:12px;font-family:'Cairo';font-size:14px;font-weight:600;background:rgba(0,0,0,.35);border:1px solid rgba(212,175,55,.25);color:var(--txt);outline:none;resize:vertical}
 .c-form textarea{min-height:80px}
 .c-form input:focus,.c-form textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(212,175,55,.14)}
 .c-list{display:grid;gap:10px}
 .c-item{padding:14px 16px;border-radius:14px;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.08)}
-html[data-theme="light"] .c-item{background:rgba(255,255,255,.7)}
 .c-item .c-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-weight:800;font-size:13px}
 .c-item .c-name{color:var(--gold-2)}
-html[data-theme="light"] .c-item .c-name{color:var(--gold-3)}
 .c-item .c-date{font-size:11px;color:var(--muted);font-weight:600}
 .c-item .c-text{font-size:14px;line-height:1.8;font-weight:600}
 
-/* ============ مواقيت الصلاة ============ */
 .prayer-wrap{max-width:800px;margin:0 auto}
 .prayer-head{text-align:center;padding:26px 20px;border-radius:22px;background:linear-gradient(150deg,rgba(13,92,70,.4),rgba(6,32,25,.55));border:1px solid var(--card-brd);margin-bottom:20px}
-html[data-theme="light"] .prayer-head{background:linear-gradient(150deg,rgba(13,92,70,.16),rgba(212,175,55,.1))}
 .prayer-head .loc{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:8px}
 .prayer-head .clock{font-family:'Reem Kufi';font-size:44px;color:var(--gold-2);line-height:1;margin:10px 0}
-html[data-theme="light"] .prayer-head .clock{color:var(--gold-3)}
 .prayer-head .hijri{font-size:14px;color:var(--muted);font-weight:700}
 .prayer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
 .prayer-card{padding:18px 14px;border-radius:18px;text-align:center;background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(0,0,0,.3));border:1px solid var(--card-brd);transition:.3s;position:relative}
-html[data-theme="light"] .prayer-card{background:linear-gradient(150deg,rgba(255,255,255,.95),rgba(245,241,232,.85))}
 .prayer-card.next{border-color:var(--gold);box-shadow:0 0 26px -6px var(--gold);animation:pulseSoft 2s infinite}
 @keyframes pulseSoft{50%{box-shadow:0 0 32px -2px var(--gold)}}
 .prayer-card .p-ico{font-size:26px;margin-bottom:8px}
 .prayer-card .p-name{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:6px}
 .prayer-card .p-time{font-family:'Reem Kufi';font-size:22px;color:var(--gold-2);font-weight:700}
-html[data-theme="light"] .prayer-card .p-time{color:var(--gold-3)}
 .prayer-card .next-tag{position:absolute;top:-9px;inset-inline-start:50%;transform:translateX(50%);background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#1a1206;padding:3px 12px;border-radius:99px;font-size:10.5px;font-weight:800;white-space:nowrap}
 
-/* ============ المسابقات ============ */
 .levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:18px}
 .lvl{position:relative;border-radius:var(--r);padding:22px;cursor:pointer;background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(0,0,0,.28));border:1px solid var(--card-brd);transition:.35s;overflow:hidden}
-html[data-theme="light"] .lvl{background:linear-gradient(150deg,rgba(255,255,255,.95),rgba(245,241,232,.85))}
-.lvl::after{content:"";position:absolute;inset:0;opacity:0;transition:.35s;background:radial-gradient(400px 200px at 50% 0%,var(--acc,#22c55e33),transparent 70%)}
 .lvl:hover{transform:translateY(-8px);border-color:var(--acc,#d4af37);box-shadow:0 22px 46px rgba(0,0,0,.55)}
-.lvl:hover::after{opacity:1}
 .lvl>*{position:relative;z-index:1}
-.lvl .ico{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;font-size:30px;margin-bottom:14px;background:rgba(0,0,0,.35);border:1.5px solid var(--acc,#d4af37);box-shadow:0 0 24px -6px var(--acc,#d4af37)}
+.lvl .ico{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;font-size:30px;margin-bottom:14px;background:rgba(0,0,0,.35);border:1.5px solid var(--acc,#d4af37)}
 .lvl h3{font-family:'Reem Kufi';font-size:19px;margin-bottom:6px}
 .lvl .dsc{font-size:13px;color:var(--muted);line-height:1.7;font-weight:600;min-height:44px}
 .lvl .meta{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:12px;color:var(--muted);font-weight:700;flex-wrap:wrap}
@@ -207,61 +206,51 @@ html[data-theme="light"] .lvl{background:linear-gradient(150deg,rgba(255,255,255
 .lock-tag{position:absolute;top:14px;inset-inline-start:14px;z-index:2;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);padding:5px 11px;border-radius:99px;font-size:11px;font-weight:700}
 .done-tag{position:absolute;top:14px;inset-inline-start:14px;z-index:2;background:linear-gradient(90deg,var(--gold),var(--gold-3));color:#1a1206;padding:5px 11px;border-radius:99px;font-size:11px;font-weight:800}
 
-/* ============ الأزرار ============ */
-.btn{border:none;cursor:pointer;font-family:'Cairo';font-weight:800;border-radius:14px;padding:13px 26px;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:.25s;position:relative;overflow:hidden}
+.btn{border:none;cursor:pointer;font-family:'Cairo';font-weight:800;border-radius:14px;padding:13px 26px;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:.25s}
 .btn-gold{background:linear-gradient(135deg,var(--gold-2),var(--gold),var(--gold-3));color:#1a1206;box-shadow:0 10px 28px -8px rgba(212,175,55,.75)}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 16px 34px -8px rgba(212,175,55,.9)}
+.btn-gold:hover{transform:translateY(-3px)}
 .btn-ghost{background:var(--card);color:var(--gold-2);border:1px solid var(--card-brd)}
-html[data-theme="light"] .btn-ghost{color:var(--gold-3)}
 .btn-ghost:hover{background:rgba(212,175,55,.14);transform:translateY(-2px)}
-.btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
 .btn-sm{padding:9px 18px;font-size:13px}
 .btn-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
 
-/* ============ المسابقة ============ */
 .quiz-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 20px;border-radius:18px;margin-bottom:16px;background:var(--card);border:1px solid var(--card-brd)}
 .quiz-head .lvl-name{font-family:'Reem Kufi';font-size:17px;color:var(--gold-2)}
-html[data-theme="light"] .quiz-head .lvl-name{color:var(--gold-3)}
 .chip{padding:6px 14px;border-radius:99px;font-size:12.5px;font-weight:800;background:rgba(0,0,0,.35);border:1px solid rgba(212,175,55,.25)}
 .timer-wrap{width:100%;height:9px;border-radius:99px;background:rgba(0,0,0,.5);overflow:hidden;margin-bottom:20px}
-.timer-bar{height:100%;width:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#d4af37);transition:width .95s linear,background .3s}
+.timer-bar{height:100%;width:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#d4af37);transition:width .95s linear}
 .timer-bar.warn{background:linear-gradient(90deg,#f59e0b,#ef4444)}
 .timer-bar.danger{background:linear-gradient(90deg,#ef4444,#7f1d1d);animation:pulseBar .55s infinite}
 @keyframes pulseBar{50%{opacity:.5}}
-.q-card{border-radius:var(--r);padding:26px 22px;background:linear-gradient(150deg,rgba(13,92,70,.3),rgba(0,0,0,.32));border:1px solid var(--card-brd);box-shadow:var(--shadow);animation:fadeUp .45s}
-html[data-theme="light"] .q-card{background:linear-gradient(150deg,rgba(255,255,255,.95),rgba(245,241,232,.9))}
-.q-num{font-size:12.5px;color:var(--gold);font-weight:800;letter-spacing:.5px;margin-bottom:10px}
+.q-card{border-radius:var(--r);padding:26px 22px;background:linear-gradient(150deg,rgba(13,92,70,.3),rgba(0,0,0,.32));border:1px solid var(--card-brd);box-shadow:var(--shadow)}
+.q-num{font-size:12.5px;color:var(--gold);font-weight:800;margin-bottom:10px}
 .q-text{font-family:'Reem Kufi';font-size:clamp(19px,3.4vw,26px);line-height:1.75;margin-bottom:22px}
 .opts{display:grid;gap:12px}
 .opt{display:flex;align-items:center;gap:14px;cursor:pointer;padding:15px 18px;border-radius:16px;font-size:15.5px;font-weight:700;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);transition:.25s;text-align:right;color:var(--txt);font-family:'Cairo'}
-html[data-theme="light"] .opt{background:rgba(255,255,255,.75);border-color:rgba(168,132,42,.2)}
 .opt:hover:not(.dis){background:rgba(212,175,55,.13);border-color:var(--gold);transform:translateX(-6px)}
 .opt .key{width:34px;height:34px;flex:0 0 34px;border-radius:11px;display:grid;place-items:center;background:rgba(0,0,0,.42);border:1px solid rgba(212,175,55,.3);font-family:'Reem Kufi';font-size:15px;color:var(--gold-2)}
 .opt.correct{background:rgba(34,197,94,.2);border-color:var(--ok);animation:pop .45s}
-.opt.correct .key{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opt.correct .key{background:var(--ok);color:#fff}
 .opt.wrong{background:rgba(239,68,68,.18);border-color:var(--bad);animation:shake .45s}
-.opt.wrong .key{background:var(--bad);color:#fff;border-color:var(--bad)}
+.opt.wrong .key{background:var(--bad);color:#fff}
 .opt.dis{cursor:default}
-@keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.035)}100%{transform:scale(1)}}
+@keyframes pop{0%,100%{transform:scale(1)}45%{transform:scale(1.035)}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}
-.feedback{margin-top:18px;padding:16px 18px;border-radius:16px;font-size:14px;line-height:1.9;display:none;animation:fadeUp .4s;font-weight:600}
+.feedback{margin-top:18px;padding:16px 18px;border-radius:16px;font-size:14px;line-height:1.9;display:none;font-weight:600}
 .feedback.show{display:block}
 .feedback.good{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.4)}
 .feedback.bad{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.4)}
 .feedback b{color:var(--gold-2)}
 
-/* ============ النتيجة ============ */
 .result-card{text-align:center;padding:38px 24px;border-radius:30px;background:linear-gradient(150deg,rgba(13,92,70,.35),rgba(0,0,0,.35));border:1px solid var(--card-brd);box-shadow:var(--shadow)}
-html[data-theme="light"] .result-card{background:linear-gradient(150deg,rgba(255,255,255,.95),rgba(245,241,232,.85))}
 .medal{width:130px;height:130px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;font-size:64px;background:radial-gradient(circle at 35% 30%,#0f7057,#04120e);border:3px solid var(--gold);box-shadow:0 0 60px rgba(212,175,55,.5);animation:floaty 3.6s ease-in-out infinite}
 .result-card h2{font-family:'Reem Kufi';font-size:30px;color:var(--gold-2);margin-bottom:8px}
-html[data-theme="light"] .result-card h2{color:var(--gold-3)}
 .result-card .grade{font-size:17px;color:var(--muted);font-weight:700;margin-bottom:22px}
 .ring-wrap{display:flex;justify-content:center;margin:8px 0 22px}
 .ring{transform:rotate(-90deg)}
 .ring circle{fill:none;stroke-width:13;stroke-linecap:round}
 .ring .bgc{stroke:rgba(255,255,255,.09)}
-.ring .fgc{stroke:url(#gradRing);stroke-dasharray:377;stroke-dashoffset:377;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+.ring .fgc{stroke:url(#gradRing);stroke-dasharray:377;stroke-dashoffset:377;transition:stroke-dashoffset 1.4s}
 .ring-txt{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
 .ring-holder{position:relative;width:150px;height:150px}
 .ring-txt b{font-family:'Reem Kufi';font-size:36px;color:var(--gold-2);display:block;line-height:1}
@@ -269,73 +258,141 @@ html[data-theme="light"] .result-card h2{color:var(--gold-3)}
 .res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin-top:8px}
 .stars{font-size:30px;letter-spacing:6px;margin-bottom:12px;filter:drop-shadow(0 0 12px rgba(212,175,55,.6))}
 
-/* ============ الشهادة ============ */
 .cert{background:linear-gradient(150deg,#0b4a38,#062019);border:3px double var(--gold);border-radius:24px;padding:44px 30px;text-align:center;position:relative;overflow:hidden;margin-top:16px}
-html[data-theme="light"] .cert{background:linear-gradient(150deg,#fff,#f5f1e8);color:#1a2620}
 .cert::before{content:"";position:absolute;inset:12px;border:1px solid rgba(212,175,55,.35);border-radius:16px;pointer-events:none}
 .cert .c-logo{font-size:52px;margin-bottom:10px}
 .cert h3{font-family:'Reem Kufi';font-size:27px;color:var(--gold-2);margin-bottom:6px}
-html[data-theme="light"] .cert h3{color:var(--gold-3)}
 .cert .c-sub{color:var(--muted);font-size:13px;font-weight:700;margin-bottom:24px}
 .cert .c-name{font-family:'Reem Kufi';font-size:32px;color:var(--txt);margin:14px 0;padding-bottom:10px;border-bottom:2px dashed rgba(212,175,55,.4);display:inline-block;min-width:60%}
 .cert .c-line{font-size:15px;font-weight:700;color:var(--muted);margin:8px 0}
 .cert .c-line b{color:var(--gold-2);font-family:'Reem Kufi';font-size:19px}
-html[data-theme="light"] .cert .c-line b{color:var(--gold-3)}
 .cert .c-foot{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-size:12.5px;font-weight:700;color:var(--muted)}
 .cert .c-foot div{flex:1}
 .cert .c-foot span{display:block;border-top:1px solid rgba(212,175,55,.4);margin-top:36px;padding-top:8px}
 
-/* ============ لوحة الصدارة ============ */
 .board-list{display:grid;gap:10px}
-.b-row{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:16px;background:var(--card);border:1px solid rgba(255,255,255,.08);font-weight:700;animation:fadeUp .4s backwards}
+.b-row{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:16px;background:var(--card);border:1px solid rgba(255,255,255,.08);font-weight:700}
 .b-row .rank{width:38px;height:38px;flex:0 0 38px;border-radius:12px;display:grid;place-items:center;font-family:'Reem Kufi';background:rgba(0,0,0,.4);border:1px solid rgba(212,175,55,.25)}
 .b-row.g1 .rank{background:linear-gradient(135deg,#f7e7a3,#d4af37);color:#1a1206}
 .b-row.g2 .rank{background:linear-gradient(135deg,#e2e8f0,#94a3b8);color:#0f172a}
 .b-row.g3 .rank{background:linear-gradient(135deg,#f0b27a,#b45309);color:#fff}
 .b-row .nm{flex:1;font-size:15px}
 .b-row .sc{color:var(--gold-2);font-family:'Reem Kufi';font-size:16px}
-html[data-theme="light"] .b-row .sc{color:var(--gold-3)}
 .b-row .dt{font-size:11px;color:var(--muted);font-weight:600}
 
-/* ============ النافذة المنبثقة ============ */
 .modal{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.75);backdrop-filter:blur(8px)}
 .modal.show{display:flex;animation:fadeUp .3s}
-.modal-box{width:100%;max-width:430px;border-radius:26px;padding:30px 24px;text-align:center;background:linear-gradient(150deg,#0b4a38,#04120e);border:1px solid var(--card-brd);box-shadow:var(--shadow)}
-html[data-theme="light"] .modal-box{background:linear-gradient(150deg,#fff,#f5f1e8)}
+.modal-box{width:100%;max-width:430px;border-radius:26px;padding:30px 24px;text-align:center;background:linear-gradient(150deg,#0b4a38,#04120e);border:1px solid var(--card-brd);box-shadow:var(--shadow);position:relative}
 .modal-box h3{font-family:'Reem Kufi';font-size:23px;color:var(--gold-2);margin-bottom:8px}
-html[data-theme="light"] .modal-box h3{color:var(--gold-3)}
 .modal-box p{font-size:13.5px;color:var(--muted);font-weight:600;margin-bottom:20px;line-height:1.8}
-.inp{width:100%;padding:15px 18px;border-radius:14px;font-family:'Cairo';font-size:15px;font-weight:700;background:rgba(0,0,0,.4);border:1.5px solid rgba(212,175,55,.3);color:var(--txt);outline:none;text-align:center;transition:.25s}
-html[data-theme="light"] .inp{background:rgba(255,255,255,.85)}
-.inp:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(212,175,55,.14)}
+.inp{width:100%;padding:15px 18px;border-radius:14px;font-family:'Cairo';font-size:15px;font-weight:700;background:rgba(0,0,0,.4);border:1.5px solid rgba(212,175,55,.3);color:var(--txt);outline:none;text-align:center}
+.inp:focus{border-color:var(--gold)}
 
-/* ============ الفوتر والتنبيه ============ */
 .footer{text-align:center;padding:30px 16px;color:var(--muted);font-size:13px;font-weight:600;border-top:1px solid rgba(212,175,55,.14);margin-top:40px;line-height:2}
 .footer b{color:var(--gold-2)}
-html[data-theme="light"] .footer b{color:var(--gold-3)}
-.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,120px);z-index:90;padding:14px 26px;border-radius:14px;font-weight:800;font-size:14px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#1a1206;box-shadow:0 14px 40px rgba(0,0,0,.5);transition:.45s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,120px);z-index:90;padding:14px 26px;border-radius:14px;font-weight:800;font-size:14px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#1a1206;box-shadow:0 14px 40px rgba(0,0,0,.5);transition:.45s;pointer-events:none}
 .toast.show{transform:translate(-50%,0)}
 .empty{text-align:center;padding:50px 20px;color:var(--muted);font-weight:700;border:2px dashed rgba(212,175,55,.25);border-radius:var(--r)}
 
-/* ============ الموبايل (أهم جزء) ============ */
+/* ===== المميزات الجديدة ===== */
+.modal-close{position:absolute;top:14px;inset-inline-start:14px;width:38px;height:38px;border-radius:11px;background:rgba(0,0,0,.4);border:1px solid var(--card-brd);color:var(--gold-2);font-size:17px;cursor:pointer;display:grid;place-items:center;z-index:2}
+
+/* مشغل الأناشيد */
+.nasheed-player{position:fixed;bottom:16px;left:50%;transform:translate(-50%,150%);width:min(560px,94vw);z-index:60;background:linear-gradient(150deg,#0b4a38,#04120e);border:1.5px solid var(--gold);border-radius:22px;padding:16px 18px;box-shadow:0 25px 70px rgba(0,0,0,.75);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.nasheed-player.show{transform:translate(-50%,0)}
+.np-inner{display:grid;grid-template-columns:56px 1fr;grid-template-rows:auto auto auto;gap:10px}
+.np-art{grid-row:1/3;width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#0f7057,#062019);border:1.5px solid var(--gold);font-size:24px;animation:floaty 4s ease-in-out infinite}
+.np-info{min-width:0}
+.np-title{font-family:'Reem Kufi';font-size:15px;font-weight:700;color:var(--gold-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.np-reciter{font-size:11.5px;color:var(--muted);font-weight:600;margin-top:3px}
+.np-controls{grid-column:1/-1;display:flex;gap:6px;justify-content:center;align-items:center;flex-wrap:wrap}
+.np-btn{width:38px;height:38px;border-radius:11px;cursor:pointer;background:rgba(0,0,0,.35);border:1px solid rgba(212,175,55,.3);color:var(--gold-2);font-size:16px;display:grid;place-items:center;transition:.25s}
+.np-btn:hover{background:rgba(212,175,55,.2)}
+.np-play{width:46px;height:46px;font-size:20px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#1a1206;border:none}
+.np-btn.active{background:var(--gold);color:#1a1206}
+.np-progress{grid-column:1/-1;display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;color:var(--muted)}
+.np-progress input{flex:1;accent-color:var(--gold);height:5px;cursor:pointer}
+.np-list{grid-column:1/-1;max-height:150px;overflow-y:auto;display:grid;gap:4px;margin-top:6px;border-top:1px solid rgba(212,175,55,.2);padding-top:10px}
+.np-item{padding:8px 12px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:600;background:rgba(255,255,255,.04);transition:.2s;display:flex;justify-content:space-between;align-items:center}
+.np-item:hover{background:rgba(212,175,55,.15)}
+.np-item.active{background:rgba(212,175,55,.25);color:var(--gold-2)}
+.np-item small{font-size:10.5px;color:var(--muted);font-weight:600}
+
+/* السبحة */
+.tasbih-box{max-width:440px}
+.tasbih-picker{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:22px}
+.tb-pick{padding:11px 10px;border-radius:12px;cursor:pointer;background:rgba(0,0,0,.3);border:1.5px solid rgba(212,175,55,.22);color:var(--txt);font-family:'Cairo';font-weight:700;font-size:12.5px;transition:.25s;display:flex;flex-direction:column;align-items:center;gap:2px}
+.tb-pick span{font-size:10.5px;color:var(--muted);font-weight:700}
+.tb-pick.active{background:linear-gradient(135deg,rgba(212,175,55,.3),rgba(212,175,55,.15));border-color:var(--gold);color:var(--gold-2)}
+.tasbih-ring{position:relative;width:260px;height:260px;margin:0 auto 22px;cursor:pointer;user-select:none}
+.tasbih-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.tasbih-ring .tb-bg{fill:none;stroke:rgba(255,255,255,.09);stroke-width:11}
+.tasbih-ring .tb-fg{fill:none;stroke:url(#gradRing);stroke-width:11;stroke-linecap:round;stroke-dasharray:553;stroke-dashoffset:553;transition:stroke-dashoffset .4s}
+.tasbih-center{position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none}
+.tb-count{font-family:'Reem Kufi';font-size:64px;line-height:1;background:linear-gradient(135deg,var(--gold-2),var(--gold),var(--gold-3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tb-text{font-size:13px;color:var(--muted);font-weight:700;margin-top:6px}
+.tb-target{font-size:11px;color:var(--muted);font-weight:700;margin-top:2px;opacity:.7}
+.tasbih-actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+
+/* لوحة التحكم */
+.dash-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:22px;background:linear-gradient(150deg,rgba(13,92,70,.4),rgba(0,0,0,.35));border:1px solid var(--card-brd);border-radius:22px;margin-bottom:22px}
+.dash-avatar{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-size:38px;background:linear-gradient(145deg,#0f7057,#062019);border:2px solid var(--gold);box-shadow:0 0 30px rgba(212,175,55,.35)}
+.dash-info{flex:1;min-width:200px}
+.dash-info h2{font-family:'Reem Kufi';font-size:22px;color:var(--gold-2);margin-bottom:4px}
+.dash-rank{font-size:12.5px;color:var(--muted);font-weight:700;margin-bottom:10px}
+.dash-xp-bar{height:9px;border-radius:99px;background:rgba(0,0,0,.4);overflow:hidden;margin-bottom:6px}
+.dash-xp-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold-2),var(--gold),var(--gold-3));transition:width .8s}
+.dash-xp-text{font-size:11px;color:var(--muted);font-weight:700}
+.dash-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.dash-stat{padding:18px 14px;border-radius:18px;text-align:center;background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(0,0,0,.28));border:1px solid var(--card-brd);transition:.3s}
+.dash-stat:hover{transform:translateY(-4px);border-color:var(--gold)}
+.dash-stat .ds-ico{font-size:28px;margin-bottom:8px}
+.dash-stat b{display:block;font-family:'Reem Kufi';font-size:26px;color:var(--gold-2);margin-bottom:4px}
+.dash-stat span{font-size:11.5px;color:var(--muted);font-weight:700}
+.badges-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.badge{padding:18px 12px;border-radius:18px;text-align:center;background:rgba(0,0,0,.25);border:1.5px solid rgba(255,255,255,.08);transition:.3s}
+.badge.earned{border-color:var(--gold);background:linear-gradient(150deg,rgba(212,175,55,.2),rgba(212,175,55,.05));box-shadow:0 0 25px -8px var(--gold)}
+.badge.locked{opacity:.4;filter:grayscale(1)}
+.badge .b-ico{font-size:36px;margin-bottom:8px;display:block}
+.badge .b-name{font-size:12.5px;font-weight:700;margin-bottom:3px}
+.badge .b-desc{font-size:10.5px;color:var(--muted);font-weight:600}
+.dash-chart{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;padding:20px;background:rgba(0,0,0,.25);border:1px solid var(--card-brd);border-radius:18px}
+.chart-day{display:flex;flex-direction:column;align-items:center;gap:6px}
+.chart-bar{width:100%;height:80px;display:flex;align-items:flex-end;justify-content:center}
+.chart-bar i{width:22px;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,var(--gold-2),var(--gold-3));transition:height .8s;min-height:3px}
+.chart-day span{font-size:10.5px;color:var(--muted);font-weight:700}
+.chart-day b{font-size:11.5px;color:var(--gold-2);font-weight:800}
+
+/* الإعدادات */
+.settings-box{max-width:500px;text-align:right;max-height:90vh;overflow-y:auto}
+.set-section{margin:18px 0;padding-bottom:16px;border-bottom:1px solid rgba(212,175,55,.15)}
+.set-section:last-child{border-bottom:none;padding-bottom:0}
+.set-section h4{font-family:'Reem Kufi';font-size:14.5px;color:var(--gold-2);margin-bottom:12px;font-weight:700}
+.theme-picker,.bg-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px}
+.theme-opt,.bg-opt{padding:12px 8px;border-radius:12px;cursor:pointer;background:rgba(0,0,0,.3);border:1.5px solid rgba(212,175,55,.2);color:var(--txt);font-family:'Cairo';font-weight:700;font-size:12px;transition:.25s;display:flex;flex-direction:column;align-items:center;gap:4px}
+.theme-opt span,.bg-opt span{font-size:10.5px;color:var(--muted);font-weight:600}
+.theme-opt.active,.bg-opt.active{background:linear-gradient(135deg,rgba(212,175,55,.28),rgba(212,175,55,.12));border-color:var(--gold);color:var(--gold-2)}
+.notif-row{display:flex;gap:8px;flex-wrap:wrap}
+.reader-set{display:grid;gap:12px}
+.rs-row{display:flex;align-items:center;gap:12px}
+.rs-row span{font-size:12.5px;color:var(--muted);font-weight:700;min-width:100px}
+.rs-row input{flex:1;accent-color:var(--gold)}
+
+/* الخلفيات */
+body[data-bg="pattern"]::after{opacity:.13}
+body[data-bg="stars"]::after{opacity:.6;background-image:radial-gradient(1.5px 1.5px at 20% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 60% 70%,#fff,transparent),radial-gradient(1px 1px at 80% 10%,#fff,transparent),radial-gradient(1.5px 1.5px at 10% 80%,#fff,transparent);background-size:200px 200px;animation:starsMove 60s linear infinite}
+@keyframes starsMove{to{background-position:200px 200px}}
+body[data-bg="solid"]::after{display:none}
+body[data-bg="solid"]{background:#0a1c16}
+body[data-bg="gradient"]::after{display:none}
+body[data-bg="gradient"]{background:linear-gradient(135deg,#04120e 0%,#0d5c46 35%,#d4af37 50%,#0d5c46 65%,#04120e 100%);background-size:300% 300%;animation:gradMove 20s ease infinite}
+@keyframes gradMove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
 @media(max-width:820px){
   .menu-btn{display:grid!important}
-  .nav-main{
-    position:fixed;top:0;right:0;
-    width:280px;max-width:82vw;height:100vh;
-    background:linear-gradient(150deg,#0b4a38,#04120e);
-    border-inline-start:1px solid var(--card-brd);
-    padding:90px 18px 30px;
-    flex-direction:column;align-items:stretch;justify-content:flex-start;
-    flex:none;gap:6px;
-    transform:translateX(100%);
-    transition:transform .35s cubic-bezier(.2,.8,.2,1);
-    z-index:55;overflow-y:auto;
-  }
-  html[data-theme="light"] .nav-main{background:linear-gradient(150deg,#fff,#f5f1e8)}
-  .nav-main.open{transform:translateX(0);box-shadow:-8px 0 40px rgba(0,0,0,.5)}
+  .nav-main{position:fixed;top:0;right:0;width:280px;max-width:82vw;height:100vh;background:linear-gradient(150deg,#0b4a38,#04120e);border-inline-start:1px solid var(--card-brd);padding:90px 18px 30px;flex-direction:column;align-items:stretch;justify-content:flex-start;flex:none;gap:6px;transform:translateX(100%);transition:transform .35s;z-index:55;overflow-y:auto}
+  .nav-main.open{transform:translateX(0)}
   .nav-btn{width:100%;justify-content:flex-start;padding:14px 16px;font-size:15px;text-align:right;border-radius:12px;background:rgba(0,0,0,.2)}
-  html[data-theme="light"] .nav-btn{background:rgba(255,255,255,.7)}
   .nav-btn.active{background:linear-gradient(135deg,rgba(212,175,55,.28),rgba(212,175,55,.15));border-color:var(--gold)}
   .hero{padding:34px 16px 28px;border-radius:24px}
   .hero .crest{width:80px;height:80px;font-size:38px}
@@ -344,8 +401,13 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
   .reader-box h2{font-size:22px}
   .cert{padding:30px 18px}
   .cert .c-name{font-size:24px}
+  .tasbih-picker{grid-template-columns:1fr}
+  .tasbih-ring{width:220px;height:220px}
+  .tb-count{font-size:52px}
+  .nasheed-player{width:96vw;bottom:10px}
+  .dash-head{padding:16px}
+  .dash-avatar{width:60px;height:60px;font-size:30px}
 }
-
 @media print{
   body{background:#fff!important;color:#111}
   body::before,body::after{display:none}
@@ -358,7 +420,6 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
 
 <canvas id="fx"></canvas>
 
-<!-- ===== الشريط العلوي ===== -->
 <header class="topbar">
   <div class="topbar-inner">
     <div class="brand" onclick="go('home')">
@@ -370,8 +431,10 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
     </div>
     <div class="tools">
       <button class="icon-btn" id="searchBtn" title="بحث">🔍</button>
-      <button class="icon-btn" id="themeBtn" title="الوضع">🌙</button>
-      <button class="icon-btn" id="soundBtn" title="الصوت">🔊</button>
+      <button class="icon-btn" id="nasheedBtn" title="الأناشيد">🎵</button>
+      <button class="icon-btn" id="tasbihBtn" title="السبحة">📿</button>
+      <button class="icon-btn" id="dashBtn" title="لوحتي">📊</button>
+      <button class="icon-btn" id="settingsBtn" title="الإعدادات">⚙️</button>
       <button class="icon-btn menu-btn" id="menuBtn" title="القائمة">☰</button>
     </div>
   </div>
@@ -387,18 +450,16 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
 </nav>
 <div class="nav-overlay" id="navOverlay"></div>
 
-<!-- ===== البحث ===== -->
 <div class="search-overlay" id="searchOverlay">
   <button class="sr-close" id="searchClose">✕</button>
   <div class="search-box">
-    <input class="search-input" id="searchInput" placeholder="ابحث في كل الأقسام… (معلومات، قصص، أسئلة)" autocomplete="off">
+    <input class="search-input" id="searchInput" placeholder="ابحث في كل الأقسام…" autocomplete="off">
     <div class="search-results" id="searchResults"></div>
   </div>
 </div>
 
 <div class="wrap">
 
-  <!-- ===== الرئيسية ===== -->
   <section class="screen active" id="screen-home">
     <div class="hero">
       <div class="crest">☪️</div>
@@ -420,24 +481,20 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
     <div class="sec-title">استكشف الموقع <small>كل قسم فيه كنز</small></div>
     <div class="quick-grid">
       <div class="q-card-link" style="--acc:#38bdf8" onclick="go('info')">
-        <div class="ico">📚</div>
-        <h3>المعلومات الدينية</h3>
-        <p>عقيدة · فقه · سيرة · أذكار · قرآن — كلها موثوقة ومصنّفة</p>
+        <div class="ico">📚</div><h3>المعلومات الدينية</h3>
+        <p>عقيدة · فقه · سيرة · أذكار · قرآن</p>
       </div>
       <div class="q-card-link" style="--acc:#a78bfa" onclick="go('stories')">
-        <div class="ico">📖</div>
-        <h3>القصص الدينية</h3>
-        <p>قصص الصحابة والغزوات — المزيد قادم قريباً</p>
+        <div class="ico">📖</div><h3>القصص الدينية</h3>
+        <p>قصص الصحابة والغزوات والأنبياء</p>
       </div>
       <div class="q-card-link" style="--acc:#22c55e" onclick="go('quiz')">
-        <div class="ico">🎯</div>
-        <h3>المسابقات</h3>
-        <p>٥ مستويات · ٥٠ سؤال · شهادة · لوحة صدارة</p>
+        <div class="ico">🎯</div><h3>المسابقات</h3>
+        <p>٥ مستويات · ٥٠ سؤال · شهادة</p>
       </div>
       <div class="q-card-link" style="--acc:#f59e0b" onclick="go('prayer')">
-        <div class="ico">🕌</div>
-        <h3>مواقيت الصلاة</h3>
-        <p>حسب موقعك تلقائياً — مع تنبيه للصلاة القادمة</p>
+        <div class="ico">🕌</div><h3>مواقيت الصلاة</h3>
+        <p>حسب موقعك تلقائياً</p>
       </div>
     </div>
 
@@ -445,21 +502,18 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
     <div class="items-grid" id="homeLatest"></div>
   </section>
 
-  <!-- ===== المعلومات ===== -->
   <section class="screen" id="screen-info">
-    <div class="sec-title">📚 المعلومات الدينية <small>محتوى موثوق ومصنّف</small></div>
+    <div class="sec-title">📚 المعلومات الدينية <small>محتوى موثوق</small></div>
     <div class="cats-row" id="infoCats"></div>
     <div class="items-grid" id="infoGrid"></div>
   </section>
 
-  <!-- ===== القصص ===== -->
   <section class="screen" id="screen-stories">
     <div class="sec-title">📖 القصص الدينية <small>سير الصحابة والغزوات</small></div>
     <div class="cats-row" id="storyCats"></div>
     <div class="items-grid" id="storiesGrid"></div>
   </section>
 
-  <!-- ===== المسابقات ===== -->
   <section class="screen" id="screen-quiz">
     <div id="quizIntro">
       <div class="sec-title">🎯 المسابقات <small>اختبر معرفتك</small></div>
@@ -474,7 +528,7 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
       <div class="quiz-head">
         <span class="lvl-name" id="qLevel">—</span>
         <span class="chip" id="qCounter">—</span>
-        <span class="chip score" id="qScore">—</span>
+        <span class="chip" id="qScore">—</span>
         <span class="chip" id="qTimer">—</span>
       </div>
       <div class="timer-wrap"><div class="timer-bar" id="timerBar"></div></div>
@@ -543,13 +597,11 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
     </div>
   </section>
 
-  <!-- ===== المفضلة ===== -->
   <section class="screen" id="screen-favorites">
     <div class="sec-title">🔖 المفضلة <small>كل ما حفظته في مكان واحد</small></div>
     <div class="items-grid" id="favGrid"></div>
   </section>
 
-  <!-- ===== مواقيت الصلاة ===== -->
   <section class="screen" id="screen-prayer">
     <div class="sec-title">🕌 مواقيت الصلاة <small>حسب موقعك</small></div>
     <div class="prayer-wrap">
@@ -561,25 +613,48 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
       <div class="prayer-grid" id="pGrid"></div>
       <div class="btn-row">
         <button class="btn btn-ghost" id="pLocBtn">📍 تحديد موقعي</button>
-        <button class="btn btn-ghost" id="pCityBtn">🏙️ اختيار مدينة يدوياً</button>
+        <button class="btn btn-ghost" id="pCityBtn">🏙️ اختيار مدينة</button>
       </div>
-      <p style="text-align:center;margin-top:18px;font-size:12px;color:var(--muted);font-weight:600">المصدر: Aladhan API — طريقة الحساب: الهيئة المصرية العامة للمساحة</p>
     </div>
   </section>
 
-  <!-- ===== لوحة الصدارة ===== -->
   <section class="screen" id="screen-board">
     <div class="sec-title">🏆 لوحة الصدارة <small>أعلى النتائج</small></div>
     <div class="board-list" id="boardList"></div>
     <div class="btn-row">
-      <button class="btn btn-ghost" onclick="go('quiz')">↩ رجوع للمسابقات</button>
+      <button class="btn btn-ghost" onclick="go('quiz')">↩ رجوع</button>
       <button class="btn btn-ghost" id="clearBoard">🗑️ مسح اللوحة</button>
+    </div>
+  </section>
+
+  <!-- لوحة التحكم (جوه الـ wrap) -->
+  <section class="screen" id="screen-dashboard">
+    <div class="sec-title">📊 لوحتي <small>إحصائياتك وإنجازاتك</small></div>
+    <div class="dash-head">
+      <div class="dash-avatar" id="dashAvatar">🧑</div>
+      <div class="dash-info">
+        <h2 id="dashName">—</h2>
+        <div class="dash-rank" id="dashRank">مبتدئ</div>
+        <div class="dash-xp-bar"><i id="dashXpFill" style="width:0%"></i></div>
+        <div class="dash-xp-text" id="dashXpText">٠ / ١٠٠ خبرة</div>
+      </div>
+      <button class="btn btn-sm btn-ghost" id="dashEditName">✏️ تغيير الاسم</button>
+    </div>
+    <div class="sec-title">📈 إحصائياتك</div>
+    <div class="dash-stats" id="dashStats"></div>
+    <div class="sec-title">🏅 شاراتك</div>
+    <div class="badges-grid" id="dashBadges"></div>
+    <div class="sec-title">📅 نشاطك — آخر ٧ أيام</div>
+    <div class="dash-chart" id="dashChart"></div>
+    <div class="btn-row">
+      <button class="btn btn-gold" onclick="go('quiz')">🎯 ابدأ مسابقة</button>
+      <button class="btn btn-ghost" id="dashExport">⬇️ تصدير تقريري</button>
     </div>
   </section>
 
 </div>
 
-<!-- ===== مودال القراءة ===== -->
+<!-- قارئ -->
 <div class="reader-modal" id="readerModal">
   <div class="reader-box">
     <button class="reader-close" onclick="closeReader()">✕</button>
@@ -589,28 +664,139 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
     <div class="rm-actions">
       <button class="btn btn-sm btn-gold" id="rmFav">❤️ أضف للمفضلة</button>
       <button class="btn btn-sm btn-ghost" id="rmShare">📤 مشاركة</button>
+      <button class="btn btn-sm btn-ghost" id="rmShareImg">🖼️ صورة</button>
+      <button class="btn btn-sm btn-ghost" id="rmReadingMode">📖 وضع القراءة</button>
+      <button class="btn btn-sm btn-ghost" id="rmZoomOut">أ−</button>
+      <button class="btn btn-sm btn-ghost" id="rmZoomIn">أ+</button>
     </div>
     <div class="comments-box">
       <h4>💬 التعليقات</h4>
       <div class="c-form">
         <input id="cName" placeholder="اسمك" maxlength="24">
         <textarea id="cText" placeholder="اكتب تعليقك…" maxlength="300"></textarea>
-        <button class="btn btn-sm btn-gold" id="cSend">إرسال التعليق</button>
+        <button class="btn btn-sm btn-gold" id="cSend">إرسال</button>
       </div>
       <div class="c-list" id="cList"></div>
     </div>
   </div>
 </div>
 
-<!-- ===== نافذة الاسم ===== -->
+<!-- نافذة الاسم -->
 <div class="modal" id="nameModal">
   <div class="modal-box">
     <div style="font-size:44px;margin-bottom:8px">📝</div>
-    <h3>أهلًا بك في زاد القلوب</h3>
+    <h3>أهلًا بك</h3>
     <p>اكتب اسمك ليظهر في لوحة الصدارة وعلى الشهادة</p>
     <input class="inp" id="nameInput" placeholder="اسمك الكريم…" maxlength="24" autocomplete="off">
     <div class="btn-row" style="margin-top:20px">
       <button class="btn btn-gold" id="nameOk" style="width:100%">ابدأ الآن ✨</button>
+    </div>
+  </div>
+</div>
+
+<!-- مشغل الأناشيد -->
+<div class="nasheed-player" id="nasheedPlayer">
+  <div class="np-inner">
+    <div class="np-art" id="npArt">🎵</div>
+    <div class="np-info">
+      <div class="np-title" id="npTitle">اختر أنشودة</div>
+      <div class="np-reciter" id="npReciter">—</div>
+    </div>
+    <div class="np-controls">
+      <button class="np-btn" id="npPrev">⏮</button>
+      <button class="np-btn np-play" id="npPlay">▶</button>
+      <button class="np-btn" id="npNext">⏭</button>
+      <button class="np-btn" id="npShuffle">🔀</button>
+      <button class="np-btn" id="npRepeat">🔁</button>
+      <button class="np-btn" id="npClose">✕</button>
+    </div>
+    <div class="np-progress">
+      <span id="npCurrent">٠:٠٠</span>
+      <input type="range" id="npSeek" min="0" max="100" value="0">
+      <span id="npDuration">٠:٠٠</span>
+    </div>
+    <div class="np-list" id="npList"></div>
+  </div>
+</div>
+
+<!-- السبحة -->
+<div class="modal" id="tasbihModal">
+  <div class="modal-box tasbih-box">
+    <button class="modal-close" onclick="closeTasbih()">✕</button>
+    <div style="font-size:36px;margin-bottom:6px">📿</div>
+    <h3>السبحة الإلكترونية</h3>
+    <p>اضغط على الدائرة للتسبيح</p>
+    <div class="tasbih-picker">
+      <button class="tb-pick active" data-tb="سبحان الله" data-max="33">سبحان الله <span>٣٣</span></button>
+      <button class="tb-pick" data-tb="الحمد لله" data-max="33">الحمد لله <span>٣٣</span></button>
+      <button class="tb-pick" data-tb="الله أكبر" data-max="34">الله أكبر <span>٣٤</span></button>
+      <button class="tb-pick" data-tb="لا إله إلا الله" data-max="100">لا إله إلا الله <span>١٠٠</span></button>
+      <button class="tb-pick" data-tb="أستغفر الله" data-max="100">أستغفر الله <span>١٠٠</span></button>
+      <button class="tb-pick" data-tb="لا حول ولا قوة إلا بالله" data-max="100">لا حول ولا قوة إلا بالله</button>
+    </div>
+    <div class="tasbih-ring" id="tasbihRing">
+      <svg viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="88" class="tb-bg"/>
+        <circle cx="100" cy="100" r="88" class="tb-fg" id="tbFg"/>
+      </svg>
+      <div class="tasbih-center" id="tasbihTap">
+        <div class="tb-count" id="tbCount">٠</div>
+        <div class="tb-text" id="tbText">سبحان الله</div>
+        <div class="tb-target" id="tbTarget">من ٣٣</div>
+      </div>
+    </div>
+    <div class="tasbih-actions">
+      <button class="btn btn-sm btn-ghost" id="tbReset">🔄 تصفير</button>
+      <button class="btn btn-sm btn-ghost" id="tbVibrate">📳 اهتزاز</button>
+      <button class="btn btn-sm btn-ghost" id="tbSound">🔊 صوت</button>
+    </div>
+    <p style="margin-top:14px;font-size:12px;color:var(--muted);font-weight:700" id="tbTotal">إجمالي تسبيحاتك اليوم: ٠</p>
+  </div>
+</div>
+
+<!-- الإعدادات -->
+<div class="modal" id="settingsModal">
+  <div class="modal-box settings-box">
+    <button class="modal-close" onclick="closeSettings()">✕</button>
+    <h3>⚙️ الإعدادات</h3>
+    <div class="set-section">
+      <h4>🎨 المظهر</h4>
+      <div class="theme-picker">
+        <button class="theme-opt" data-theme="dark">🌙 <span>داكن</span></button>
+        <button class="theme-opt" data-theme="light">☀️ <span>فاتح</span></button>
+        <button class="theme-opt" data-theme="ramadan">🌙 <span>رمضان</span></button>
+        <button class="theme-opt" data-theme="haram">🕋 <span>الحرم</span></button>
+      </div>
+    </div>
+    <div class="set-section">
+      <h4>🖼️ الخلفية</h4>
+      <div class="bg-picker">
+        <button class="bg-opt" data-bg="default">افتراضي</button>
+        <button class="bg-opt" data-bg="pattern">زخرفة</button>
+        <button class="bg-opt" data-bg="stars">نجوم</button>
+        <button class="bg-opt" data-bg="solid">سادة</button>
+        <button class="bg-opt" data-bg="gradient">تدرّج</button>
+      </div>
+    </div>
+    <div class="set-section">
+      <h4>🔊 الصوت</h4>
+      <button class="btn btn-sm btn-ghost" id="setSound">🔊 الصوت: مفعّل</button>
+    </div>
+    <div class="set-section">
+      <h4>🔔 تذكير الصلاة</h4>
+      <div class="notif-row">
+        <button class="btn btn-sm btn-ghost" id="setNotif">🔔 تفعيل</button>
+        <button class="btn btn-sm btn-ghost" id="setNotifTest">تجربة</button>
+      </div>
+      <p style="font-size:11.5px;color:var(--muted);font-weight:600;margin-top:8px" id="notifStatus">غير مفعّلة</p>
+    </div>
+    <div class="set-section">
+      <h4>📖 قارئ القصص</h4>
+      <div class="reader-set">
+        <div class="rs-row"><span>حجم الخط</span><input type="range" id="rsFont" min="14" max="26" value="17"></div>
+        <div class="rs-row"><span>تباعد الأسطر</span><input type="range" id="rsLine" min="1.6" max="2.8" step="0.1" value="2.1"></div>
+        <button class="btn btn-sm btn-ghost" id="rsReset">استعادة</button>
+      </div>
     </div>
   </div>
 </div>
@@ -624,7 +810,7 @@ html[data-theme="light"] .footer b{color:var(--gold-3)}
 
 <script>
 /* =========================================================
-   زاد القلوب — النسخة المتكاملة v2
+   زاد القلوب — v3
    ========================================================= */
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
@@ -642,121 +828,135 @@ let state = {
   scores: LS.get('zq_scores',[]),
   favorites: LS.get('zq_favorites',[]),
   comments: LS.get('zq_comments',{}),
-  settings: LS.get('zq_settings',{sound:true, theme:'dark'})
+  settings: LS.get('zq_settings',{sound:true, theme:'dark', bg:'default', readerFont:17, readerLine:2.1, vibrate:true, tasbihSound:true, notifications:false}),
+  badges: LS.get('zq_badges',{}),
+  daily: LS.get('zq_daily',{}),
+  tasbih: LS.get('zq_tasbih',{count:0,total:0,text:'سبحان الله',max:33,day:new Date().toDateString()}),
+  readStories: LS.get('zq_readStories',[]),
+  xp: LS.get('zq_xp',0)
 };
 
-/* بنك المعلومات */
+/* ============ البيانات ============ */
 const INFO_DATA = [
-  { id:'i1', cat:'العقيدة',  title:'أركان الإسلام الخمسة',
-    body:'أركان الإسلام خمسة، كما ورد في حديث ابن عمر رضي الله عنهما أن النبي ﷺ قال: «بُني الإسلام على خمس: شهادة أن لا إله إلا الله وأن محمدًا رسول الله، وإقام الصلاة، وإيتاء الزكاة، وحج البيت، وصوم رمضان». (رواه البخاري ومسلم)\n\nوهي الأساس الذي يُبنى عليه دين المسلم، فالشهادتان مفتاح الدخول في الإسلام، والصلاة عمود الدين، والزكاة طهرة للمال، والصوم جُنة، والحج تمام العبودية.',
-    tags:['أركان','إسلام','عبادات'] },
-  { id:'i2', cat:'العقيدة',  title:'أركان الإيمان الستة',
-    body:'قال تعالى: «آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ» — البقرة ٢٨٥.\n\nوأركان الإيمان ستة كما في حديث جبريل: الإيمان بالله، وملائكته، وكتبه، ورسله، واليوم الآخر، والقدر خيره وشره. (رواه مسلم)',
-    tags:['إيمان','عقيدة'] },
-  { id:'i3', cat:'الفقه',    title:'شروط الصلاة الصحيحة',
-    body:'للصلاة شروط لا تصح إلا بها، وهي:\n\n١. الطهارة من الحدث (وضوء/غسل)\n٢. طهارة البدن والثوب والمكان\n٣. ستر العورة\n٤. استقبال القبلة\n٥. دخول الوقت\n٦. النية\n٧. الإسلام والعقل والتمييز\n\nقال تعالى: «إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا» — النساء ١٠٣.',
-    tags:['صلاة','فقه','طهارة'] },
-  { id:'i4', cat:'الفقه',    title:'أحكام الزكاة ومقدارها',
-    body:'الزكاة هي الركن الثالث من أركان الإسلام، وهي حق ماليّ واجب في أموال مخصوصة بشروط معينة.\n\n• تجب الزكاة في: الذهب والفضة، وعروض التجارة، والأنعام، والزروع والثمار.\n• مقدارها في النقود والذهب والفضة: ربع العشر (٢.٥٪) إذا بلغت النصاب وحال عليها الحول.\n• مصارفها ثمانية مذكورة في قوله تعالى: «إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ…» — التوبة ٦٠.',
-    tags:['زكاة','فقه','مال'] },
-  { id:'i5', cat:'السيرة',   title:'مولد النبي ﷺ ونشأته',
-    body:'وُلد النبي محمد ﷺ في مكة المكرمة عام الفيل (٥٧١م تقريباً)، يوم الاثنين من شهر ربيع الأول.\n\nتوفي أبوه عبد الله قبل ولادته، ثم توفيت أمه آمنة وهو في السادسة من عمره، فكفله جده عبد المطلب ثم عمه أبو طالب.\n\nعمل في رعي الغنم ثم في التجارة، وعُرف بالصادق الأمين قبل البعثة. تزوج خديجة بنت خويلد رضي الله عنها وعمره ٢٥ سنة.',
-    tags:['سيرة','نبي','مكة'] },
-  { id:'i6', cat:'السيرة',   title:'الهجرة النبوية إلى المدينة',
-    body:'لما اشتد أذى قريش على النبي ﷺ وأصحابه، أذن الله له بالهجرة إلى المدينة.\n\nخرج النبي ﷺ مع أبي بكر الصديق رضي الله عنه، واختفيا في غار ثور ثلاث ليالٍ، ثم سارا إلى المدينة فوصلها في شهر ربيع الأول.\n\nأول ما بناه في المدينة: مسجد قباء ثم المسجد النبوي، وآخى بين المهاجرين والأنصار، وكتب الصحيفة (دستور المدينة).',
-    tags:['هجرة','مدينة','سيرة'] },
-  { id:'i7', cat:'الأذكار',  title:'أذكار الصباح والمساء',
-    body:'من أذكار الصباح والمساء:\n\n• «أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ…» (يقال صباحاً، ويقال «أَمْسَيْنَا» مساءً)\n• «اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ»\n• «سُبْحَانَ اللَّهِ وَبِحَمْدِهِ» ١٠٠ مرة\n• آية الكرسي\n• المعوذتان (قل أعوذ برب الفلق، قل أعوذ برب الناس) ثلاث مرات\n\nقال ﷺ: «من قالها حين يصبح وحين يمسي كفتاه». (رواه الترمذي)',
-    tags:['أذكار','صباح','مساء'] },
-  { id:'i8', cat:'الأذكار',  title:'فضل ذكر الله تعالى',
-    body:'قال تعالى: «فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ» — البقرة ١٥٢.\n\nوقال ﷺ: «مَثَلُ الَّذِي يَذْكُرُ رَبَّهُ وَالَّذِي لَا يَذْكُرُ رَبَّهُ مَثَلُ الْحَيِّ وَالْمَيِّتِ». (رواه البخاري)\n\nوقال ﷺ: «كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن: سبحان الله وبحمده، سبحان الله العظيم». (متفق عليه)',
-    tags:['ذكر','أجر','أذكار'] },
-  { id:'i9', cat:'القرآن',   title:'آداب تلاوة القرآن الكريم',
-    body:'من آداب تلاوة القرآن الكريم:\n\n١. الطهارة واستقبال القبلة\n٢. الاستعاذة: «أعوذ بالله من الشيطان الرجيم»\n٣. البسملة في أول كل سورة (إلا التوبة)\n٤. التدبر والتأمل في المعاني\n٥. الترتيل والتجويد\n٦. الخشوع وحضور القلب\n٧. عدم قطع القراءة بحديث الدنيا\n\nقال تعالى: «وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا» — المزمل ٤.',
-    tags:['قرآن','تلاوة','آداب'] },
-  { id:'i10', cat:'القرآن',  title:'سور وآيات لها فضل خاص',
-    body:'من السور والآيات التي ورد في فضلها أحاديث:\n\n• سورة الفاتحة: أم الكتاب، لا تصح الصلاة بدونها.\n• آية الكرسي (البقرة ٢٥٥): من قرأها عند نومه لم يزل عليه حافظ من الله.\n• سورة الملك: تشفع لصاحبها حتى يُغفر له.\n• سورة الإخلاص: تعدل ثلث القرآن.\n• سورة الكوثر: نزلت في الإخبار عن الخير الكثير للنبي ﷺ.\n• المعوذتان: ما تعوذ متعوذ بمثلهما.',
-    tags:['قرآن','سور','فضل'] },
-  { id:'i11', cat:'الفقه',   title:'أحكام الصيام ومبطلاته',
-    body:'الصيام هو الإمساك عن المفطرات من طلوع الفجر إلى غروب الشمس بنية.\n\nمبطلات الصيام:\n• الأكل والشرب عمداً\n• الجماع\n• التقيؤ عمداً\n• الحيض والنفاس\n• خروج المني باختيار\n\nمن رخص الفطر: المرض، السفر، الحمل والرضاع، الكبر.\n\nقال تعالى: «وَكُلُوا وَاشْرَبُوا حَتَّىٰ يَتَبَيَّنَ لَكُمُ الْخَيْطُ الْأَبْيَضُ مِنَ الْخَيْطِ الْأَسْوَدِ مِنَ الْفَجْرِ» — البقرة ١٨٧.',
-    tags:['صيام','رمضان','فقه'] },
-  { id:'i12', cat:'العقيدة', title:'أسماء الله الحسنى وصفاته',
-    body:'قال تعالى: «وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا» — الأعراف ١٨٠.\n\nوأسماء الله الحسنى كلها توقيفية، نأخذها من الكتاب والسنة.\n\nمن أشهرها: الله، الرحمن، الرحيم، الملك، القدوس، السلام، المؤمن، المهيمن، العزيز، الجبار، المتكبر، الخالق، البارئ، المصور، الغفار، القهار، الوهاب، الرزاق، الفتاح، العليم، السميع، البصير، الحي، القيوم، الأول، الآخر.',
-    tags:['أسماء','توحيد','عقيدة'] }
+  { id:'i1', cat:'العقيدة', title:'أركان الإسلام الخمسة', body:'أركان الإسلام خمسة، كما ورد في حديث ابن عمر رضي الله عنهما أن النبي ﷺ قال: «بُني الإسلام على خمس: شهادة أن لا إله إلا الله وأن محمدًا رسول الله، وإقام الصلاة، وإيتاء الزكاة، وحج البيت، وصوم رمضان». (رواه البخاري ومسلم)\n\nوهي الأساس الذي يُبنى عليه دين المسلم، فالشهادتان مفتاح الدخول في الإسلام، والصلاة عمود الدين، والزكاة طهرة للمال، والصوم جُنة، والحج تمام العبودية.', tags:['أركان','إسلام','عبادات'] },
+  { id:'i2', cat:'العقيدة', title:'أركان الإيمان الستة', body:'قال تعالى: «آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ» — البقرة ٢٨٥.\n\nوأركان الإيمان ستة كما في حديث جبريل: الإيمان بالله، وملائكته، وكتبه، ورسله، واليوم الآخر، والقدر خيره وشره. (رواه مسلم)', tags:['إيمان','عقيدة'] },
+  { id:'i3', cat:'الفقه', title:'شروط الصلاة الصحيحة', body:'للصلاة شروط لا تصح إلا بها:\n\n١. الطهارة من الحدث\n٢. طهارة البدن والثوب والمكان\n٣. ستر العورة\n٤. استقبال القبلة\n٥. دخول الوقت\n٦. النية\n٧. الإسلام والعقل والتمييز\n\nقال تعالى: «إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا» — النساء ١٠٣.', tags:['صلاة','فقه','طهارة'] },
+  { id:'i4', cat:'الفقه', title:'أحكام الزكاة ومقدارها', body:'الزكاة حق ماليّ واجب في أموال مخصوصة بشروط:\n\n• تجب في: الذهب والفضة، وعروض التجارة، والأنعام، والزروع.\n• مقدارها: ربع العشر (٢.٥٪) إذا بلغت النصاب وحال عليها الحول.\n• مصارفها ثمانية: «إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ…» — التوبة ٦٠.', tags:['زكاة','فقه','مال'] },
+  { id:'i5', cat:'السيرة', title:'مولد النبي ﷺ ونشأته', body:'وُلد النبي محمد ﷺ في مكة المكرمة عام الفيل (٥٧١م)، يوم الاثنين من شهر ربيع الأول.\n\nتوفي أبوه قبل ولادته، ثم توفيت أمه آمنة وهو في السادسة، فكفله جده عبد المطلب ثم عمه أبو طالب.\n\nعمل في رعي الغنم ثم التجارة، وعُرف بالصادق الأمين. تزوج خديجة وعمره ٢٥ سنة.', tags:['سيرة','نبي','مكة'] },
+  { id:'i6', cat:'السيرة', title:'الهجرة النبوية إلى المدينة', body:'لما اشتد أذى قريش، أذن الله للنبي ﷺ بالهجرة.\n\nخرج مع أبي بكر، واختفيا في غار ثور ثلاث ليالٍ، ثم سارا إلى المدينة.\n\nأول ما بناه: مسجد قباء ثم المسجد النبوي، وآخى بين المهاجرين والأنصار، وكتب الصحيفة (دستور المدينة).', tags:['هجرة','مدينة','سيرة'] },
+  { id:'i7', cat:'الأذكار', title:'أذكار الصباح والمساء', body:'من أذكار الصباح والمساء:\n\n• «أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ…»\n• «اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ»\n• «سُبْحَانَ اللَّهِ وَبِحَمْدِهِ» ١٠٠ مرة\n• آية الكرسي\n• المعوذتان ثلاث مرات\n\nقال ﷺ: «من قالها حين يصبح وحين يمسي كفتاه». (الترمذي)', tags:['أذكار','صباح','مساء'] },
+  { id:'i8', cat:'الأذكار', title:'فضل ذكر الله تعالى', body:'قال تعالى: «فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ» — البقرة ١٥٢.\n\nوقال ﷺ: «مَثَلُ الَّذِي يَذْكُرُ رَبَّهُ وَالَّذِي لَا يَذْكُرُ رَبَّهُ مَثَلُ الْحَيِّ وَالْمَيِّتِ». (البخاري)\n\nوقال ﷺ: «كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن: سبحان الله وبحمده، سبحان الله العظيم». (متفق عليه)', tags:['ذكر','أجر','أذكار'] },
+  { id:'i9', cat:'القرآن', title:'آداب تلاوة القرآن الكريم', body:'من آداب تلاوة القرآن:\n\n١. الطهارة واستقبال القبلة\n٢. الاستعاذة\n٣. البسملة في أول كل سورة (إلا التوبة)\n٤. التدبر والتأمل\n٥. الترتيل والتجويد\n٦. الخشوع وحضور القلب\n\nقال تعالى: «وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا» — المزمل ٤.', tags:['قرآن','تلاوة','آداب'] },
+  { id:'i10', cat:'القرآن', title:'سور وآيات لها فضل خاص', body:'من السور والآيات التي ورد في فضلها أحاديث:\n\n• سورة الفاتحة: أم الكتاب.\n• آية الكرسي (البقرة ٢٥٥): حافظ من الله عند النوم.\n• سورة الملك: تشفع لصاحبها.\n• سورة الإخلاص: تعدل ثلث القرآن.\n• المعوذتان: ما تعوذ متعوذ بمثلهما.', tags:['قرآن','سور','فضل'] },
+  { id:'i11', cat:'الفقه', title:'أحكام الصيام ومبطلاته', body:'الصيام: الإمساك عن المفطرات من الفجر إلى المغرب بنية.\n\nمبطلاته:\n• الأكل والشرب عمداً\n• الجماع\n• التقيؤ عمداً\n• الحيض والنفاس\n\nرخص الفطر: المرض، السفر، الحمل والرضاع، الكبر.', tags:['صيام','رمضان','فقه'] },
+  { id:'i12', cat:'العقيدة', title:'أسماء الله الحسنى وصفاته', body:'قال تعالى: «وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا» — الأعراف ١٨٠.\n\nأسماء الله توقيفية، نأخذها من الكتاب والسنة.\n\nمن أشهرها: الله، الرحمن، الرحيم، الملك، القدوس، السلام، المؤمن، العزيز، الخالق، البارئ، الغفار، الرزاق، العليم، السميع، البصير، الحي، القيوم.', tags:['أسماء','توحيد','عقيدة'] }
 ];
 
-/* بنك القصص */
 const STORIES_DATA = [
   /* ============ 1. أبو بكر الصديق ============ */
-  { id:'s1', cat:'الصحابة', title:'أبو بكر الصديق رضي الله عنه — صاحب الغار وثاني اثنين',
-    body:`هو عبد الله بن عثمان (أبو قحافة) التيمي القرشي، وُلد في مكة بعد عام الفيل بثلاث سنوات تقريبًا. نشأ في بيت شريف من قريش، وكان تاجرًا ثريًا معروفًا بحسن الخلق، وقد حُرّم على نفسه الخمر في الجاهلية وقال: «أُريد أن أحفظ ماء وجهي وأصون عرضي».
+  { id:'s1', cat:'الصحابة', title:'أبو بكر الصديق — صاحب الغار وثاني اثنين',
+    body:`هو عبد الله بن عثمان بن عامر بن عمرو التيمي القرشي، المعروف بأبي بكر، وأمه أم الخير سلمى بنت صخر. وُلد في مكة بعد عام الفيل بثلاث سنوات تقريبًا، فنشأ في بيت شريف من قريش، عريق في النسب، عزيز في القوم.
 
-في الجاهلية كان يُعرف بعلمه بأنساب العرب وتعبير الرؤى، وكان موضع ثقة قريش في الديات والأحكام. ولما جاء الإسلام، كان أول من أسلم من الرجال الأحرار، ودخل في الإسلام على يد النبي ﷺ دون تردد ولا سؤال، فقد كان يعرف صدقه وأمانته قبل البعثة.
+【نشأته وحياته قبل الإسلام】
+شبّ أبو بكر في مكة، واشتغل بالتجارة كأبيه، فجمع مالًا كثيرًا حتى صار من أثرى أثرياء قريش. لكن الغنى لم يُفسده، ولم يجعله مثل باقي سادة قريش في الجاهلية الذين شربوا الخمر، ووأدوا البنات، وعبدوا الأصنام. لقد حُرّم على نفسه الخمر في الجاهلية قبل أن يُحرّمها الإسلام، وقال كلمته المشهورة: «أُريد أن أحفظ ماء وجهي وأصون عرضي».
+كان في الجاهلية عالمًا بأنساب العرب، بارعًا في تعبير الرؤى، وكانت قريش تأتيه في الديات والأحكام ليقضي بينهم؛ فهو معروف بالحكمة، مشهور بالأمانة، محبوب بين الناس حتى قبل أن يُسلم.
 
-【الدعوة على يديه】
-بمجرد إسلامه، بدأ يدعو أقرب الناس إليه، فأسلم على يديه: عثمان بن عفان، والزبير بن العوام، وعبد الرحمن بن عوف، وسعد بن أبي وقاص، وطلحة بن عبيد الله — وكلهم من العشرة المبشرين بالجنة. وهذا يدل على حكمته وقوة شخصيته.
+【إسلامه — أول من أسلم من الرجال】
+لما بُعث النبي ﷺ وبدأ يدعو إلى الله، كان أبو بكر — رغم صِغَر سنواته في الإسلام — أول من آمن به من الرجال الأحرار. دخل الإسلام على يد النبي ﷺ دون تردد، دون سؤال، دون استفسار؛ لأنه كان يعرف النبي ﷺ من صغره، ويعرف صدقه وأمانته، ولم يخُن الله ورسوله عندما جاءه الحق.
+
+【الدعوة على يديه — ثروة الإسلام الأولى】
+بمجرد إسلامه بدأ يدعو أقرب الناس إليه، فأسلم على يديه نخبة من خيرة الصحابة:
+• عثمان بن عفان — ذو النورين
+• الزبير بن العوام — حواريّ رسول الله
+• عبد الرحمن بن عوف — التاجر الأمين
+• سعد بن أبي وقاص — فاتح فارس
+• طلحة بن عبيد الله — الشهيد الحي
+وكلهم من العشرة المبشرين بالجنة. فكان لأبي بكر فضل السبق في إدخال هؤلاء العمالقة إلى الإسلام.
 
 【موقفه في ليلة الإسراء والمعراج】
-حين أخبر النبي ﷺ قريشًا أنه أُسري به إلى بيت المقدس، سارع المشركون إلى أبي بكر يستنكرون: «أتَصدّق أن محمدًا أُسري به؟» قال: «إن كان قال فقد صدق». فسُمّي من يومها الصديق.
+حين أخبر النبي ﷺ قريشًا أنه أُسري به من المسجد الحرام إلى المسجد الأقصى في ليلة واحدة، أخذ المشركون يُكذّبونه ويتساءلون: كيف يعقل هذا؟! فسارعوا إلى أبي بكر يستنكرون: «أتَصدّق أن محمدًا أُسري به إلى بيت المقدس؟»
+فقال أبو بكر بثبات: «إن كان قال فقد صدق».
+قالوا: «أتُصدّقه أنه أتى بيت المقدس ورجع من ليلته؟»
+قال: «نعم، إني أُصدّقه بما هو أبعد من ذلك، أُصدّقه بخبر السماء في غدوة أو روحة».
+فمن يومها لُقّب بالصديق، ولقبه الله في محكم تنزيله فقال: «وَالَّذِي جَاءَ بِالصِّدْقِ وَصَدَّقَ بِهِ ۙ أُولَٰئِكَ هُمُ الْمُتَّقُونَ» — الزمر ٣٣.
 
-【أمواله في سبيل الله】
-كان من أنفق أمواله كلها في سبيل الله، وأعتق المستضعفين: بلال بن رباح، وعامر بن فهيرة، وزنيرة، والنهدية وابنتها، وأم عبيس، وجارية بني مؤمل. وكان يعذَّب في سبيل الله مع من عُذّب، لكنه ثبت.
+【إنفاقه في سبيل الله】
+كان أبو بكر من أكثر الناس بذلًا، وأشدهم كرمًا. أنفق أمواله كلها في سبيل الله. وأعتق المستضعفين من المسلمين الذين كانوا يُعذّبون في مكة:
+• بلال بن رباح — مؤذن الرسول ﷺ
+• عامر بن فهيرة
+• زنيرة
+• النهدية وابنتها
+• أم عبيس
+• جارية بني مؤمل
+وكان يستقبل من يُعذّب فيصرخ على المشركين: «أرأيتم إن لم تبيعوه لي، فماذا أنتم فاعلون؟» ثم يشتريه ويعتقه.
 
-قال عمر بن الخطاب: «أمرنا رسول الله ﷺ أن نتصدق، فوافق ذلك مالًا عندي، فقلت: اليوم أسبق أبا بكر إن سبقته يومًا. فجئت بنصف مالي، فقال ﷺ: ما أبقيت لأهلك؟ قلت: مثله. وأتى أبو بكر بكل ما عنده، فقال ﷺ: ما أبقيت لأهلك؟ قال: أبقيت لهم الله ورسوله. فقلت: لا أسابقك إلى شيء أبدًا».
+【قصته مع عمر في الصدقة】
+قال عمر بن الخطاب رضي الله عنه: «أمرنا رسول الله ﷺ أن نتصدق، فوافق ذلك مالًا عندي، فقلت: اليوم أسبق أبا بكر إن سبقته يومًا. فجئت بنصف مالي، فقال ﷺ: ما أبقيت لأهلك؟ قلت: مثله. وأتى أبو بكر بكل ما عنده، فقال ﷺ: ما أبقيت لأهلك؟ قال: أبقيت لهم الله ورسوله. فقلت: لا أسابقك إلى شيء أبدًا». (رواه أبو داود والترمذي)
 
 【صاحب الغار والهجرة】
-في ليلة الهجرة، ذهب النبي ﷺ إلى بيت أبي بكر ليلاً، فأخبره بأمر الهجرة، فبكى أبو بكر فرحًا. وخرج معه، واختفيا في غار ثور ثلاث ليالٍ. وكان ابنه عبد الله يأتيهما بالأخبار، ومولاه عامر بن فهيرة يرعى الغنم ليطمس الأثر، وابنته أسماء تنقل الطعام.
+في ليلة الهجرة، خرج النبي ﷺ من مكة ومعه أبو بكر. واختفيا في غار ثور ثلاث ليالٍ. وكان أبو بكر يخاف على النبي ﷺ أكثر من نفسه، حتى إنه كان يفتش الغار بقدميه في الليل خوفًا من أن تكون فيه حية أو عقربًا تلدغ النبي ﷺ.
+قال الله تعالى في حقّ صاحبيه: «إِلَّا تَنصُرُوهُ فَقَدْ نَصَرَهُ اللَّهُ إِذْ أَخْرَجَهُ الَّذِينَ كَفَرُوا ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا» — التوبة ٤٠.
+ولما لحقهم سراقة بن مالك، غاصت قدما فرسه في الأرض حتى لا يقدر على الحركة، فطلب الأمان، وأسلم بعدها.
+وكان في الطريق معهم عبد الله بن أبي بكر يأتيهما بالأخبار ليلًا ويرجع قبل الفجر، وعامر بن فهيرة يرعى الغنم ليطمس آثار الأقدام، وأسماء بنت أبي بكر تأتيهما بالطعام والشراب.
 
-قال الله تعالى فيهم: «ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا» — التوبة ٤٠.
+【في المدينة — أخوّة ومؤاخاة】
+بعد الهجرة، آخى النبي ﷺ بين أبي بكر وخارجة بن زيد. وشهد أبو بكر مع النبي ﷺ كل الغزوات، وكان من الثابتين يوم أُحد حين انكشف الناس، وهو من الذين حموا النبي ﷺ. وفي غزوة تبوك، تصدّق بماله كله. وأمره النبي ﷺ على الحج في السنة التاسعة، فحجّ بالناس قبل حجة الوداع.
 
-لما لحقهم سراقة بن مالك ليقتلهما، غاصت قدما فرسه في الأرض، فطلب الأمان وأسلم فيما بعد. وكان أبو بكر يخاف على النبي ﷺ، قال ﷺ: «لا تحزن إن الله معنا».
+【خلافته — يوم السقيفة】
+يوم وفاة النبي ﷺ، ارتجّت المدينة رجّة عظيمة، ووقف عمر يهدّد الناس ويقول: «والله ما مات رسول الله!». فقام أبو بكر الصديق بثبات نادر، وصعد المنبر، وقال كلمته الخالدة:
+«أيها الناس، من كان يعبد محمدًا فإن محمدًا قد مات، ومن كان يعبد الله فإن الله حي لا يموت».
+ثم تلا قول الله تعالى: «وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ ۚ أَفَإِن مَّاتَ أَوْ قُتِلَ انقَلَبْتُمْ عَلَىٰ أَعْقَابِكُمْ ۚ وَمَن يَنقَلِبْ عَلَىٰ عَقِبَيْهِ فَلَن يَضُرَّ اللَّهَ شَيْئًا ۗ وَسَيَجْزِي اللَّهُ الشَّاكِرِينَ» — آل عمران ١٤٤.
+فثبّت الله به الأمة، وأذهبت هذه الكلمات ما في قلوب الناس. ثم اجتمع المسلمون في سقيفة بني ساعدة وبايعوا أبا بكر خليفةً لرسول الله ﷺ.
 
-【في المدينة】
-بعد الهجرة، آخى النبي ﷺ بينه وبين خارجة بن زيد. وشارك أبو بكر في كل الغزوات مع النبي ﷺ، وكان ثاني الجيش في بدر، وثبت يوم أُحد حين انكشف الناس، وكان أحد الثلاثة الذين ثبتوا مع النبي ﷺ في أُحد.
-
-في صلح الحديبية، كان من الشاهدين، وفي غزوة تبوك، تصدّق بماله كله، وأمره النبي ﷺ على الحج في السنة التاسعة، وحجّ بالناس.
-
-【خلافته】
-يوم وفاة النبي ﷺ، ارتجّت المدينة، ووقف عمر يقول: «والله ما مات رسول الله!». فقام أبو بكر بثبات نادر وقال كلمته الخالدة: «أيها الناس، من كان يعبد محمدًا فإن محمدًا قد مات، ومن كان يعبد الله فإن الله حي لا يموت». ثم تلا قوله تعالى: «وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ ۚ أَفَإِن مَّاتَ أَوْ قُتِلَ انقَلَبْتُمْ عَلَىٰ أَعْقَابِكُمْ» — آل عمران ١٤٤.
-
-فثبّت الله به الأمة، واجتمع المسلمون على بيعته في سقيفة بني ساعدة.
-
-【إنجازاته】
-• قاتل المرتدين ومانعي الزكاة، وثبّت الدولة الإسلامية.
+【خلافته — ثبات الأمة】
+في خلافته القصيرة (سنتين وثلاثة أشهر) أنجز إنجازات عظيمة:
+• قاتل المرتدين ومانعي الزكاة، وأعاد الأمن للجزيرة العربية.
 • بعث جيش أسامة بن زيد رضي الله عنه، الذي كان قد جهّزه النبي ﷺ قبل وفاته.
 • جمع القرآن الكريم في مصحف واحد بعد معركة اليمامة، بمشورة عمر بن الخطاب.
-• فتحت في عهده أجزاء من الشام والعراق.
-• كان أول من اتخذ بيت المال في الإسلام.
+• فُتحت في عهده أجزاء من الشام والعراق.
+• أول من اتخذ بيت المال في الإسلام.
+• أول من سمّى نفسه «خليفة رسول الله».
 
-【وفاته】
-توفي رضي الله عنه في جمادى الآخرة سنة ١٣ هجرية بعد مرض استمر خمسة عشر يومًا، وعمره ثلاث وستون سنة، كعمر النبي ﷺ. وصلّى عليه عمر، ودفن بجوار النبي ﷺ في حجرة عائشة.
+【وفاته — نهاية عهد الصديق】
+توفي رضي الله عنه في جمادى الآخرة سنة ١٣ هجرية، بعد مرض استمر خمسة عشر يومًا، وعمره ثلاث وستون سنة، كعمر النبي ﷺ. وصلّى عليه عمر بن الخطاب، ودفن بجوار النبي ﷺ في حجرة عائشة.
+قال علي بن أبي طالب رضي الله عنه عنه: «كنت والله أرى أن رسول الله ﷺ يُحب أن يراك خليفة له، وأحسب أن رسول الله ﷺ لم يمت حتى رضي لك ما صنعت، وقد كنت والله للدين خيرًا».
 
-قال علي بن أبي طالب عنه: «كنت والله أرى أن رسول الله ﷺ يُحب أن يراك خليفة له، وأحسب أن رسول الله ﷺ لم يمت حتى رضي لك ما صنعت، وقد كنت والله للدين خيرًا».
+【الدروس المستفادة】
+• الصدق مع الله: «إن كان قال فقد صدق» — من أصدق ما قيل.
+• الأمانة والوفاء: لم يخُن النبي ﷺ يومًا واحدًا.
+• البذل في سبيل الله: أنفق كل ماله.
+• الثبات في الأزمات: ثبّت الأمة بعد وفاة النبي ﷺ.
+• الحكمة في القيادة: قاد الأمة بحلم وعلم.
 
 رضي الله عنه وأرضاه، وجمعنا به في الفردوس الأعلى.`,
     tags:['صحابة','خلفاء','أبو بكر','صاحب الغار'] },
 
   /* ============ 2. عمر بن الخطاب ============ */
-  { id:'s2', cat:'الصحابة', title:'عمر بن الخطاب رضي الله عنه — الفاروق الذي أعزّ الله به الإسلام',
-    body:`هو عمر بن الخطاب بن نفيل العدوي القرشي، وُلد بمكة بعد عام الفيل بثلاث عشرة سنة. كان من أشد قريش على الإسلام قبل إسلامه، حتى إنه قال: «كنت أشد الناس على رسول الله ﷺ».
+  { id:'s2', cat:'الصحابة', title:'عمر بن الخطاب — الفاروق الذي أعزّ الله به الإسلام',
+    body:`هو عمر بن الخطاب بن نُفيل بن عبد العُزّى العدوي القرشي، وُلد بمكة بعد عام الفيل بثلاث عشرة سنة. نشأ في بيت عزّ وشرف، وتعلّم القراءة والكتابة والفروسية والمصارعة، وكان من أشدّ رجال قريش وأقواهم.
 
-【قصة إسلامه】
-خرج يومًا متقلدًا سيفه، قاصدًا قتل النبي ﷺ، فلقيه نعيم بن عبد الله فقال له: «قد أسلمت أختك وزوجها». فذهب إليهما غاضبًا، وقرع الباب، فدخل عليهما وهما يقرآن سورة طه في صحيفة. فلما سمع القرآن، رقّ قلبه وقال: «ما هذا؟» فأعطته أخته الصحيفة، فقرأها، ثم قال: «دلّوني على محمد».
+【حياته قبل الإسلام — أشد الناس على الإسلام】
+كان عمر في الجاهلية من سادة قريش، سفيرهم في الحروب، من أشدّ الناس على المسلمين. كان يُعذّب جاريته «لبينة» في الرمضاء، حتى يُقال له: «اتق الله في هذه المسكينة!» فيقول: «إني أُعذّبها لتلعن محمدًا!» فتقول: «الله أحقّ أن يعذّبك!».
 
-فذهب إلى النبي ﷺ في بيت الأرقم بن أبي الأرقم، فلما رآه النبي ﷺ قال: «اللهم هذا عمر بن الخطاب، اللهم أعزّ الإسلام بعمر بن الخطاب». فأسلم، فكبر المسلمون تكبيرًا سُمع في المسجد الحرام.
+【قصة إسلامه — أعظم تحوّل في التاريخ】
+خرج عمر يومًا متقلدًا سيفه، قاصدًا بيت النبي ﷺ ليقتله، وقد أعماه الغضب. في الطريق لقيه نعيم بن عبد الله فقال: «يا عمر، إلى أين؟» قال: «أريد أن أقتل محمدًا». قال: «أتحسب أن بني هاشم وبنو زهرة يتركونك تسير في الأرض بعد أن تقتل محمدًا؟ لكن ألا أدلّك على شيء أعجب؟ إن أختك فاطمة وزوجها سعيد بن زيد قد أسلما وتابعا محمدًا على دينه!».
+فانطلق عمر غاضبًا إلى بيت أخته، ولما وصل سمع صوت قراءة، فقرع الباب، ودخل وهما يقرآن صحيفة فيها سورة طه. فغضب وضرب زوج أخته، ثم أراد ضرب أخته، فأدماهما. فلما رأى الدماء، رقّ قلبه وقال: «أعطوني هذه الصحيفة التي معكم!». فأعطته أخته، فقرأها ثم قال: «ما أحسن هذا الكلام وأكرمه!».
+فقالت أخته فاطمة: «يا عمر، إني أرجو أن يكون رسول الله ﷺ قد دعا الله فقال: اللهم أعزّ الإسلام بأحد الرجلين: عمر بن الخطاب، أو أبي جهل بن هشام».
+فاستحيا عمر، وسأل عن مكان النبي ﷺ، فأخبروه أنه في بيت الأرقم بن أبي الأرقم.
+فذهب عمر إلى البيت، فقرع الباب، فقال ﷺ لمن معه: «افتحوا له، فإنه عمر، اللهم أعزّ الإسلام به». فلما فتحوا له الباب، أخذ ﷺ بمجمع ثوبه وشدّه وقال: «يا عمر، ما غرّك؟ أما آن لك أن تُسلم؟». فقال: «أشهد أن لا إله إلا الله، وأشهد أن محمدًا رسول الله».
+فكبر المسلمون في المسجد تكبيرًا سُمع في المسجد الحرام. قال ابن مسعود رضي الله عنه: «ما زلنا أعزّة منذ أسلم عمر».
 
-قال عبد الله بن مسعود: «ما زلنا أعزّة منذ أسلم عمر».
+【بعد إسلامه — المسلمون يصلّون علنًا】
+كان المسلمون قبل إسلام عمر لا يستطيعون الصلاة عند الكعبة علنًا، ولا يجرؤ أحدهم على الطواف حول البيت جهارًا. فلما أسلم عمر، قال: «يا رسول الله، ألسنا على الحق إن متنا وإن حيينا؟» قال: «بلى، والذي نفسي بيده إنكم على الحق إن متم وإن حييتم». قال: «ففيم الاختفاء؟ والذي بعثك بالحق لنُخرجنّ!».
+فخرج المسلمون في صفّين: صفّ يتقدّمه عمر، وصفّ يتقدّمه حمزة، حتى دخلوا المسجد الحرام علانية، فسمّاه النبي ﷺ «الفاروق» لأنه فرّق بين الحق والباطل.
 
-【الفرق بين عهديه】
-كان المسلمون قبل إسلامه لا يستطيعون الصلاة عند الكعبة علنًا، فبعد إسلامه، خرج معهم وصلّوا عند الكعبة، وسمّاه النبي ﷺ «الفاروق» لأنه فرّق بين الحق والباطل.
+【صحبته للنبي ﷺ وجهاده】
+شهد عمر بدرًا وأُحدًا والخندق وكل المشاهد. وكان النبي ﷺ يستشيره في الأمور، وقال عنه: «لو كان بعدي نبيٌّ لكان عمر بن الخطاب». (رواه الترمذي)
+وفي صلح الحديبية، كان أشد الناس إنكارًا للصلح في البداية، ثم رجع وأذعن لأمر الله، وقال: «لم أشكّ في الله منذ أسلمت إلا يوم الحديبية، وكفّرني الله عن ذلك أن جاهدت في سبيله».
 
-【صحبته للنبي ﷺ】
-شهد بدرًا وأُحدًا والخندق وكل المشاهد. وكان النبي ﷺ يستشيره في الأمور، وقال: «لو كان بعدي نبيٌّ لكان عمر بن الخطاب». (رواه الترمذي)
-
-وفي صلح الحديبية، كان أشد الناس إنكارًا للصلح في البداية، ثم رجع وأذعن لأمر الله، وقال: «لم أشكّ في الله منذ أسلمت إلا يوم الحديبية».
-
-【خلافته】
-بويع بعد أبي بكر رضي الله عنه، وكان حكمه نموذجًا في العدل والزهد. عُرف بـ«عدل عمر» حتى قيل: «عدل عمر أمة».
+【خلافته — عدل عمر أمة】
+بويع عمر بن الخطاب بعد أبي بكر رضي الله عنه، وخطب خطبته الشهيرة: «يا أيها الناس، إن الله ابتلاني بخلافتكم، ولن يقبل الله مني إلا الحق، ولن ينفعني عند الله من التهاون... وحُقّ على من وُلي أمر الناس أن يعمل بعلم، وأن يكون حليف أمانة، عدوا للخيانة».
+عُرف حكمه بالعدل المطلق، حتى قيل: «عدل عمر أمة».
 
 【فتوحاته العظيمة】
 في عهده فُتحت:
@@ -764,145 +964,194 @@ const STORIES_DATA = [
 • مصر على يد عمرو بن العاص.
 • العراق والمدائن على يد سعد بن أبي وقاص.
 • فارس ومملكة الفرس في معركة القادسية الشهيرة.
+• بيت المقدس، بعد معركتي أجنادين واليرموك.
 
-وفي عهده سقطت بيت المقدس بعد معركة أجنادين واليرموك، وجاء عمر بنفسه ليتسلم مفاتيحها من بطريركها صفرونيوس، وكتب لهم الأمانة العمرية المعروفة.
+وفي فتح بيت المقدس، جاء عمر بنفسه من المدينة ليتسلم مفاتيح المدينة من بطريركها صفرونيوس، وكتب لهم الأمانة العمرية المعروفة، التي تضمن للمسيحيين كنائسهم وأموالهم وأمنهم. ولما دخل المدينة ورأى البطريرك عمر يلبس ثوبًا فيه ترقيع، تعجّب كيف يكون خليفة المسلمين بهذا الزهد.
 
-【إنجازاته الحضارية】
+【إنجازاته الحضارية — أعظم ثورة إدارية في التاريخ】
 • أول من وضع التاريخ الهجري (من هجرة النبي ﷺ).
 • أول من أنشأ بيت المال ونظّم الدواوين.
 • أول من دوّن الرسائل وأنشأ البريد.
 • أول من حفر الأنهار وأقام الجسور.
-• أول من اتخذ الدرة (السوط) لتأديب من يقصّر في حق الرعية.
+• أول من اتخذ الدرّة (السوط) لتأديب من يقصّر في حق الرعية.
 • أول من كسا الكعبة بالديباج الحريري.
 • أول من عيّن القضاة في الأمصار.
 • أول من فرض العطاء (الرواتب) على الناس.
-• أول من جعل الطلاق ثلاثًا على عهد عمر (تغليظًا للناس).
+• أول من جعل الطلاق ثلاثًا على عهد عمر (تغليظًا).
+• أول من أخرج اليهود والنصارى من جزيرة العرب.
 
-【عدله وزهده】
-كان لا ينام إلا قليلًا، ويطوف بنفسه ليلاً على بيوت رعيته. يحمل الطعام على ظهره للفقراء، ويقول: «لو عثرت بغلة في العراق لسألني الله عنها: يا عمر، لمَ لم تُمهّد لها الطريق؟».
+【عدله وزهده — أمير المؤمنين الحق】
+كان عمر لا ينام إلا قليلًا، ويطوف بنفسه ليلًا على بيوت رعيته. يحمل الطعام على ظهره للفقراء، ويقول: «لو عثرت بغلة في العراق لسألني الله عنها: يا عمر، لمَ لم تُمهّد لها الطريق؟».
+قال طلحة بن عبيد الله: «رأيت عمر بن الخطاب ليلة نزل بأصحاب له يعشّيهم، فلم يُقدم إليهم طعامًا حتى يرى أنهم شبعوا، فقام بعضهم يتوضّأ من ماءٍ قريبٍ، فوقف عمر بنفسه يرفع الماء على رؤوسهم ومعه مخضبته، فأقسمت عليه أن يترك هذا العمل، فلم يفعله، وقال: إني لا أُقدم عليكم شيئًا حتى تفعلوا ما أحب، إني أخاف أن أُحاسب بكم يوم القيامة».
+وفي عام الرمادة (سنة ١٨ هـ)، حلف ألا يأكل السمن واللحم حتى يحيا الناس، وكان يأكل الزيت والقُرْص، حتى اسودّ لونه. وكان يقول: «لقد أصبحت وما لي ولأهلي إلا ما لي ولأحد المسلمين».
 
-وفي عام الرمادة (سنة ١٨ هـ)، حلف ألا يأكل السمن واللحم حتى يحيا الناس، وكان يأكل الزيت والقُرْص، حتى اسودّ لونه.
+【مصادر قوته — الخوف من الله】
+قال عمر: «لقد بلغني أن أحدًا يستغيث بنا من الأكاسرة، ونحن بمنأى عنهم، ولن أخاف الله في قوم لا يخافون الله فيّ».
+وقال: «لو مات جمل في العراق ضياعًا، خفت أن يسألني الله عنه».
 
-【استشهاده】
-في فجر يوم الأربعاء، ٢٦ ذي الحجة سنة ٢٣ هجرية، وهو يصلي الفجر بالناس، طعنه أبو لؤلؤة المجوسي ثلاث طعنات بخنجر مسموم، فسقط عمر، وأكمل الصلاة عبد الرحمن بن عوف. وقبل وفاته أوصى بالخلافة للستة من الصحابة أهل الشورى.
+【استشهاده — فجر الاثنين الأسود】
+في فجر يوم الأربعاء، ٢٦ ذي الحجة سنة ٢٣ هجرية، وبينما كان يصلي الفجر بالمسلمين في المسجد النبوي، تسلل أبو لؤلؤة المجوسي بين الصفوف، وطعنه ثلاث طعنات بخنجر ذي نصلين مسموم في بطنه.
+فصرخ عمر وقال: «أكلبًا قتلني؟!» فحاول الناس الإمساك بالقاتل، فقال عمر: «لا، دعوه، فإن كان قتلني فقد قتل نفسه، لا يُقتل بي غيره».
+وحمل إلى بيته، فلما دخل، أوصى بأمور عظيمة، وأوصى بالخلافة لأهل الشورى الستة: علي وعثمان وطلحة والزبير وسعد وعبد الرحمن بن عوف. ثم دعا ابنه عبد الله، وأوصى بدينه — وتوفي رضي الله عنه.
 
-قال ﷺ: «بينما أنا نائم رأيت الناس يعرضون وعليهم قمص، فمنها ما يبلغ الثدي، ومنها ما يبلغ دون ذلك، وعرض عليّ عمر بن الخطاب وعليه قميص يجره. قالوا: ما أولته يا رسول الله؟ قال: الدين». (متفق عليه)
+【الدروس المستفادة】
+• الهداية من الله، والقلوب بين أصبعيه.
+• العدل أساس المُلك، والزهد سرّ القبول.
+• الخوف من الله يورث التقوى في الحكم.
+• القوة في الحق، والرحمة في موضعها.
+• لا نجاة إلا بالعمل، لا بالمال ولا السلطان.
 
 فرضي الله عنه، ورحمه رحمة واسعة، وجمعنا به في الفردوس الأعلى.`,
     tags:['صحابة','خلفاء','عمر','الفاروق','عدل'] },
 
   /* ============ 3. عثمان بن عفان ============ */
-  { id:'s3', cat:'الصحابة', title:'عثمان بن عفان رضي الله عنه — ذو النورين وجامع المصحف',
-    body:`هو عثمان بن عفان بن أبي العاص الأموي القرشي، وُلد بمكة بعد عام الفيل بست سنوات. كان تاجرًا ثريًا، عُرف بحيائه الشديد وحُسن خلقه.
+  { id:'s3', cat:'الصحابة', title:'عثمان بن عفان — ذو النورين وجامع المصحف',
+    body:`هو عثمان بن عفان بن أبي العاص بن أمية بن عبد شمس الأموي القرشي، وُلد بمكة بعد عام الفيل بست سنوات. كان تاجرًا ثريًا، كثير المال، عُرف بحيائه الشديد وحُسن خلقه في الجاهلية.
 
-【إسلامه】
-أسلم على يد أبي بكر الصديق، وكان من السابقين الأولين. ولما علم عمه الحكم بن أبي العاص بإسلامه، غضب وأوثقه وحبسه، فقال عثمان: «ما أنا بمفارق دين محمد». فلما رآه عمه ثابتًا، خلّى سبيله.
+【حياته في الجاهلية】
+كان عثمان من أرقّ الناس قلبًا وأكثرهم حياءً، حتى إنه لم يعرف عنه ما يعرفه أهل الجاهلية من الفواحش. كان يشتغل بالتجارة كأبيه، فجمع ثروة كبيرة، وكان من أغنى أغنياء مكة، لكنه كان معروفًا بالبرّ والأمانة والإحسان.
 
-【ذو النورين】
-تزوج رقية بنت النبي ﷺ، وهاجر معها إلى الحبشة. ومرضت رقية في المدينة وتوفيت يوم غزوة بدر. ثم زوّجه النبي ﷺ ابنتَه الأخرى أم كلثوم، فلُقّب بـ«ذي النورين» لأنه لم يُعرف أحد تزوج ابنتي نبي غيره.
+【إسلامه — من السابقين الأولين】
+أسلم عثمان على يد أبي بكر الصديق رضي الله عنه، وكان من السابقين الأولين إلى الإسلام. ولما علم عمه الحكم بن أبي العاص بإسلامه، غضب غضبًا شديدًا، وأوثقه وحبسه، ثم قال: «هل تركتَ دين آبائك واتبعت دينًا محدثًا؟!». فقال عثمان بثبات: «ما أنا بمفارق دين محمد، فقد رأيت فيه الحق والهدى». فلما رآه عمه ثابتًا، خلّى سبيله.
 
-【جهاده】
-شهد بدرًا مع النبي ﷺ لكنه لم يشهد المعركة نفسها، لأنه كان عند زوجته رقية التي كانت مريضة، حتى توفيت. فكان له سهمه وأجره.
+【ذو النورين — تزوج ابنتي النبي ﷺ】
+تزوج عثمان رقية بنت النبي ﷺ، وهاجر معها إلى الحبشة، ثم هاجر معها إلى المدينة. ومرضت رقية في المدينة وتوفيت يوم غزوة بدر (وقيل قبلها بأيام). حزن النبي ﷺ على ابنته حزنًا شديدًا.
+ثم زوّج النبي ﷺ عثمان بابنته الأخرى أم كلثوم، فلُقّب بـ«ذي النورين» لأنه لم يُعرف أحد في التاريخ تزوج ابنتي نبيّ غيره.
 
-وفي غزوة تبوك، جهّز جيش العسرة من ماله، وقال النبي ﷺ: «ما ضرّ عثمان ما عمل بعد اليوم». (رواه الترمذي)
+【جهاده وإنفاقه في سبيل الله】
+شهد عثمان بدرًا مع النبي ﷺ لكنه لم يشهد المعركة نفسها، لأنه كان عند زوجته رقية التي كانت مريضة، حتى توفيت، فكان له سهمه وأجره.
+وفي غزوة تبوك — وهي غزوة العسرة — جهّز عثمان جيش العسرة من ماله. قيل: تصدّق بثلاثمائة بعير بأحلاسها وأقتابها، وألف دينار.
+قال ﷺ: «ما ضرّ عثمان ما عمل بعد اليوم». (رواه الترمذي)
 
-【أعماله العظيمة】
-• اشترى بئر رومة بماله، ووقفها للمسلمين، فكان يقال: «هذا البئر الذي وقفه عثمان».
+【أعماله العظيمة — برّ لا يُنسى】
+• اشترى بئر رومة بماله من أحد اليهود بعشرين ألف درهم، ثم وقفها للمسلمين مجانًا. وكان النبي ﷺ قد قال: «من حفر بئر رومة فله الجنة» — فروي: «ومن اشتراها فله الجنة».
 • وسّع المسجد النبوي والمسجد الحرام.
-• اشترى قطعة أرض كبيرة بجانب المسجد النبوي ليتوسع فيه.
-• لما وقعت فتنة في عهده بسبب بعض المنافقين، ثبت وصبر.
+• اشترى قطعة أرض كبيرة بجانب المسجد النبوي ليتوسّع فيه.
+• أعان الفقراء والمساكين، وكان كثير الصدقة.
 
-【جمع المصحف】
-من أعظم أعماله جمع المسلمين على مصحف واحد. كان القرآن قد كُتب في مصحف أبي بكر، وكان الصحابة يقرأون بالأحرف السبعة. فلما اتسعت الفتوح، خشي اختلاف الناس في القراءة، فأمر بنسخ المصحف على لغة قريش، وأرسل نسخًا إلى الأمصار: مكة، الشام، اليمن، البحرين، البصرة، الكوفة. وأحرق ما عداها من المصاحف، فسُمّي «المصحف العثماني».
+【جمع المصحف — أعظم مناقبه】
+من أعظم أعماله في خلافته: جمع المسلمين على مصحف واحد.
+كان القرآن قد كُتب في مصحف أبي بكر، وكان الصحابة يقرأون بالأحرف السبعة. فلما اتسعت الفتوح، ودخل في الإسلام من لم تكن اللغة العربية لسانهم، خشي عثمان اختلاف الناس في القراءة، حتى بلغه أن بعض الناس يقول: «قراءتي أفضل من قراءتك!». فجمع الصحابة واستشارهم، فأشار عليه جماعة أن يجمع المسلمين على مصحف واحد.
+فأمر بنسخ المصحف على لغة قريش، وأرسل نسخًا إلى الأمصار: مكة، الشام، اليمن، البحرين، البصرة، الكوفة. وأحرق ما عداها من المصاحف. فسُمّي «المصحف العثماني»، وهو الذي بين أيدينا اليوم.
 
-【خلافته】
-بويع بعد عمر بن الخطاب رضي الله عنه، وكان عهده اثنتي عشرة سنة. اتسعت الدولة في عهده، وفُتحت أرمينية، وخراسان، وقبرص، وسواحل إفريقيا.
+قال علي بن أبي طالب رضي الله عنه عنه: «لو لم يفعل ما فعل بغيرنا، لكان يكفينا».
 
-【الفتنة واستشهاده】
-في آخر خلافته، ظهرت فتنة كبرى قادها المنافقون، وحاصروه في بيته بالمدينة أربعين يومًا، ومنعوا عنه الماء. لكنه رفض القتال، وقال: «لا أكون أول من خلف رسول الله ﷺ في أمته بسفك الدماء».
+【خلافته — ١٢ سنة من الخير】
+بويع عثمان رضي الله عنه بعد عمر بن الخطاب سنة ٢٣ هجرية، وكان عهده اثنتي عشرة سنة. اتسعت الدولة في عهده، وفُتحت أرمينية، وخراسان، وقبرص، وسواحل إفريقيا. وجُمعت الأموال، وعمّ الرخاء.
 
+【الفتنة الكبرى — الثمن الغالي】
+في آخر خلافته، ظهرت فتنة كبرى قادها المنافقون. كان بعض أعداء الإسلام — من اليهود والمنافقين — يُحرّضون على عثمان بباطل. وفي غزوة تبوك، أوصى النبي ﷺ بأمرٍ صار اليوم واقعًا. لكن القدر جرى بما جرى.
+وحاصره الثائرون في بيته بالمدينة أربعين يومًا، ومنعوا عنه الماء، حتى إنه كان يصعد على سطح داره ويتحدث معهم، فيقول: «ألا تستحيون؟! أتُريدون قتلي وقد صحبتُ رسول الله ﷺ اثنتي عشرة سنة؟!».
+لكنه رفض القتال، وقال: «لا أكون أول من خلف رسول الله ﷺ في أمته بسفك الدماء».
+
+【استشهاده — دم على آية】
 ودخل عليه بعض الثائرين، فقتلوه وهو يقرأ المصحف، وقطرت دماؤه على قوله تعالى: «فَسَيَكْفِيكَهُمُ اللَّهُ ۚ وَهُوَ السَّمِيعُ الْعَلِيمُ» — البقرة ١٣٧.
+وكان ذلك يوم الجمعة، ١٨ ذي الحجة سنة ٣٥ هجرية، وله من العمر ٨٢ سنة. دُفن بالبقيع، وصلّى عليه جبير بن مطعم.
 
-وكان ذلك يوم الجمعة، ١٨ ذي الحجة سنة ٣٥ هجرية، وله من العمر ٨٢ سنة. دُفن بالبقيع، وصلى عليه جبير بن مطعم.
+قال النبي ﷺ: «إن عثمان لأوّلُ من يهاجر بأهله إلى الله عز وجل». رضي الله عنه وأرضاه.
 
-قال النبي ﷺ: «إن عثمان لأوّلُ من يهاجر بأهله إلى الله عز وجل». رضي الله عنه وأرضاه.`,
+【الدروس المستفادة】
+• الحياء من صفات الكرام، وحياء عثمان فاق الوصف.
+• البذل في سبيل الله لا يُضيع.
+• جمع كلمة المسلمين من أعظم الأعمال.
+• الثبات عند الفتنة من شيم الكبار.
+• الصبر على الأذى في سبيل الله شرف.
+
+رضي الله عنه وأرضاه.`,
     tags:['صحابة','خلفاء','عثمان','ذو النورين','المصحف'] },
 
   /* ============ 4. علي بن أبي طالب ============ */
-  { id:'s4', cat:'الصحابة', title:'علي بن أبي طالب رضي الله عنه — ابن عم النبي وزوج ابنته',
-    body:`هو علي بن أبي طالب بن عبد المطلب الهاشمي، ابن عم النبي ﷺ، وُلد في مكة قبل البعثة بعشر سنوات.
+  { id:'s4', cat:'الصحابة', title:'علي بن أبي طالب — ابن عم النبي وزوج ابنته',
+    body:`هو علي بن أبي طالب بن عبد المطلب بن هاشم الهاشمي القرشي، ابن عم النبي ﷺ، وُلد في مكة قبل البعثة بعشر سنوات. وأمه فاطمة بنت أسد بن هاشم، وهي أول هاشمية وَلدت هاشميًّا.
 
 【نشأته في بيت النبي ﷺ】
-تربى علي في بيت النبي ﷺ من صغره، فقد أخذ النبي ﷺ كفالته لما ألمّ القحط بقريش. فكان من أول من أسلم من الصبيان، وعمره عشر سنوات.
+تربى علي في بيت النبي ﷺ من صغره، فقد أخذ النبي ﷺ كفالته لما ألمّ القحط بقريش. فكان علي يشبّ في بيت النبوة، ويتغذى على مكارم الأخلاق، ويسمع القرآن، ويشهد الدعوة في أولها. وكان من أول من أسلم من الصبيان، وعمره عشر سنوات.
 
-【مبيته في فراش النبي】
-في ليلة الهجرة، أمره النبي ﷺ أن ينام في فراشه ليردّ الأمانات إلى أهلها، فنام علي في الفراش، والمشركون يترصدون، فوقاه الله. وخرج علي بعدها إلى المدينة ومعه الفواطم.
+【مبيته في فراش النبي ﷺ】
+في ليلة الهجرة، أمره النبي ﷺ أن ينام في فراشه، ويردّ الأمانات التي كانت عند النبي ﷺ إلى أهلها. فنام علي في فراش النبي ﷺ، والمشركون يترصدون، وقال ﷺ له: «يا علي، إني لا أُخرج حتى أُخرج إلى مكة، فإن دخل عليك أحد من قريش فأعطه ما عندك، فإنك تردّ الأمانات إلى أهلها». فخرج علي بعدها إلى المدينة ومعه الفواطم: فاطمة بنت النبي ﷺ، وأمه، وفاطمة بنت الزبير.
 
-【أعماله الجسورة】
+【أعماله الجسورة في الغزوات】
 • شهد بدرًا وأُحدًا والخندق وكل المشاهد.
-• في بدر، برز لقتال الوليد بن عتبة، فقتله.
-• في أُحد، حمى النبي ﷺ وثبت معه حين انكشف الناس.
-• في الخندق، برز لعمرو بن عبد ود، فقتله، وقال النبي ﷺ: «لمبارزة عليّ لعمرو بن عبد ود خير من أعمال أمتي يوم القيامة».
-• في خيبر، أعطاه النبي ﷺ الراية بعد أن جُرح، وفتح الله على يديه.
-• في تبوك، استخلفه النبي ﷺ على المدينة، وقال له: «أنت مني بمنزلة هارون من موسى، إلا أنه لا نبي بعدي». (متفق عليه)
+• في بدر، قتل الوليد بن عتبة بن ربيعة.
+• في أُحد، حمى النبي ﷺ وثبت معه حين انكشف الناس، وحمل الراية بعد مصعب بن عمير.
+• في الخندق، برز لعمرو بن عبد ود العامري، فقتله، وقد كان عمرو قد قال قولته المشهورة: «ولقد بححت من النداء بجمعكم هل من مبارز؟». فقتله عليّ، فكان فتحًا عظيمًا للمسلمين.
+• في خيبر، أعطاه النبي ﷺ الراية بعد أن جُرح، وفتح الله على يديه، وقتل مرحب اليهودي.
+• في تبوك، استخلفه النبي ﷺ على المدينة، فقال له: «أما ترضى أن تكون مني بمنزلة هارون من موسى، إلا أنه لا نبي بعدي». (متفق عليه)
 
-【زواجه من فاطمة】
-تزوج فاطمة الزهراء بنت النبي ﷺ في السنة الثانية للهجرة، وأنجب منها الحسن والحسين وزينب وأم كلثوم. قال النبي ﷺ عن الحسن والحسين: «سيدا شباب أهل الجنة».
+【زواجه من فاطمة الزهراء】
+تزوج علي فاطمة الزهراء بنت النبي ﷺ في السنة الثانية للهجرة، وأنجب منها: الحسن، والحسين، وزينب، وأم كلثوم. قال النبي ﷺ عن الحسن والحسين: «سيدا شباب أهل الجنة». وقال لفاطمة: «إن الله زوّجك في السماء قبل أن أُزوّجك في الأرض».
 
-【خلافته】
-بويع بعد عثمان رضي الله عنه في سنة ٣٥ هجرية، وكان عهده أربع سنوات وتسعة أشهر، واجه فيها فتنة كبرى، ووقعت معركة الجمل، وصفين، والنهروان.
+【علمه وفصاحته】
+كان علي من أعلم الصحابة، وأفصحهم لسانًا، وأعدلهم في الرعية، وأزهدهم في الدنيا. قال عنه النبي ﷺ: «أنا مدينة العلم وعليّ بابها». وقال: «أنت مني وأنا منك». روى ابن عباس: «ما كنا نستشكل علم القرآن حتى كان علي بن أبي طالب».
+من أقواله البليغة:
+• «الناس موتى وأهل العلم أحياء».
+• «قيمة كل امرئ ما يُحسِن».
+• «لا يكن ظهرك لأحد إلا لرسول الله ﷺ وأهل بيته».
+• «احفظوا ما في أيديكم من أموالكم؛ فإنما هي عارية تنتقل من قرن إلى قرن».
 
-【زهده وعلمه】
-كان علي من أعلم الصحابة، وقال عنه النبي ﷺ: «أنا مدينة العلم وعليّ بابها». وكان أزهد الناس في الدنيا، وأعدلهم، وأفصحهم.
+【خلافته والفتنة الكبرى】
+بويع علي بن أبي طالب خليفةً بعد عثمان رضي الله عنه سنة ٣٥ هجرية. واجه في خلافته فتنة كبرى، فوقعت معركة الجمل، ثم معركة صفين، ثم النهروان. وكان رضي الله عنه مع كل ذلك من أشدّ الناس تحرّيًا للحق، وأحرصهم على وحدة الأمة، وأرحمهم بالرعية.
 
-من أقواله: «الناس موتى وأهل العلم أحياء». «قيمة كل امرئ ما يُحسِن». «لا يكن ظهرك لأحد إلا لرسول الله ﷺ وأهل بيته».
+من أقواله في معركة صفين: «لا أكون أول من يُقاتل ويُقتل، فقد كنت مع النبي ﷺ في كل المشاهد، وكنت أُضارب بسيفي هذا حتى كان عمرو بن العبد...».
 
-【استشهاده】
-في فجر يوم ٢١ رمضان سنة ٤٠ هجرية، وهو يصلي الفجر في مسجد الكوفة، ضربه عبد الرحمن بن ملجم الخارجي بسيف مسموم، فتُوفي بعد يومين. دُفن في النجف، وكان عمره ٦٣ سنة.
+【زهده في الدنيا】
+دخل عليه رجل فوجده يأكل قُرْصًا يابسًا وملحًا، فقال: «أهذا طعامك؟! وأنت الخليفة؟!» فقال: «إني أخاف أن يُحاسبني الله على قليل ما أصنع». وكان يلبس ثوبًا مرقّعًا، ويمشي في الأسواق وحده.
 
-رضي الله عنه وأرضاه، وجمعنا به في الفردوس الأعلى مع النبي ﷺ وأصحابه الكرام.`,
+【استشهاده — في محراب المسجد】
+في فجر يوم ٢١ رمضان سنة ٤٠ هجرية، وهو يصلي الفجر في مسجد الكوفة، ضربه عبد الرحمن بن ملجم الخارجي — وكان لا يراه — بسيف مسموم على رأسه، فقال علي: «فُزت وربّ الكعبة!» ثم تُوفي بعد يومين.
+دُفن في النجف الأشرف بالعراق، وكان عمره ٦٣ سنة.
+
+قال عنه النبي ﷺ: «عليّ مني وأنا من عليّ، وهو وليّ كل مؤمن بعدي». رضي الله عنه وأرضاه، وجمعنا به في الفردوس الأعلى مع النبي ﷺ وأصحابه الكرام.
+
+【الدروس المستفادة】
+• التربية في بيت النبوة تُصنع الرجال.
+• الثبات في لحظات الخطر شجاعة الكبار.
+• العلم والفصاحة سلاح المؤمن.
+• الزهد في الدنيا مع القيادة موقف عظماء.
+• الشهادة في سبيل الله نهاية شريفة.
+
+رضي الله عنه وأرضاه.`,
     tags:['صحابة','خلفاء','علي','أهل البيت'] },
 
   /* ============ 5. غزوة بدر ============ */
   { id:'s5', cat:'الغزوات', title:'غزوة بدر الكبرى — يوم الفرقان',
-    body:`كانت غزوة بدر أول معركة فاصلة في الإسلام، وأول نصر عسكري يحققه المسلمون. سمّاها الله «يوم الفرقان» في قوله: «وَمَا أَنزَلْنَا عَلَىٰ عَبْدِنَا يَوْمَ الْفُرْقَانِ يَوْمَ الْتَقَى الْجَمْعَانِ» — الأنفال ٤١.
+    body:`كانت غزوة بدر أول معركة فاصلة في الإسلام، وأول نصر عسكري يحققه المسلمون، وقد سمّاها الله «يوم الفرقان» في قوله: «وَمَا أَنزَلْنَا عَلَىٰ عَبْدِنَا يَوْمَ الْفُرْقَانِ يَوْمَ الْتَقَى الْجَمْعَانِ» — الأنفال ٤١.
 
-【الخلفية】
-في المدينة، كان المسلمون يعانون من الهجمات والتحرشات من قريش، وكان المهاجرون قد تُركوا في مكة بممتلكاتهم التي أخذتها قريش. فأذن الله للمسلمين بالقتال: «أُذِنَ لِلَّذِينَ يُقَاتَلُونَ بِأَنَّهُمْ ظُلِمُوا» — الحج ٣٩.
+【الخلفية — الظلم الذي سبق المعركة】
+منذ أن هاجر النبي ﷺ إلى المدينة، كانت قريش لا تكف عن أذى المسلمين، وكان المهاجرون قد تركوا بيوتهم وأموالهم في مكة، فأخذتها قريش. وكان المسلمون في المدينة يُهدّدون من قريش، ومن اليهود، ومن المنافقين. فأذن الله للمسلمين بالقتال، فقال: «أُذِنَ لِلَّذِينَ يُقَاتَلُونَ بِأَنَّهُمْ ظُلِمُوا ۚ وَإِنَّ اللَّهَ عَلَىٰ نَصْرِهِمْ لَقَدِيرٌ» — الحج ٣٩.
 
-【الإخبار بقافلة أبي سفيان】
-في رجب من السنة الثانية للهجرة، بلغ النبي ﷺ أن قافلة كبيرة لقريش، يقودها أبو سفيان، قادمة من الشام إلى مكة، محمّلة بأموال كثيرة. فندب النبي ﷺ أصحابه للخروج لاعتراض القافلة، فخرج معه نحو ٣١٣ رجلًا من المهاجرين والأنصار.
+【الإخبار بالقافلة — انطلاق المشهد】
+في رجب من السنة الثانية للهجرة، بلغ النبي ﷺ أن قافلة كبيرة لقريش، يقودها أبو سفيان بن حرب، قادمة من الشام إلى مكة، محمّلة بأموال كثيرة، وبها نحو أربعين رجلًا. فندب النبي ﷺ أصحابه للخروج لاعتراض القافلة، فخرج معه نحو ٣١٣ رجلًا من المهاجرين والأنصار.
 
-وهم بالمدينة، علم أبو سفيان بالمسلمين، فأرسل إلى قريش يستنفرها، فخرجت قريش بجيوش كثيرة يبلغ عددها نحو ١٠٠٠ مقاتل، معهم ٧٠٠ بعير و١٠٠ فرس.
+【استنفار قريش — الجيش القادم】
+وهم بالمدينة، كان أبو سفيان يسير في الطريق فأحسّ بالخطر، فاستأجر ضمضم بن عمرو الغفاري وأرسله إلى قريش يستنفرها. فخرجت قريش بجيوش كثيرة، لا يريدون القافلة فقط، بل يريدون إطفاء نور الإسلام. يبلغ عدد الجيش نحو ١٠٠٠ مقاتل، معهم ٧٠٠ بعير، و١٠٠ فرس، ورجال مكة كلهم سادة وقادة.
 
-【نزول القرآن في حقّ الفريقين】
-قال تعالى: «وَإِذْ يَعِدُكُمُ اللَّهُ إِحْدَى الطَّائِفَتَيْنِ أَنَّهَا لَكُمْ وَتَوَدُّونَ أَنَّ غَيْرَ ذَاتِ الشَّوْكَةِ تَكُونُ لَكُمْ وَيُرِيدُ اللَّهُ أَن يُحِقَّ الْحَقَّ بِكَلِمَاتِهِ وَيَقْطَعَ دَابِرَ الْكَافِرِينَ» — الأنفال ٧.
+وفي المدينة، بلغ النبي ﷺ خبر الجيش، فجمع الصحابة واستشارهم. فقام أبو بكر وعمر والمقداد وقالوا خيرًا. ثم قال الأنصار: «يا رسول الله، ابعث إلى ما شئت، فوالذي بعثك بالحق لو ضربت أكباد الإبل إلى برك الغماد ما تخلّفنا عنك».
+
+【نزول القرآن — الفرقان بين الطائفتين】
+قال الله: «وَإِذْ يَعِدُكُمُ اللَّهُ إِحْدَى الطَّائِفَتَيْنِ أَنَّهَا لَكُمْ وَتَوَدُّونَ أَنَّ غَيْرَ ذَاتِ الشَّوْكَةِ تَكُونُ لَكُمْ وَيُرِيدُ اللَّهُ أَن يُحِقَّ الْحَقَّ بِكَلِمَاتِهِ وَيَقْطَعَ دَابِرَ الْكَافِرِينَ» — الأنفال ٧.
 
 وكان المسلمون يرغبون في القافلة الغنيّة، لكن الله أراد مواجهة الجيش، فالتقى الفريقان في بدر.
 
-【استعداد المسلمين】
-لم يكن مع المسلمين إلا ٧٠ بعيرًا وفرسان اثنان: المقداد بن الأسود والزبير بن العوام. ومع ذلك، فقد ثبتوا وصبروا. وحفر المسلمون حوضًا للماء في مكان المعركة، وأخذوا المياه.
+【استعداد المسلمين — قوّة الإيمان】
+لم يكن مع المسلمين إلا ٧٠ بعيرًا وفرسان اثنان: المقداد بن الأسود والزبير بن العوام. ومع ذلك، فقد ثبتوا وصبروا. ونزلوا بأدنى ماء من بدر، فحفر المسلمون حوضًا للماء في مكان المعركة، وأخذوا المياه. وبنى المسلمون عريشًا للنبي ﷺ في أعلى مكان، ليكون مركز القيادة.
 
 وفي الليل، أنزل الله على المسلمين نعاسًا وأمّنهم: «إِذْ يُغَشِّيكُمُ النُّعَاسَ أَمَنَةً مِّنْهُ وَيُنَزِّلُ عَلَيْكُم مِّنَ السَّمَاءِ مَاءً لِّيُطَهِّرَكُم بِهِ» — الأنفال ١١.
 
-【دعاء النبي ﷺ】
-في أثناء المعركة، رفع النبي ﷺ يديه إلى الله وقال: «اللهم أنجز لي ما وعدتني، اللهم آتِ ما وعدتني، اللهم إن تُهلك هذه العصابة لا تُعبد في الأرض». فما زال يدعو حتى سقط رداؤه، فأخذه أبو بكر وقال: «كفاك مناشدتك ربك، فإنه سينجز لك ما وعدك».
+【دعاء النبي ﷺ — سلاح المؤمن】
+في أثناء المعركة، رفع النبي ﷺ يديه إلى الله وقال: «اللهم أنجز لي ما وعدتني، اللهم آتِ ما وعدتني، اللهم إن تُهلك هذه العصابة لا تُعبد في الأرض». فما زال يدعو حتى سقط رداؤه، فأخذه أبو بكر وردّاه به وقال: «كفاك مناشدتك ربك، فإنه سينجز لك ما وعدك».
 
-【نزول الملائكة】
-أنزل الله الملائكة مددًا للمسلمين، قال تعالى: «إِذْ تَسْتَغِيثُونَ رَبَّكُمْ فَاسْتَجَابَ لَكُمْ أَنِّي مُمِدُّكُم بِأَلْفٍ مِّنَ الْمَلَائِكَةِ مُرْدِفِينَ» — الأنفال ٩.
-
+【نزول الملائكة — مدد من السماء】
+أنزل الله الملائكة مددًا للمسلمين. قال تعالى: «إِذْ تَسْتَغِيثُونَ رَبَّكُمْ فَاسْتَجَابَ لَكُمْ أَنِّي مُمِدُّكُم بِأَلْفٍ مِّنَ الْمَلَائِكَةِ مُرْدِفِينَ» — الأنفال ٩.
 قال ابن عباس: «كان فُرسان يوم بدر ثلاثة: الزبير والمقداد وابن عوف، وكان مع الملائكة يوم بدر اثنان وعشرون ملكًا».
 
-【المعركة】
-بدأت المبارزة الفردية، فبرز ثلاثة من المشركين: عتبة بن ربيعة وشيبة بن ربيعة والوليد بن عتبة، فبرز لهم ثلاثة من الأنصار، فصاح المشركون: «نريد أكفاءنا من قريش». فأخرج النبي ﷺ لهم حمزة وعليًّا وعبيدة بن الحارث رضي الله عنهم، فقتلوا الثلاثة.
+【المعركة — يوم الفرقان】
+بدأت المبارزة الفردية، فبرز ثلاثة من المشركين: عتبة بن ربيعة، وشيبة بن ربيعة، والوليد بن عتبة، فبرز لهم ثلاثة من الأنصار، فصاح المشركون: «نريد أكفاءنا من قريش!» فأخرج النبي ﷺ لهم حمزة وعليًّا وعبيدة بن الحارث رضي الله عنهم، فقتلوا الثلاثة.
+ثم اشتدّت المعركة، فصمد المسلمون، وقتلوا رؤوس المشركين: أبو جهل، وأمية بن خلف، وأُبيّ بن خلف. وقال ﷺ: «أما أبو جهل فقد لقى شرًّا».
+قال الله: «فَلَمْ تَقْتُلُوهُمْ وَلَٰكِنَّ اللَّهَ قَتَلَهُمْ وَمَا رَمَيْتَ إِذْ رَمَيْتَ وَلَٰكِنَّ اللَّهَ رَمَىٰ» — الأنفال ١٧.
 
-ثم اشتدّت المعركة، فصمد المسلمون، وقتلوا رؤوس المشركين: أبو جهل، وأمية بن خلف، وأُبيّ بن خلف.
-
-قال الله تعالى: «فَلَمْ تَقْتُلُوهُمْ وَلَٰكِنَّ اللَّهَ قَتَلَهُمْ وَمَا رَمَيْتَ إِذْ رَمَيْتَ وَلَٰكِنَّ اللَّهَ رَمَىٰ» — الأنفال ١٧.
-
-【النتيجة】
+【النتيجة — نصر عظيم】
 قُتل من المشركين ٧٠ وأُسر ٧٠، وقُتل من المسلمين ١٤ شهيدًا: ٦ من المهاجرين و٨ من الأنصار.
-
 قال تعالى: «وَلَقَدْ نَصَرَكُمُ اللَّهُ بِبَدْرٍ وَأَنتُمْ أَذِلَّةٌ ۖ فَاتَّقُوا اللَّهَ لَعَلَّكُمْ تَشْكُرُونَ» — آل عمران ١٢٣.
 
 【الدروس المستفادة】
@@ -910,433 +1159,434 @@ const STORIES_DATA = [
 • الثبات والصبر أساس النصر.
 • الدعاء سلاح المؤمن.
 • التضحية في سبيل الله لا تعني خسارة، بل ربح عظيم.
+• الشورى سنة نبوية، حتى في أشد المواقف.
 
 قال ﷺ عن يوم بدر: «هذا يومٌ جعله الله عيدًا للمسلمين». رضي الله عن أصحاب بدر أجمعين.`,
-    tags:['غزوات','بدر','يوم الفرقان','معركة'] },
+    tags:['غزوات','بدر','يوم الفرقان'] },
 
-  /* ============ 6. غزوة أحد ============ */
+  /* ============ 6. غزوة أُحد ============ */
   { id:'s6', cat:'الغزوات', title:'غزوة أُحد — يوم الابتلاء والصبر',
     body:`كانت غزوة أُحد درسًا عظيمًا للمسلمين، وابتلاءً بعد نصر بدر، وقد وقعت في شوال من السنة الثالثة للهجرة.
 
-【الخلفية والسبب】
-بعد هزيمة قريش في بدر، اشتد غيظها وحقدها، فأرادت الثأر. فجهّزت جيشًا كبيرًا بقيادة أبي سفيان، يبلغ نحو ٣٠٠٠ مقاتل، معهم ٢٠٠ فرس و٧٠٠ درع، ونزلوا قريبًا من جبل أُحد.
+【الخلفية والسبب — حقد قريش】
+بعد هزيمة قريش في بدر، اشتد غيظها وحقدها، فأرادت الثأر. فجهّزت جيشًا كبيرًا بقيادة أبي سفيان، يبلغ نحو ٣٠٠٠ مقاتل، معهم ٢٠٠ فرس، و٧٠٠ درع، ونزلوا قريبًا من جبل أُحد. وأخذت قريش معها نساءها ليُذكّرن الرجال بالثأر، وفيهن هند بنت عتبة التي أكلت كبد حمزة رضي الله عنه.
+وكانت أموال قريش التي نجا بها أبو سفيان في بدر قد سُخّرت كلها لتجهيز هذه المعركة.
 
-【استشارة النبي ﷺ】
-جمع النبي ﷺ أصحابه للتشاور، فأشار بعضهم بالتحصّن داخل المدينة، لكن الشباب المتحمسين أشاروا بالخروج، فقبل النبي ﷺ رأيهم، وخرج في ألف من أصحابه.
+【استشارة النبي ﷺ — الشورى في الحرب】
+جمع النبي ﷺ أصحابه للتشاور، فأشار بعضهم بالتحصّن داخل المدينة، وأشار الشباب المتحمسون — ولم يكونوا شهدوا بدرًا — بالخروج لقتال المشركين في الخارج. فوافقهم النبي ﷺ، وخرج في ألف من أصحابه، ولبس لأمته.
+ثم ندم الشباب وقالوا: «يا رسول الله، إن أردت أن تقيم بالمدينة فأقم»، فقال ﷺ: «ما ينبغي لنبي أن يضع أداته حتى يقاتل».
 
-وفي الطريق، رجع عبد الله بن أُبيّ بن سلول بثلاثمائة من المنافقين، فبقي ٧٠٠ مقاتل.
+【رجع المنافقون — خيانة من الداخل】
+وفي الطريق، رجع عبد الله بن أُبيّ بن سلول بثلاثمائة من المنافقين، وقال: «عصاني وأطاع الولدان»، فبقي ٧٠٠ مقاتل من المسلمين، وهم في حالة إيمان ويقين.
 
-【التوزيع العسكري】
-نظّم النبي ﷺ الجيش، ووضع خمسين من الرماة على جبل الرماة بقيادة عبد الله بن جبير، وقال لهم: «احموا ظهورنا، فإن رأيتمونا نُقتل فلا تنصرونا، وإن رأيتمونا قد غنمنا فلا تشركونا».
+【التوزيع العسكري — وصية الرماة】
+نظّم النبي ﷺ الجيش، ووضع خمسين من الرماة على جبل الرماة بقيادة عبد الله بن جبير رضي الله عنه، وقال لهم: «احموا ظهورنا، فإن رأيتمونا نُقتل فلا تنصرونا، وإن رأيتمونا قد غنمنا فلا تشركونا».
 
-【سير المعركة】
-بدأت المبارزة، ثم اشتد القتال، وثبت المسلمون، وقتلوا من المشركين عددًا كبيرًا، حتى ولّى المشركون الأدبار. وحمزة بن عبد المطلب رضي الله عنه يصول في الميدان، حتى قتله وحشي بن حرب بحربة.
+【سير المعركة — نصر ثم اختبار】
+بدأت المبارزة، ثم اشتد القتال، وثبت المسلمون، وقتلوا من المشركين عددًا كبيرًا، حتى ولّى المشركون الأدبار. وحمزة بن عبد المطلب رضي الله عنه يصول في الميدان، حتى قتله وحشي بن حرب بحربة، فأصابت أسفل بطنه حتى خرجت من بين رجليه.
+فقال ﷺ: «لن تُصابوا في مثل ما أُصبت في حمزة... والله إنه لفي هذا اليوم كأنه جذع ضغائن».
 
-【كارثة الرماة】
-لما رأى الرماة أن المشركين انهزموا، ظنوا أن المعركة انتهت، فنزل أكثرهم لجمع الغنائم، رغم تحذير أميرهم. فأمر عبد الله بن جبير من بقي بالثبات، لكنهم كانوا قليلين.
+【كارثة الرماة — المخالفة والعقاب】
+لما رأى الرماة أن المشركين انهزموا، ظنوا أن المعركة انتهت، فنزل أكثرهم لجمع الغنائم، رغم تحذير أميرهم. فأمر عبد الله بن جبير من بقي بالثبات، لكنهم كانوا قليلين. فاستغل خالد بن الوليد (قبل إسلامه) هذه الثغرة، فهاجم بفرسانه من خلف المسلمين، وضربهم ضربة قاتلة.
+ووقف عبد الله بن جبير وأصحابه القليلون يقاتلون حتى قتلوا جميعًا رضي الله عنهم.
 
-فاستغل خالد بن الوليد (قبل إسلامه) هذه الثغرة، فهاجم بفرسانه من خلف المسلمين، وضربهم ضربة قاتلة.
-
-【استشهاد الأبطال】
-انقلبت الموازنة، وتفرق المسلمون، حتى بقي النبي ﷺ مع قلة. وقُتل من المسلمين ٧٠ شهيدًا، منهم:
-• حمزة بن عبد المطلب (سيد الشهداء).
-• مصعب بن عمير (حامل راية النبي ﷺ).
-• حنظلة بن أبي عامر (غسيل الملائكة).
+【استشهاد الأبطال — نخبة المسلمين】
+انقلبت الموازنة، وتفرّق المسلمون، حتى بقي النبي ﷺ مع قلة. وقُتل من المسلمين ٧٠ شهيدًا، منهم:
+• حمزة بن عبد المطلب — سيد الشهداء، عمّ النبي ﷺ.
+• مصعب بن عمير — حامل راية النبي ﷺ.
+• حنظلة بن أبي عامر — غسيل الملائكة.
 • عبد الله بن جحش.
+• سعد بن الربيع.
+• عمرو بن الجموح.
+• خارجة بن زيد.
 
-【جُرح النبي ﷺ】
-جُرح النبي ﷺ في وجهه، وكُسرت رَبَاعِيَتُه، وشُقّت شفته السفلى. وسقط في حفرة، فاحتضنه طلحة بن عبيد الله رضي الله عنه، ودفع عن النبي ﷺ حتى شُلّت يده.
+【جُرح النبي ﷺ — يوم عصيب】
+جُرح النبي ﷺ في وجهه، وكُسرت رَبَاعِيَتُه، وشُقّت شفته السفلى. وسقط في حفرة، فاحتضنه طلحة بن عبيد الله رضي الله عنه، ودفع عن النبي ﷺ حتى شُلّت يده. وكان أبو بكر وأبو عبيدة يُضمدان جراح النبي ﷺ، ويقول ﷺ: «اشتد غضب الله على من دمّى وجه رسول الله».
 
-وكان أبو بكر وأبو عبيدة يُضمدان جراح النبي ﷺ، ويقول ﷺ: «اشتد غضب الله على من دمّى وجه رسول الله».
+【أنس بن النضر — ثبات العظماء】
+مرّ أنس بن النضر رضي الله عنه على قوم من المسلمين يستشيرون: «ماذا نفعل؟» فقال: «لِمَ تحيون؟! قوموا فموتوا على ما مات عليه رسول الله ﷺ!». ثم قاتل حتى استُشهد، فوُجد فيه سبعون جرحًا.
 
-【أبو بكر والصحابة】
-ثبت مع النبي ﷺ عدد من الصحابة منهم أبو بكر، وعمر، وعلي، وطلحة، والزبير، وسعد، وأنس بن النضر.
-
-أنس بن النضر رضي الله عنه مرّ على قوم من المسلمين يستشيرون: «ماذا نفعل؟» فقال: «لِمَ تحيون؟! قوموا فموتوا على ما مات عليه رسول الله ﷺ»، ثم قاتل حتى استُشهد، فوُجد فيه سبعون جرحًا.
-
-【النتيجة والدرس】
-انتهت المعركة بخسارة كبيرة، لكنها كانت درسًا للثبات والطاعة.
-
-قال تعالى: «وَلَقَدْ صَدَقَكُمُ اللَّهُ وَعْدَهُ إِذْ تَحُسُّونَهُم بِإِذْنِهِ ۖ حَتَّىٰ إِذَا فَشِلْتُمْ وَتَنَازَعْتُمْ فِي الْأَمْرِ وَعَصَيْتُم مِّن بَعْدِ مَا أَرَاكُم مَّا تُحِبُّونَ» — آل عمران ١٥٢.
+【النتيجة والدرس — تربية إلهية】
+انتهت المعركة بخسارة كبيرة، لكنها كانت درسًا للثبات والطاعة. قال الله: «وَلَقَدْ صَدَقَكُمُ اللَّهُ وَعْدَهُ إِذْ تَحُسُّونَهُم بِإِذْنِهِ ۖ حَتَّىٰ إِذَا فَشِلْتُمْ وَتَنَازَعْتُمْ فِي الْأَمْرِ وَعَصَيْتُم مِّن بَعْدِ مَا أَرَاكُم مَّا تُحِبُّونَ» — آل عمران ١٥٢.
 
 【الدروس المستفادة】
 • الطاعة لولي الأمر أساس النصر.
 • الابتلاء سنة من سنن الله، يمحّص بها الصفوف.
 • الثبات عند الفتن من صفات المؤمنين.
 • الشهادة في سبيل الله شرف عظيم.
+• النصر لا يُدوم بالعدد، بل بالطاعة.
+• من أخطأ ثم رجع فقد ثبّته الله.
 
 رضي الله عن شهداء أُحد، وأسكنهم فسيح جناته.`,
-    tags:['غزوات','أحد','شهداء','أبو بكر','حمزة'] },
+    tags:['غزوات','أحد','شهداء'] },
 
   /* ============ 7. غزوة الخندق ============ */
   { id:'s7', cat:'الغزوات', title:'غزوة الخندق (الأحزاب) — حصار المدينة',
     body:`كانت غزوة الخندق في شوال من السنة الخامسة للهجرة، وتُعرف أيضًا بغزوة الأحزاب، حيث تحالفت قبائل العرب واليهود على المسلمين لاستئصالهم.
 
-【السبب】
-بعد إجلاء يهود بني النضير من المدينة، ذهب زعماؤهم إلى مكة يحرضون قريشًا على قتال المسلمين. فاجتمعت قريش، وغطفان، ويهود بني قريظة، وقبائل أخرى، في جيش يقارب ١٠ آلاف مقاتل، وزحفوا نحو المدينة.
+【السبب — تحالف الأحزاب】
+بعد إجلاء يهود بني النضير من المدينة، ذهب زعماؤهم إلى مكة يُحرّضون قريشًا على قتال المسلمين. فاجتمعت قريش، وغطفان، ويهود بني قريظة، وقبائل أخرى من العرب، في جيش يقارب ١٠ آلاف مقاتل، وهم الأكثر عددًا وعتادًا.
+وخرجوا في جيش لم ترَ العرب مثله في تاريخها، فزحفوا نحو المدينة لتدمير الإسلام.
 
-【حفر الخندق】
+【حفر الخندق — التخطيط العسكري】
 بلغ النبي ﷺ خبرهم، فجمع أصحابه للتشاور. وأشار سلمان الفارسي رضي الله عنه بحفر خندق حول المدينة من الجهات المكشوفة. فبدأ المسلمون في حفر خندق عميق على حدود المدينة، وكان عدد المسلمين نحو ٣٠٠٠ فقط.
+شارك النبي ﷺ بنفسه في الحفر، وكان المسلمون يعملون نهارًا ويرجعون ليلًا، ويقولون: «اللَّهُمَّ لَوْلَا أَنْتَ مَا اهْتَدَيْنَا … وَلَا تَصَدَّقْنَا وَلَا صَلَّيْنَا» ويردّ النبي ﷺ: «اللَّهُمَّ إِنَّمَا الْخَيْرُ خَيْرُ الْآخِرَةِ … فَاغْفِرْ لِلْأَنْصَارِ وَالْمُهَاجِرَةِ».
 
-شارك النبي ﷺ بنفسه في الحفر، وكان المسلمون يعملون نهارًا ويرجعون ليلًا، ويقولون:
-«اللَّهُمَّ لَوْلَا أَنْتَ مَا اهْتَدَيْنَا … وَلَا تَصَدَّقْنَا وَلَا صَلَّيْنَا»
-ويردّ النبي ﷺ: «اللَّهُمَّ إِنَّمَا الْخَيْرُ خَيْرُ الْآخِرَةِ … فَاغْفِرْ لِلْأَنْصَارِ وَالْمُهَاجِرَةِ».
+【المعجزات في الحفر — بشارات النصر】
+ظهرت معجزات أثناء حفر الخندق، فقد ضرب النبي ﷺ صخرة فبرقت برقة، وأخبر أصحابه بفتح فارس والروم واليمن. وأخبرهم عن مدائن كسرى وقصوره، وعن مدائن قيصر. فقال المسلمون: «الحمد لله الذي صدق وعده».
 
-【المعجزات في الحفر】
-ظهرت معجزات أثناء حفر الخندق، فقد ضرب النبي ﷺ صخرة فبرقت برقة، وأخبر أصحابه بفتح فارس والروم واليمن.
+【الحصار — شهر من الرعب】
+وصل الأحزاب إلى المدينة، فوجدوا الخندق يحول بينهم وبين الدخول، فحاصروا المسلمين نحو شهر كامل. وأخذ المسلمون في حالة من الخوف الشديد والجوع، حتى بلغت القلوب الحناجر. قال تعالى: «إِذْ جَاءُوكُم مِّن فَوْقِكُمْ وَمِنْ أَسْفَلَ مِنكُمْ وَإِذْ زَاغَتِ الْأَبْصَارُ وَبَلَغَتِ الْقُلُوبُ الْحَنَاجِرَ وَتَظُنُّونَ بِاللَّهِ الظُّنُونَا» — الأحزاب ١٠.
 
-【الحصار】
-وصل الأحزاب إلى المدينة، فوجدوا الخندق يحول بينهم وبين الدخول، فحاصروا المسلمين نحو شهر كامل. وأخذ المسلمون في حالة من الخوف الشديد والجوع، حتى بلغت القلوب الحناجر.
+【عمرو بن عبد ود — فارس قريش】
+جاء عمرو بن عبد ود — وهو من أشجع فرسان العرب — بجواده يبحث عن مبارز. فخرج إليه علي بن أبي طالب رضي الله عنه فقتله، فكان فتحًا عظيمًا للمسلمين. وقال ﷺ: «لمبارزة عليّ لعمرو بن عبد ود خير من أعمال أمتي يوم القيامة».
 
-قال تعالى: «إِذْ جَاءُوكُم مِّن فَوْقِكُمْ وَمِنْ أَسْفَلَ مِنكُمْ وَإِذْ زَاغَتِ الْأَبْصَارُ وَبَلَغَتِ الْقُلُوبُ الْحَنَاجِرَ وَتَظُنُّونَ بِاللَّهِ الظُّنُونَا» — الأحزاب ١٠.
+【دور نعيم بن مسعود — سلاح الحرب الباردة】
+أرسل النبي ﷺ نعيم بن مسعود الغطفاني — وكان حديث عهد بالإسلام — ليفرّق بين الأحزاب. فذهب إليهم وأوقع بينهم الفتنة، حتى اختلفوا وتفرّقوا. وقال لبني قريظة: «لا تقاتلوا معهم حتى يعطوكم رهنًا»، وقال لقريش: «بني قريظة قد ندموا وسيُسلّمون رجالكم!». فتفرّقت كلمتهم.
 
-【دور نعيم بن مسعود】
-أرسل النبي ﷺ نعيم بن مسعود الغطفاني — وكان حديث عهد بالإسلام — ليفرّق بين الأحزاب. فذهب إليهم وأوقع بينهم الفتنة، حتى اختلفوا وتفرقوا.
-
-【موقف بني قريظة】
+【موقف بني قريظة — خيانة العهد】
 خان بنو قريظة العهد، وانضموا إلى الأحزاب. فأرسل النبي ﷺ الزبير بن العوام وعليًّا وسعد بن معاذ للتحقق، فوجدوا الخيانة. فأنزل الله: «وَإِذْ قَالَت طَّائِفَةٌ مِّنْهُمْ يَا أَهْلَ يَثْرِبَ لَا مُقَامَ لَكُمْ فَارْجِعُوا» — الأحزاب ١٣.
 
-【دعاء النبي ﷺ】
+【دعاء النبي ﷺ — سلاح المؤمن】
 دعا النبي ﷺ على الأحزاب فقال: «اللهم منزل الكتاب، سريع الحساب، اهزم الأحزاب، اللهم اهزمهم وزلزلهم». (رواه البخاري)
 
-【الريح التي هزمتهم】
-أرسل الله عليهم ريحًا شديدة، فقلبت قدورهم، وأطفأت نيرانهم، وقلعت خيامهم، حتى تفرقوا.
+【الريح التي هزمتهم — نصر من السماء】
+أرسل الله عليهم ريحًا شديدة، فقلبت قدورهم، وأطفأت نيرانهم، وقلعت خيامهم، حتى تفرّقوا. قال تعالى: «فَأَرْسَلْنَا عَلَيْهِمْ رِيحًا وَجُنُودًا لَّمْ تَرَوْهَا» — الأحزاب ٩.
 
-قال تعالى: «فَأَرْسَلْنَا عَلَيْهِمْ رِيحًا وَجُنُودًا لَّمْ تَرَوْهَا» — الأحزاب ٩.
-
-وفي الصحيح: «فأرسل الله عليهم ريحًا فكفأتهم، فانهزموا».
-
-【النتيجة】
-انتهت المعركة بنصر عظيم للمسلمين، وقال النبي ﷺ: «الآن نغزوهم ولا يغزوننا، نحن نسير إليهم». فكانت هذه نقطة تحول، انقلب المسلمون من الدفاع إلى الهجوم.
+【النتيجة — نقطة التحوّل】
+انتهت المعركة بنصر عظيم للمسلمين، وقال النبي ﷺ: «الآن نغزوهم ولا يغزوننا، نحن نسير إليهم». فكانت هذه نقطة تحوّل، انقلب المسلمون من الدفاع إلى الهجوم. قال تعالى: «وَرَدَّ اللَّهُ الَّذِينَ كَفَرُوا بِغَيْظِهِمْ لَمْ يَنَالُوا خَيْرًا ۚ وَكَفَى اللَّهُ الْمُؤْمِنِينَ الْقِتَالَ ۚ وَكَانَ اللَّهُ قَوِيًّا عَزِيزًا» — الأحزاب ٢٥.
 
 【الدروس المستفادة】
 • التخطيط العسكري (حفر الخندق) مع التوكل على الله.
 • التوكل الحقيقي في أوقات الشدة.
 • أهمية الوحدة وعدم الانخداع بالمنافقين.
 • الله ينصر من يشاء بجنده الذي لا يُرى.
+• الشورى والاستفادة من خبرات الآخرين (سلمان الفارسي).
 
-قال تعالى: «وَرَدَّ اللَّهُ الَّذِينَ كَفَرُوا بِغَيْظِهِمْ لَمْ يَنَالُوا خَيْرًا ۚ وَكَفَى اللَّهُ الْمُؤْمِنِينَ الْقِتَالَ ۚ وَكَانَ اللَّهُ قَوِيًّا عَزِيزًا» — الأحزاب ٢٥.`,
-    tags:['غزوات','الخندق','الأحزاب','المدينة'] },
+عزّ الله الإسلام بهذا النصر العظيم.`,
+    tags:['غزوات','الخندق','الأحزاب'] },
 
   /* ============ 8. فتح مكة ============ */
   { id:'s8', cat:'الغزوات', title:'فتح مكة — الفتح الأعظم',
-    body:`كان فتح مكة في رمضان من السنة الثامنة للهجرة، من أعظم الأحداث في تاريخ الإسلام.
+    body:`كان فتح مكة في رمضان من السنة الثامنة للهجرة، من أعظم الأحداث في تاريخ الإسلام، وهو الذي قال الله فيه: «إِنَّا فَتَحْنَا لَكَ فَتْحًا مُّبِينًا» — الفتح ١.
 
-【السبب】
-كانت قريش قد عقدت مع النبي ﷺ صلح الحديبية في السنة السادسة، وبنود الصلح تقضي بوقف القتال عشر سنوات. لكن في السنة الثامنة، اعتدت قبيلة بكر — حليفة قريش — على قبيلة خزاعة — حليفة النبي ﷺ — فقتلوا منهم عددًا، وأعانتهم قريش بالسلاح.
+【السبب — نقض العهد】
+كانت قريش قد عقدت مع النبي ﷺ صلح الحديبية في السنة السادسة، وبنود الصلح تقضي بوقف القتال عشر سنوات. لكن في السنة الثامنة، اعتدت قبيلة بكر — حليفة قريش — على قبيلة خزاعة — حليفة النبي ﷺ — فقتلوا منهم عددًا، وأعانتهم قريش بالسلاح والرجال.
+فخرج عمرو بن سالم الخزاعي إلى النبي ﷺ يستغيث، فأنشد شعرًا يُذكّره بالحلف، فتأثر النبي ﷺ وقال: «نُصرت يا عمرو بن سالم».
 
-فخرج عمرو بن سالم الخزاعي إلى النبي ﷺ يستغيث، فأنشد:
-«يا ربِّ إني ناشدٌ محمدًا … حلف أبينا وأبيه الأتْلدَا»
-فتأثر النبي ﷺ وقال: «نُصرت يا عمرو بن سالم».
+【محاولة إصلاح — رفض النبي ﷺ】
+علمت قريش بغدرها، فأرسلت أبا سفيان إلى المدينة لتجديد الصلح. فدخل على ابنته أم حبيبة أم المؤمنين، فذهب ليجلس على فراش النبي ﷺ، فطوته، فقال: «يا بنية، ما أدري أرغبت بي عن هذا الفراش أم رغبت به عني؟» قالت: «بل هو فراش رسول الله ﷺ وأنت رجل مشرك نجس!». فخرج أبو سفيان يجرّ ثوبه، وذهب لأبي بكر وعمر وعلي وفاطمة، فلم يُنصروه، فرجع خائبًا إلى مكة.
 
-【نقض العهد】
-علمت قريش بغدرها، فأرسلت أبا سفيان إلى المدينة لتجديد الصلح، لكن النبي ﷺ رفض، وقال لأبي بكر: «لو كنتُ آخذًا بصلحٍ لرددتك». فرجع أبو سفيان خائبًا.
+【الاستعداد للفتح — سرية تامة】
+أمر النبي ﷺ أصحابه بالتجهّز، وكتم الأمر، ودعا: «اللهم خُذ العيون والأخبار عن قريش». فخرج في جيش قوامه ١٠ آلاف مقاتل، في رمضان من السنة الثامنة. وكان الصحابة صائمين.
+ثم أمرهم بالفطر عند الكديد ليتقوّوا على القتال.
 
-【الاستعداد للفتح】
-أمر النبي ﷺ أصحابه بالتجهز، وكتم الأمر، ودعا: «اللهم خُذ العيون والأخبار عن قريش». فخرج في جيش قوامه ١٠ آلاف مقاتل، في رمضان من السنة الثامنة.
-
-【في الطريق】
+【في الطريق — استسلام أبو سفيان】
 مرّ الجيش بمرّ الظهران، وأوقدوا النيران، فأضاء الوادي كله. فخرج أبو سفيان، فرآه العباس بن عبد المطلب، فأخذه إلى النبي ﷺ، فأسلم أبو سفيان.
-
 قال النبي ﷺ: «من دخل دار أبي سفيان فهو آمن، ومن أغلق بابه فهو آمن، ومن دخل المسجد فهو آمن».
 
-【دخول مكة】
-دخل النبي ﷺ مكة فاتحًا، وهو راكب على ناقته، خافضًا رأسه، متواضعًا لله، يقرأ سورة الفتح، وكان يكرر: «يا أهل مكة، ما تظنون أني فاعل بكم؟» قالوا: «خيرًا، أخ كريم وابن أخ كريم». فقال ﷺ: «اذهبوا فأنتم الطلقاء».
+【دخول مكة — تواضع الفاتح】
+دخل النبي ﷺ مكة فاتحًا، وهو راكب على ناقته القصواء، خافضًا رأسه، متواضعًا لله، حتى إن لحيته تكاد تمسّ رحله من شدة التواضع، يقرأ سورة الفتح.
+وكان يكرر: «يا أهل مكة، ما تظنون أني فاعل بكم؟» قالوا: «خيرًا، أخ كريم وابن أخ كريم». فقال ﷺ كلمته الخالدة: «اذهبوا فأنتم الطلقاء».
 
-【تحطيم الأصنام】
-دخل المسجد الحرام، وطاف بالبيت، وكان حوله ٣٦٠ صنمًا، فجعل يشير إليها بعصاه ويقول: «جَاءَ الْحَقُّ وَزَهَقَ الْبَاطِلُ ۚ إِنَّ الْبَاطِلَ كَانَ زَهُوقًا» — الإسراء ٨١. فما أشار إلى صنم إلا وقع.
+【تحطيم الأصنام — تطهير البيت】
+دخل المسجد الحرام، وطاف بالبيت، وكان حوله ٣٦٠ صنمًا، فجعل يشير إليها بعصاه ويقول: «جَاءَ الْحَقُّ وَزَهَقَ الْبَاطِلُ ۚ إِنَّ الْبَاطِلَ كَانَ زَهُوقًا» — الإسراء ٨١. فما أشار إلى صنم إلا وقع لوجهه.
 
-【الكعبة والمفتاح】
-أمر النبي ﷺ بغسل الكعبة، وأعاد مفتاحها إلى عثمان بن طلحة، وقال: «خُذوها يا بني طلحة خالدة تالدة، لا ينزعها منكم إلا ظالم».
+【الكعبة والمفتاح — ردّ الأمانة】
+أمر النبي ﷺ بغسل الكعبة، وأعاد مفتاحها إلى عثمان بن طلحة، وقال: «خُذوها يا بني طلحة خالدة تالدة، لا ينزعها منكم إلا ظالم». فتلا: «إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تُؤَدُّوا الْأَمَانَاتِ إِلَىٰ أَهْلِهَا» — النساء ٥٨.
 
-【إعلان العفو العام】
+【إعلان العفو العام — أعظم موقف في التاريخ】
 قال ﷺ: «من ألقى سلاحه فهو آمن، ومن دخل داره فهو آمن، ومن دخل دار أبي سفيان فهو آمن». وعفا عن أهل مكة جميعًا رغم ما فعلوه به وبأصحابه.
+وقال لبعض من ظلموه: «اذهبوا فأنتم الطلقاء». وكم كان كريمًا!
 
-【إسلام أهل مكة】
+【إسلام أهل مكة — مشهد مهيب】
 أسلم أهل مكة جميعًا، وبايعوا النبي ﷺ على الإسلام. وأمر النبي ﷺ بلال بن رباح أن يصعد على الكعبة ويؤذّن، في مشهد مهيب، بعد أن كان مستضعفًا معذّبًا في مكة.
+وكانت قريش تُعذّبه في الرمضاء، فصار اليوم يصعد على ظهر الكعبة يؤذّن!
 
-【نتائج الفتح】
+【نتائج الفتح — الفتح الأعظم】
 • تحطيم الأصنام وطهارة الكعبة.
 • إسلام أهل مكة ودخولهم في دين الله.
 • ارتفاع راية التوحيد في الحجاز.
 • بداية انتشار الإسلام في الجزيرة العربية.
 • القضاء على أكبر معاقل الشرك.
+• تدفّق الناس من كل القبائل على الإسلام.
 
-قال تعالى: «إِنَّا فَتَحْنَا لَكَ فَتْحًا مُّبِينًا» — الفتح ١.
-
-وقال ﷺ: «لا هجرة بعد الفتح، ولكن جهاد ونية». (متفق عليه)
+قال ﷺ: «لا هجرة بعد الفتح، ولكن جهاد ونية». (متفق عليه)
 
 【الدروس المستفادة】
 • العفو عند المقدرة من صفات الأنبياء.
 • التواضع في لحظات الانتصار.
 • الوفاء بالعهود، والغدر ليس من صفات المؤمنين.
 • النصر من الله وحده.
+• من دخل في الإسلام لم تُؤخذ عليه ذنوب ماضيه.
 
 رضي الله عن أصحاب الفتح، وأعزّ الله بهم الإسلام والمسلمين.`,
     tags:['غزوات','فتح مكة','الفتح الأعظم'] },
 
-  /* ============ 9. يوسف عليه السلام ============ */
+  /* ============ 9. قصة يوسف عليه السلام ============ */
   { id:'s9', cat:'الأنبياء', title:'قصة يوسف عليه السلام — أحسن القصص',
-    body:`سماها الله تعالى «أحسن القصص» في قوله: «نَحْنُ نَقُصُّ عَلَيْكَ أَحْسَنَ الْقَصَصِ بِمَا أَوْحَيْنَا إِلَيْكَ هَٰذَا الْقُرْآنَ» — يوسف ٣. وهي قصة كاملة مفصّلة، من بدايتها إلى نهايتها، في سورة واحدة.
+    body:`سماها الله تعالى «أحسن القصص» في قوله: «نَحْنُ نَقُصُّ عَلَيْكَ أَحْسَنَ الْقَصَصِ بِمَا أَوْحَيْنَا إِلَيْكَ هَٰذَا الْقُرْآنَ» — يوسف ٣. وهي قصة كاملة مفصّلة، من بدايتها إلى نهايتها، في سورة واحدة، تتضمن من العبر ما لا يوجد في غيرها.
 
-【الرؤيا】
-رأى يوسف — وهو صغير — في المنام أحد عشر كوكبًا والشمس والقمر له ساجدين، فقال لأبيه يعقوب: «يَا أَبَتِ إِنِّي رَأَيْتُ أَحَدَ عَشَرَ كَوْكَبًا وَالشَّمْسَ وَالْقَمَرَ لِي سَاجِدِينَ». فعلم يعقوب أن الله سيرفع شأنه، فقال له: «يَا بُنَيَّ لَا تَقْصُصْ رُؤْيَاكَ عَلَىٰ إِخْوَتِكَ فَيَكِيدُوا لَكَ كَيْدًا» — يوسف ٥.
+【الرؤيا — البداية】
+رأى يوسف — وهو صغير — في المنام أحد عشر كوكبًا والشمس والقمر له ساجدين. فقصّها على أبيه يعقوب عليه السلام، فقال له: «يَا بُنَيَّ لَا تَقْصُصْ رُؤْيَاكَ عَلَىٰ إِخْوَتِكَ فَيَكِيدُوا لَكَ كَيْدًا ۖ إِنَّ الشَّيْطَانَ لِلْإِنسَانِ عَدُوٌّ مُّبِينٌ» — يوسف ٥.
+وكان يعقوب يعلم أن الله سيرفع شأن يوسف، ولكن أراد أن يحميه من حسد إخوته.
 
-【حسد الإخوة】
+【حسد الإخوة — الخيانة الأولى】
 كان يعقوب عليه السلام يحب يوسف وأخاه بنيامين أكثر من بقية إخوته، فحسدوه، وقالوا: «اقْتُلُوا يُوسُفَ أَوِ اطْرَحُوهُ أَرْضًا يَخْلُ لَكُمْ وَجْهُ أَبِيكُمْ» — يوسف ٩.
+فأخذوه معهم بحجة اللعب، ثم ألقوه في الجبّ (البئر)، ورجعوا إلى أبيهم يبكون بكاءً كاذبًا، وادّعوا أن الذئب أكله، وجاؤوا بقميصه ملطخًا بدم كذّاب. قال الله: «وَجَاءُوا أَبَاهُمْ عِشَاءً يَبْكُونَ» — يوسف ١٦.
+وقال يعقوب: «بَلْ سَوَّلَتْ لَكُمْ أَنفُسُكُمْ أَمْرًا ۖ فَصَبْرٌ جَمِيلٌ».
 
-فأخذوه معهم بحجة اللعب، ثم ألقوه في الجبّ (البئر)، ورجعوا إلى أبيهم يبكون بكاءً كاذبًا، وادّعوا أن الذئب أكله، وجاؤوا بقميصه ملطخًا بدم كذّاب.
+【في مصر — عبد مُباع】
+التقطه قوم من المسافرين، وباعوه في مصر بثمن بخس، دراهم معدودة. فاشتراه عزيز مصر (وزيرها)، وقال لامرأته: «أَكْرِمِي مَثْوَاهُ عَسَىٰ أَن يَنفَعَنَا أَوْ نَتَّخِذَهُ وَلَدًا» — يوسف ٢١.
 
-قال تعالى: «وَجَاءُوا أَبَاهُمْ عِشَاءً يَبْكُونَ» — يوسف ١٦.
-
-【في مصر】
-التقطه قوم من المسافرين، وباعوه في مصر بثمن بخس. فاشتراه عزيز مصر (وزيرها)، وقال لامرأته: «أَكْرِمِي مَثْوَاهُ عَسَىٰ أَن يَنفَعَنَا أَوْ نَتَّخِذَهُ وَلَدًا» — يوسف ٢١.
-
-【الفتنة والثبات】
+【الفتنة والثبات — موقف العظماء】
 كبر يوسف وبلغ أشدّه، وآتاه الله الحكم والعلم. فتعرض لفتنة عظيمة من امرأة العزيز، التي راودته عن نفسه، وغلّقت الأبواب، وقالت: «هَيْتَ لَكَ». فقال: «مَعَاذَ اللَّهِ إِنَّهُ رَبِّي أَحْسَنَ مَثْوَايَ» — يوسف ٢٣.
-
 فاستعصم، وثبت على دينه، وفضّل السجن على المعصية، فقال: «رَبِّ السِّجْنُ أَحَبُّ إِلَيَّ مِمَّا يَدْعُونَنِي إِلَيْهِ» — يوسف ٣٣.
+وقد شهدت امرأة العزيز ببراءته في النهاية، فقال الله: «الْآنَ حَصْحَصَ الْحَقُّ» — يوسف ٥١.
 
-【في السجن】
+【في السجن — سنوات الصبر】
 سُجن يوسف ظلمًا، وفي السجن دعا إلى الله، وفسّر الأحلام لرفيقيه. قال لأحدهما: «اذْكُرْنِي عِندَ رَبِّكَ» — يوسف ٤٢. لكنه نُسي في السجن بضع سنين.
 
-【رؤيا الملك】
+【رؤيا الملك — لحظة الفرج】
 رأى الملك سبع بقرات سمان يأكلهن سبع عجاف، وسبع سنبلات خُضر وأُخر يابسات. فسأل الملأ، فعجزوا عن التفسير. فتذكر الساقي يوسف، فجاءه في السجن، ففسّر له يوسف الرؤيا:
-
 «تَزْرَعُونَ سَبْعَ سِنِينَ دَأَبًا فَمَا حَصَدتُّمْ فَذَرُوهُ فِي سُنبُلِهِ إِلَّا قَلِيلًا مِّمَّا تَأْكُلُونَ. ثُمَّ يَأْتِي مِن بَعْدِ ذَٰلِكَ سَبْعٌ شِدَادٌ يَأْكُلْنَ مَا قَدَّمْتُمْ لَهُنَّ إِلَّا قَلِيلًا مِّمَّا تُحْصِنُونَ» — يوسف ٤٧-٤٨.
 
-【خروجه من السجن】
-طلب الملك أن يأتوه بيوسف، فلما جاءه الرسول قال: «ارْجِعْ إِلَىٰ رَبِّكَ فَاسْأَلْهُ مَا بَالُ النِّسْوَةِ اللَّاتِي قَطَّعْنَ أَيْدِيَهُنَّ» — يوسف ٥٠. فأراد يوسف أن تُثبت براءته أولًا.
+【خروجه من السجن — إثبات البراءة】
+طلب الملك أن يأتوه بيوسف، فلما جاءه الرسول قال: «ارْجِعْ إِلَىٰ رَبِّكَ فَاسْأَلْهُ مَا بَالُ النِّسْوَةِ اللَّاتِي قَطَّعْنَ أَيْدِيَهُنَّ ۚ إِنَّ رَبِّي بِكَيْدِهِنَّ عَلِيمٌ» — يوسف ٥٠. فأراد يوسف أن تُثبت براءته أولًا.
+ثم أقرّت امرأة العزيز بالحق، وقالت: «الْآنَ حَصْحَصَ الْحَقُّ أَنَا رَاوَدتُّهُ عَن نَّفْسِهِ وَإِنَّهُ لَمِنَ الصَّادِقِينَ» — يوسف ٥١.
 
-ثم أقرّت امرأة العزيز بالحق، فظهرت براءة يوسف.
+【على خزائن مصر — القائد الاقتصادي】
+قال يوسف للملك: «اجْعَلْنِي عَلَىٰ خَزَائِنِ الْأَرْضِ إِنِّي حَفِيظٌ عَلِيمٌ» — يوسف ٥٥. فأصبح عزيز مصر، يدير أزمتها الاقتصادية بحكمة، فخزّن الحبوب في سنوات الرخاء، فنجّى مصر والشام من المجاعة.
 
-【على خزائن مصر】
-قال يوسف للملك: «اجْعَلْنِي عَلَىٰ خَزَائِنِ الْأَرْضِ إِنِّي حَفِيظٌ عَلِيمٌ» — يوسف ٥٥. فأصبح عزيز مصر، يدير أزمتها الاقتصادية بحكمة.
-
-【لقاء الإخوة】
+【لقاء الإخوة — العفو العظيم】
 جاء إخوة يوسف إلى مصر يطلبون الطعام في سنوات الجدب، فعرفهم يوسف وهم له منكرون. ثم كشف لهم نفسه، وقال: «أَنَا يُوسُفُ وَهَٰذَا أَخِي» — يوسف ٩٠. فذُهلوا وندموا.
+قال يوسف لإخوته: «لَا تَثْرِيبَ عَلَيْكُمُ الْيَوْمَ ۖ يَغْفِرُ اللَّهُ لَكُمْ ۖ وَهُوَ أَرْحَمُ الرَّاحِمِينَ» — يوسف ٩٢. ثم دعا لأبيه وأهله، وطلب منهم أن يأتوا بأهلهم جميعًا إلى مصر.
 
-【العفو العظيم】
-قال يوسف لإخوته: «لَا تَثْرِيبَ عَلَيْكُمُ الْيَوْمَ يَغْفِرُ اللَّهُ لَكُمْ وَهُوَ أَرْحَمُ الرَّاحِمِينَ» — يوسف ٩٢.
-
+【تحقق الرؤيا — اللقاء الأخير】
 ثم أرسل قميصه إلى أبيه يعقوب، فارتد بصره بعد أن كان قد فقد بصره من الحزن على يوسف. فجاء يعقوب وأهله إلى مصر، وسجدوا ليوسف شكرًا لله، وتحقق تأويل الرؤيا.
+قال يوسف: «يَا أَبَتِ هَٰذَا تَأْوِيلُ رُؤْيَايَ مِن قَبْلُ قَدْ جَعَلَهَا رَبِّي حَقًّا» — يوسف ١٠٠.
 
-【الدروس المستفادة】
+【الدروس المستفادة — كنوز القصة】
 • الصبر على البلاء من صفات الأنبياء.
 • العفة والثبات عند الفتنة.
 • العفو عند المقدرة.
 • التوكل على الله وحسن الظن به.
 • الابتلاء يعقبه التمكين.
 • التخطيط وإدارة الأزمات من صفات القائد المؤمن.
+• لا تيأس من رحمة الله، فبعد كل شدة فرج.
+• الشكوى إلى الله لا إلى الناس.
+• الحذر من الحسد، فإنه يُفسد القلوب.
 
 قال ﷺ: «الكريم ابن الكريم ابن الكريم ابن الكريم: يوسف بن يعقوب بن إسحاق بن إبراهيم». (رواه البخاري)
-
 عليه السلام، وجمعنا به في الفردوس الأعلى.`,
     tags:['أنبياء','يوسف','أحسن القصص','صبر'] },
 
-  /* ============ 10. موسى عليه السلام ============ */
-  { id:'s10', cat:'الأنبياء', title:'قصة موسى عليه السلام — كليم الله',
-    body:`هو موسى بن عمران، من ذرية يعقوب عليه السلام، أرسله الله إلى فرعون وبنى إسرائيل، وأيّده بمعجزات كبرى، وكلّمه الله تكليمًا، فسُمّي «كليم الله».
+  /* ============ 10. قصة من تأليفي — فيها عبرة ============ */
+  { id:'s10', cat:'حكايات وعبر', title:'حكاية الشيخ والصبي — قصة من نسج الخيال فيها عبرة',
+    body:`يُحكى — والله أعلم بالصواب — أنه كان في قديم الزمان، في إحدى القرى الصغيرة على ضفاف النيل، شيخٌ كبيرٌ في السن، كثير العلم، قليل الكلام، عُرف بين أهل القرية بـ«الحكيم». كان بيته صغيرًا في طرف القرية، وفيه مكتبة عظيمة من الكتب، وكان يقضي ليله في القراءة والصلاة، ونهاره في تعليم الناس الخير.
 
-【الولادة والنجاة】
-وُلد موسى في زمن فرعون، الذي كان يقتل كل غلام يُولد في بني إسرائيل، خوفًا من نبوءة بأن غلامًا سيُزيل ملكه.
+【البداية — صبيٌّ كسول】
+في القرية نفسها كان يعيش صبيٌّ صغير اسمه «سالم»، عمره عشر سنوات. كان سالم كسولًا، يكره المدرسة، ويكره القراءة، ويكره الجلوس مع الكبار ليستفيد من علمهم. كان يقضي وقته في اللعب واللهو، وإذا كلّفه أبوه بأي عمل يقول: «أنا صغير!».
+وفي يوم من الأيام، ذهب الأب إلى الحكيم يشكو له حال ابنه، فاستمع الحكيم بإنصات، ثم قال: «دعه يأتي إليّ غدًا في الفجر، وأنا أُعلّمه».
 
-فأوحى الله إلى أم موسى أن تضعه في تابوت وتُلقيه في النيل: «وَأَوْحَيْنَا إِلَىٰ أُمِّ مُوسَىٰ أَنْ أَرْضِعِيهِ فَإِذَا خِفْتِ عَلَيْهِ فَأَلْقِيهِ فِي الْيَمِّ وَلَا تَخَافِي وَلَا تَحْزَنِي إِنَّا رَادُّوهُ إِلَيْكِ وَجَاعِلُوهُ مِنَ الْمُرْسَلِينَ» — القصص ٧.
+【الدرس الأول — الحجر والماء】
+في الفجر، جاء سالم إلى بيت الحكيم وهو يتمنّع، فوجده قد استيقظ وصلى، وجلس يفكر. ثم قال له الحكيم: «يا سالم، خُذ هذه الجرّة الفخارية، وانزل بها إلى النهر، واملأها ماءً، ثم ارجع».
+فعل سالم ما أُمر به، ثم وضع الجرّة أمام الحكيم. فقال الحكيم: «انظر إلى الجرّة، ثم فرّغها من الماء». فسأل سالم: «لماذا؟!» قال: «انظر إلى الجرّة، ماذا ترى؟» قال: «أرى جرة فارغة نظيفة، لا شيء فيها».
+فسكت الحكيم قليلًا، ثم قال: «هل تعلم أن هذه الجرّة كانت قبل قليل مملوءة ماءً؟ ومع ذلك، الآن هي فارغة. فالعلم مثل الماء الذي فيها، إن لم تحفظه في قلبك سيتبخّر كما يتبخّر الماء».
 
-فالتقطه آل فرعون، وردّه الله إلى أمه، فنشأ موسى في بيت فرعون نفسه! وهذا من تدبير الله العجيب.
+【الدرس الثاني — الصخرة والحكمة】
+في اليوم التالي، استدعى الحكيم سالمًا وأعطاه صخرة صغيرة، وقال: «اذهب وامشِ سبع دورات حول القرية، وأنت تحمل هذه الصخرة في يدك، ثم ارجع إليّ».
+فعل سالم، وعاد متعبًا. فقال الحكيم: «كيف كانت الصخرة؟» قال: «خفيفة في البداية، ثم صارت ثقيلة».
+قال الحكيم: «هذه الصخرة هي الأمانة. تحملُها اليوم خفيفة، وتحملُها غدًا ثقيلة، حتى تُثقلك وتُسقِطك. لذا احفظ أمانتك قبل أن تصير صخرة عظيمة».
 
-【قتل المصري وهروبه】
-شبّ موسى، وخرج يومًا إلى المدينة، فوجد مصريًّا يقتل رجلًا من بني إسرائيل، فدخل موسى بينهما، فوكز المصري فقتله خطأً. قال: «رَبِّ إِنِّي ظَلَمْتُ نَفْسِي فَاغْفِرْ لِي» — القصص ١٦. فغفر الله له.
+【الدرس الثالث — الشمعة والمفتاح】
+في اليوم الثالث، أخذ الحكيم سالمًا إلى غرفة مظلمة، وأعطاه شمعة مضيئة، وقال: «أضيء هذه الشمعة، وابحث في الغرفة عن مفتاح ضائع». فبحث سالم، وهو يتنقّل بالشمعة في أركان الغرفة، حتى وجد المفتاح في زاوية بعيدة.
+قال الحكيم: «ماذا تعلّمت؟» قال سالم: «لو لم يكن هناك ضوء لما وجدت المفتاح».
+قال الحكيم: «هكذا العلم. يُضيء لك الطريق، ويكشف لك ما لا تراه. من غير علم يبقى الإنسان يتخبّط في الظلمات».
 
-ثم أصبح في المدينة خائفًا يترقب، فبلغه أن الملأ يأتمرون به، فخرج من مصر خائفًا، وتوجه إلى مدين.
+【الدرس الرابع — الغصن والرياح】
+في اليوم الرابع، أخذ الحكيم سالمًا إلى شجرة عظيمة في وسط القرية، وقال: «اصعد على هذا الغصن الضعيف، وتعلّق به، ودع الريح تُحرّكك».
+فعل سالم، وبعد قليل صرخ: «يا حكيم، الغصن سيتكسّر!».
+قال الحكيم: «إذا كسر الغصن، فستسقط أنت. ماذا تعلّمت؟» قال سالم: «أن أتعلّق بغصن قوي».
+قال الحكيم: «نعم. في الحياة، لا تتعلّق بغير الله. كل ما سوى الله غصن ضعيف، يتكسّر إذا اشتدت الرياح. فتعلّق بالله وحده».
 
-【في مدين】
-سقى لابنتي شعيب، فدعاه شعيب إلى بيته، وزوّجه إحدى ابنتيه، وعمل عنده عشر سنوات. وبعد انقضاء الأجل، سار بأهله، فرأى نارًا عند جبل الطور.
+【الدرس الخامس — النملة والجبل】
+في اليوم الخامس، جلس الحكيم مع سالم أمام جبل صغير، فأشار الحكيم إلى نملة صغيرة تحمل حبة قمح أكبر منها، وتصعد على الجبل، ثم تسقط، ثم تصعد، ثم تسقط، ثم تصعد... حتى وصلت إلى قمّته.
+قال الحكيم: «ماذا رأيت؟» قال سالم: «رأيت نملة صغيرة تُقاتل لتحمل حبّة أكبر منها، ولم تيأس حتى وصلت».
+قال الحكيم: «إن الإنسان الذي يريد أن يبلغ الجبال العالية، لابد أن يتعلّم من النملة. الصبر والمثابرة هما مفتاح النجاح. من تعجّل نال القليل، ومن صبر نال الكثير».
 
-فنادى: «إِنِّي آنَسْتُ نَارًا لَّعَلِّي آتِيكُم مِّنْهَا بِخَبَرٍ أَوْ جَذْوَةٍ مِّنَ النَّارِ لَعَلَّكُمْ تَصْطَلُونَ» — القصص ٢٩.
+【الدرس السادس — الحجر والسلسلة】
+في اليوم السادس، أخذ الحكيم سالمًا إلى حجر كبير، وأعطاه سلسلة طويلة، وقال: «اربط نفسك بهذا الحجر، واذهب إلى السوق، وارجع». ففعل سالم، وأخذ الحجر خلفه يتعثر به كل من في السوق، ويسخرون منه.
+عاد سالم محرجًا، فقال الحكيم: «هذا الحجر هو ذنوبك. كلما حملتها، عثّرتك، وأحرجتك، وأبعدتك عن الناس وعن الله. لذا تخلّص منها بالتوبة قبل أن تُثقلك».
 
-【التكليم والتكليف】
-فلما أتاها، نُودي: «إِنِّي أَنَا رَبُّكَ فَاخْلَعْ نَعْلَيْكَ إِنَّكَ بِالْوَادِ الْمُقَدَّسِ طُوًى» — طه ١٢. وأُعطي موسى معجزتين: العصا واليد البيضاء.
+【الدرس السابع — النار والماء】
+في اليوم السابع، أحضر الحكيم إناءً فيه ماء، وإناءً فيه نار، وقال لسالم: «اخلط الماء والنار في وعاء واحد». فسأل سالم: «كيف يُخلطان؟» قال: «لن يختلطا. أحدهما يُطفئ الآخر».
+فقال الحكيم: «العلم والحسد لا يجتمعان في قلب واحد. إذا دخل الحسد، ذهب العلم. إذا دخل العلم، ذهب الحسد. فاحرص على قلبك من الحسد».
 
-ثم أرسله الله إلى فرعون: «اذْهَبْ إِلَىٰ فِرْعَوْنَ إِنَّهُ طَغَىٰ» — طه ٢٤.
+【الخاتمة — سالم الجديد】
+مضت السبع سنوات، وكبر سالم، وأصبح شابًّا عالمًا، حكيمًا، مؤدّبًا، محبوبًا بين الناس. صار يُعلّم الصغار، ويُعين الكبار، ويقضي ليله في الصلاة والقراءة.
+وفي يوم من الأيام، جاء الحكيم — وقد بلغ من الكبر عتيًّا — ودعا سالمًا وقال: «يا سالم، لقد أخذت مني كل شيء، والآن أنا مُودّعك. اعلم أن العلم لا يُنال إلا بالصبر، ولا يُحفظ إلا بالعمل، ولا يُبارك فيه إلا بالنية الصادقة».
+ثم أوصاه بوصايا، ومات الحكيم رحمه الله.
+وبقي سالمٌ يُعلّم الناس الخير حتى آخر حياته، وتذكّر دائمًا جرة الماء، وصخرة الأمانة، وشمعة العلم، وغصن التوكل، ونملة الصبر، وسلسلة الذنوب، ونار الحسد.
 
-فطلب موسى أن يشدّ أزره بأخيه هارون: «وَاجْعَل لِّي وَزِيرًا مِّنْ أَهْلِي. هَارُونَ أَخِي» — طه ٢٩-٣٠. فاستجاب الله له.
+【الدروس المستفادة — خلاصة الحكاية】
+• العلم يحتاج إلى حفظ وعمل، وإلا تبخّر كما يتبخّر الماء.
+• الأمانة تثقُل إذا لم تُؤدَّ.
+• العلم يضيء الطريق، والجهل ظلام دامس.
+• التوكل على الله وحده، فكل ما سواه ضعيف.
+• الصبر والمثابرة مفتاح النجاح.
+• التوبة تُخلّصك من قيود الذنوب.
+• الحسد والعلم لا يجتمعان.
 
-【دعوة فرعون】
-دخل موسى وهارون على فرعون، فدعواه إلى الله بلين، فقال فرعون متكبرًا: «أَنَا رَبُّكُمُ الْأَعْلَىٰ» — النازعات ٢٤. وادّعى الألوهية، فأنكر موسى ذلك، ودعاه إلى الحق.
+قال تعالى: «وَقُل رَّبِّ زِدْنِي عِلْمًا» — طه ١١٤.
+وقال ﷺ: «من سلك طريقًا يبتغي فيه علمًا، سهّل الله له طريقًا إلى الجنة». (رواه مسلم)
 
-【معجزة العصا واليد】
-قال فرعون: «إِن كُنتَ جِئْتَ بِآيَةٍ فَأْتِ بِهَا» — الأعراف ١٠٦. فألقى موسى عصاه، فإذا هي ثعبان مبين، ونزع يده، فإذا هي بيضاء من غير سوء.
-
-【السحرة والإيمان】
-جمع فرعون السحرة، فألقوا حبالهم وعصيّهم، وسحروا أعين الناس. ثم ألقى موسى عصاه، فابتلعت كل ما ألقوه. فخرّ السحرة ساجدين، وقالوا: «آمَنَّا بِرَبِّ الْعَالَمِينَ. رَبِّ مُوسَىٰ وَهَارُونَ» — الأعراف ١٢١-١٢٢.
-
-فقال فرعون مهددًا: «لَأُقَطِّعَنَّ أَيْدِيَكُمْ وَأَرْجُلَكُم مِّنْ خِلَافٍ وَلَأُصَلِّبَنَّكُمْ أَجْمَعِينَ» — الأعراف ١٢٤. فأجابوا: «إِنَّا إِلَىٰ رَبِّنَا مُنقَلِبُونَ» — الأعراف ١٢٥.
-
-【خروج بني إسرائيل】
-أمر الله موسى بالخروج ببني إسرائيل ليلًا، فعلم فرعون، فتبعهم بجيش عظيم.
-
-قال تعالى: «فَأَتْبَعَهُمْ فِرْعَوْنُ بِجُنُودِهِ فَغَشِيَهُم مِّنَ الْيَمِّ مَا غَشِيَهُمْ» — طه ٧٨.
-
-【انفلاق البحر】
-لما وصل موسى إلى البحر، قال أصحابه: «إِنَّا لَمُدْرَكُونَ». قال: «كَلَّا إِنَّ مَعِيَ رَبِّي سَيَهْدِينِ» — الشعراء ٦١-٦٢.
-
-فأوحى الله إليه: «اضْرِب بِّعَصَاكَ الْبَحْرَ ۖ فَانفَلَقَ فَكَانَ كُلُّ فِرْقٍ كَالطَّوْدِ الْعَظِيمِ» — الشعراء ٦٣.
-
-فانفلق البحر إلى اثني عشر طريقًا، فعبر بنو إسرائيل. ثم أغرق الله فرعون وجنوده.
-
-قال تعالى: «فَأَخَذْنَاهُ وَجُنُودَهُ فَنَبَذْنَاهُمْ فِي الْيَمِّ فَانظُرْ كَيْفَ كَانَ عَاقِبَةُ الظَّالِمِينَ» — القصص ٤٠.
-
-【التوراة والوحي】
-بعد نجاة بني إسرائيل، صعد موسى إلى جبل الطور، فصام أربعين يومًا، وأنزل الله عليه التوراة.
-
-قال تعالى: «وَكَتَبْنَا لَهُ فِي الْأَلْوَاحِ مِن كُلِّ شَيْءٍ مَّوْعِظَةً وَتَفْصِيلًا لِّكُلِّ شَيْءٍ» — الأعراف ١٤٥.
-
-【فتنة العجل】
-في غيابه، صنع السامري عجلًا من الذهب لبني إسرائيل، فعبدوه. فغضب موسى غضبًا شديدًا، ورمى الألواح، وأخذ برأس أخيه هارون يجره إليه. ثم أحرق العجل ونسفه في اليم.
-
-【الدروس المستفادة】
-• الله ينصر المستضعفين.
-• الدعوة بالرفق واللين.
-• الطغيان عاقبته الهلاك.
-• الثبات على الحق حتى في مواجهة الطغاة.
-• التسليم لأمر الله حتى لو بدا مستحيلًا.
-• الله يختار من يشاء من عباده.
-
-قال تعالى: «وَكَلَّمَ اللَّهُ مُوسَىٰ تَكْلِيمًا» — النساء ١٦٤.
-
-عليه السلام، وجمعنا به في الفردوس الأعلى.`,
-    tags:['أنبياء','موسى','كليم الله','فرعون'] },
+﴿تمّت بحمد الله﴾`,
+    tags:['حكايات','عبرة','تعليمي'] },
 
   /* ============ قصص قريباً ============ */
   { id:'s11', cat:'الصحابة', title:'خالد بن الوليد — سيف الله المسلول',
-    body:'قادمة قريباً بإذن الله…\n\nسنحكي فيها قصة أعظم قائد عسكري في الإسلام: من قيادته للمشركين في أُحد، إلى إسلامه، وفتوحاته في العراق والشام، ومعاركه الخالدة: اليمامة، واليرموك، وغيرها. ثم عزله في عهد عمر، وكيف تقبّل ذلك بثبات المؤمن.',
+    body:`قادمة قريباً بإذن الله…
+
+سنحكي فيها قصة أعظم قائد عسكري في الإسلام: من قيادته للمشركين في أُحد، إلى إسلامه، وفتوحاته في العراق والشام، ومعاركه الخالدة: اليمامة، واليرموك، والحيرة، ودمشق، وغيرها. ثم عزله في عهد عمر، وكيف تقبّل ذلك بثبات المؤمن الذي يعمل لله لا للمكانة.`,
     locked:true, tags:['صحابة','خالد','قائد'] },
 
   { id:'s12', cat:'الصحابة', title:'سلمان الفارسي — باحث عن الحق',
-    body:'قادمة قريباً بإذن الله…\n\nقصة شاب فارسي ترك المجوسية بحثًا عن الحق، تنقّل بين الرهبان والنصارى، حتى وصل إلى المدينة وأسلم على يد النبي ﷺ. صاحب فكرة حفر الخندق، وممن رفع راية الإسلام في فارس.',
+    body:`قادمة قريباً بإذن الله…
+
+قصة شاب فارسي ترك المجوسية بحثًا عن الحق، وتنقّل بين الرهبان والنصارى في رحلة طويلة، حتى وصل إلى المدينة وأسلم على يد النبي ﷺ. صاحب فكرة حفر الخندق، وممن رفع راية الإسلام في فارس.`,
     locked:true, tags:['صحابة','سلمان','فارس'] },
 
   { id:'s13', cat:'الصحابة', title:'بلال بن رباح — مؤذن الرسول ﷺ',
-    body:'قادمة قريباً بإذن الله…\n\nقصة عبد حبشي عُذّب في الرمضاء فثبت وقال: «أحدٌ أحد». أعتقه أبو بكر، وأصبح مؤذن النبي ﷺ، وسمع النبي ﷺ خشخشة نعليه في الجنة.',
+    body:`قادمة قريباً بإذن الله…
+
+قصة عبد حبشي عُذّب في الرمضاء فثبت وقال: «أحدٌ أحد». أعتقه أبو بكر، وأصبح مؤذن النبي ﷺ، وسمع النبي ﷺ خشخشة نعليه في الجنة. قصة تُخلّد الثبات على الحق.`,
     locked:true, tags:['صحابة','بلال','أذان'] },
 
   { id:'s14', cat:'الصحابة', title:'مصعب بن عمير — أول سفير في الإسلام',
-    body:'قادمة قريباً بإذن الله…\n\nقصة شاب مترف من شباب مكة، ترك النعيم وأسلم، وصار أول سفير في الإسلام إلى المدينة، فأسلم على يديه سادة الأنصار، واستُشهد يوم أُحد ولم يوجد له كفن كامل.',
+    body:`قادمة قريباً بإذن الله…
+
+قصة شاب مُترف من شباب مكة، ترك النعيم وأسلم، وصار أول سفير في الإسلام إلى المدينة، فأسلم على يديه سادة الأنصار، واستُشهد يوم أُحد ولم يوجد له كفن كامل. قصة تُخلّد التضحية في سبيل الله.`,
     locked:true, tags:['صحابة','مصعب','سفير'] },
 
   { id:'s15', cat:'الغزوات', title:'غزوة خيبر — فتح الحصون',
-    body:'قادمة قريباً بإذن الله…\n\nقصة فتح حصون خيبر المنيعة، وتفصيل موقعة الراية التي أعطاها النبي ﷺ لعليّ بن أبي طالب، وقتال مرحب اليهودي.',
+    body:`قادمة قريباً بإذن الله…
+
+قصة فتح حصون خيبر المنيعة، وتفصيل موقعة الراية التي أعطاها النبي ﷺ لعليّ بن أبي طالب، وقتال مرحب اليهودي، وقصة الشاة المسمومة التي أهدتها زوجة سلام بن مشكم للنبي ﷺ.`,
     locked:true, tags:['غزوات','خيبر','فتح'] },
 
   { id:'s16', cat:'الغزوات', title:'غزوة حنين — الطلقاء يقاتلون',
-    body:'قادمة قريباً بإذن الله…\n\nقصة الغزوة التي وقعت بعد فتح مكة، وانتصار المسلمين بعد أن ولّوا مدبرين في أول الأمر، ونزول قوله تعالى: «وَيَوْمَ حُنَيْنٍ إِذْ أَعْجَبَتْكُمْ كَثْرَتُكُمْ» — التوبة ٢٥.',
-    locked:true, tags:['غزوات','حنين','هوازن'] },
+    body:`قادمة قريباً بإذن الله…
+
+قصة الغزوة التي وقعت بعد فتح مكة، وانتصار المسلمين بعد أن ولّوا مدبرين في أول الأمر، ونزول قوله تعالى: «وَيَوْمَ حُنَيْنٍ إِذْ أَعْجَبَتْكُمْ كَثْرَتُكُمْ» — التوبة ٢٥. فيها دروس عظيمة في التواضع والتوكل.`,
+    locked:true, tags:['غزوات','حنين'] },
 
   { id:'s17', cat:'الغزوات', title:'غزوة تبوك — جيش العسرة',
-    body:'قادمة قريباً بإذن الله…\n\nقصة آخر غزوات النبي ﷺ، التي خرج فيها في شدة الحر والفقر، وساهم فيها عثمان بن عفان بماله، وتخلّف عنها المنافقون، ونزلت فيها سورة التوبة.',
+    body:`قادمة قريباً بإذن الله…
+
+قصة آخر غزوات النبي ﷺ، التي خرج فيها في شدة الحر والفقر، وساهم فيها عثمان بن عفان بماله، وتخلّف عنها المنافقون، ونزلت فيها سورة التوبة. فيها دروس في الإنفاق والبذل في سبيل الله.`,
     locked:true, tags:['غزوات','تبوك','العسرة'] },
 
   { id:'s18', cat:'الأنبياء', title:'قصة نوح عليه السلام — شيخ المرسلين',
-    body:'قادمة قريباً بإذن الله…\n\nقصة أول رسول إلى أهل الأرض بعد الشرك، الذي دعا قومه ٩٥٠ سنة، وصنع السفينة بأمر الله، وأغرق الله الكافرين بالطوفان العظيم.',
+    body:`قادمة قريباً بإذن الله…
+
+قصة أول رسول إلى أهل الأرض بعد الشرك، الذي دعا قومه ٩٥٠ سنة، وصنع السفينة بأمر الله، وأغرق الله الكافرين بالطوفان العظيم. قصة فيها دروس عظيمة في الصبر والدعوة.`,
     locked:true, tags:['أنبياء','نوح','طوفان'] },
 
   { id:'s19', cat:'الأنبياء', title:'قصة إبراهيم عليه السلام — خليل الرحمن',
-    body:'قادمة قريباً بإذن الله…\n\nقصة أبي الأنبياء، الذي حطّم الأصنام، وأُلقي في النار فجعلها الله بردًا وسلامًا، وابتُلي بذبح ابنه إسماعيل، وبنى الكعبة معه.',
+    body:`قادمة قريباً بإذن الله…
+
+قصة أبي الأنبياء، الذي حطّم الأصنام، وأُلقي في النار فجعلها الله بردًا وسلامًا، وابتُلي بذبح ابنه إسماعيل، وبنى الكعبة معه. قصة فيها من اليقين والصبر ما لا يُوصف.`,
     locked:true, tags:['أنبياء','إبراهيم','خليل'] },
 
   { id:'s20', cat:'الأنبياء', title:'قصة عيسى عليه السلام — روح الله وكلمته',
-    body:'قادمة قريباً بإذن الله…\n\nقصة النبي الذي وُلد من غير أب بكلمة «كن»، وتكلّم في المهد، وأحيا الموتى بإذن الله، وشُبّه لليهود، ورفعه الله إليه، وسينزل في آخر الزمان.',
+    body:`قادمة قريباً بإذن الله…
+
+قصة النبي الذي وُلد من غير أب بكلمة «كن»، وتكلّم في المهد، وأحيا الموتى بإذن الله، وشُبّه لليهود، ورفعه الله إليه، وسينزل في آخر الزمان. قصة فيها دروس في القدرة الإلهية والعفة.`,
     locked:true, tags:['أنبياء','عيسى','مريم'] },
 
   { id:'s21', cat:'التاريخ', title:'قصة أصحاب الكهف — الفتية المؤمنون',
-    body:'قادمة قريباً بإذن الله…\n\nقصة سبعة فتية آمنوا بربهم، وفرّوا بدينهم إلى الكهف، فضرب الله على آذانهم ٣٠٩ سنوات، ثم بعثهم ليكونوا آية للناس.',
-    locked:true, tags:['تاريخ','أصحاب الكهف','قرآن'] },
+    body:`قادمة قريباً بإذن الله…
+
+قصة سبعة فتية آمنوا بربهم، وفرّوا بدينهم إلى الكهف، فضرب الله على آذانهم ٣٠٩ سنوات، ثم بعثهم ليكونوا آية للناس. قصة فيها دروس في الثبات على الإيمان.`,
+    locked:true, tags:['تاريخ','أصحاب الكهف'] },
 
   { id:'s22', cat:'التاريخ', title:'قصة ذي القرنين — الملك الصالح',
-    body:'قادمة قريباً بإذن الله…\n\nقصة الملك المؤمن الذي مكّن الله له في الأرض، وسار إلى المشارق والمغارب، وبنى السدّ بين الجبلين، وحبس يأجوج ومأجوج.',
-    locked:true, tags:['تاريخ','ذي القرنين','يأجوج'] }
-];
-/* بنك الأسئلة */
-const LEVELS = [
-  { id:1, name:"المستوى الأول", title:"زاد المبتدئ", icon:"🌱", color:"#22c55e", time:30,
-    desc:"أساسيات الدين وأوليات القرآن الكريم",
-    qs:[
-      {q:"كم عدد أركان الإسلام؟", o:["ثلاثة","أربعة","خمسة","ستة"], c:2, i:"أركان الإسلام خمسة: الشهادتان، والصلاة، والزكاة، وصوم رمضان، وحج البيت. (متفق عليه)"},
-      {q:"ما أول سورة في المصحف الشريف؟", o:["البقرة","الفاتحة","الناس","الإخلاص"], c:1, i:"سورة الفاتحة هي أول سور المصحف، وتسمى أم الكتاب."},
-      {q:"كم عدد الصلوات المفروضة في اليوم والليلة؟", o:["ثلاث","أربع","خمس","ست"], c:2, i:"خمس صلوات فرضها الله في ليلة الإسراء: الفجر والظهر والعصر والمغرب والعشاء."},
-      {q:"في أي شهر هجري فُرض الصيام؟", o:["شعبان","رمضان","شوال","رجب"], c:1, i:"قال تعالى: «شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ» — البقرة ١٨٥."},
-      {q:"من هو النبي الذي ابتلعه الحوت؟", o:["يوسف","يونس","أيوب","إلياس"], c:1, i:"قال تعالى: «فَابْتَلَعَهُ الْحُوتُ وَهُوَ مُلِيمٌ» — الصافات ١٤٢، وهو يونس عليه السلام."},
-      {q:"كم عدد أركان الإيمان؟", o:["خمسة","ستة","سبعة","أربعة"], c:1, i:"ستة أركان: الإيمان بالله، وملائكته، وكتبه، ورسله، واليوم الآخر، والقدر خيره وشره. (مسلم)"},
-      {q:"ما أطول سورة في القرآن الكريم؟", o:["آل عمران","النساء","البقرة","الأعراف"], c:2, i:"سورة البقرة، وعدد آياتها ٢٨٦ آية."},
-      {q:"ما أقصر سورة في القرآن الكريم؟", o:["الإخلاص","الكوثر","الفلق","الناس"], c:1, i:"سورة الكوثر، وعدد آياتها ثلاث آيات."},
-      {q:"ما أول ما نزل من القرآن الكريم؟", o:["اقرأ باسم ربك","الحمد لله","يا أيها المدثر","الم"], c:0, i:"أول ما نزل صدر سورة العلق: «اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ». (البخاري)"},
-      {q:"كم عدد أجزاء القرآن الكريم؟", o:["٢٠","٢٥","٣٠","٦٠"], c:2, i:"ثلاثون جزءًا، و١١٤ سورة."}
-    ]
-  },
-  { id:2, name:"المستوى الثاني", title:"زاد الطالب", icon:"📖", color:"#38bdf8", time:28,
-    desc:"السيرة النبوية وأعلام الصحابة رضوان الله عليهم",
-    qs:[
-      {q:"من الصحابي الملقب بـ«سيف الله المسلول»؟", o:["عمر بن الخطاب","خالد بن الوليد","سعد بن أبي وقاص","أبو عبيدة"], c:1, i:"خالد بن الوليد رضي الله عنه، لقّبه النبي ﷺ بسيف الله المسلول. (البخاري)"},
-      {q:"ما السورة التي تُلقب بـ«قلب القرآن»؟", o:["الرحمن","يس","الكهف","الملك"], c:1, i:"سورة يس، وهي قلب القرآن عند كثير من المفسرين."},
-      {q:"من هي أول زوجات النبي ﷺ؟", o:["عائشة","خديجة","سودة","حفصة"], c:1, i:"خديجة بنت خويلد رضي الله عنها، أول من آمن به ﷺ. (البخاري)"},
-      {q:"في أي غار نزل الوحي على النبي ﷺ أول مرة؟", o:["غار ثور","غار حراء","غار الكهف","غار عرفة"], c:1, i:"غار حراء بجبل النور بمكة، وفيه نزل: «اقْرَأْ بِاسْمِ رَبِّكَ». (البخاري)"},
-      {q:"من هو أول مؤذن في الإسلام؟", o:["عبد الله بن مسعود","بلال بن رباح","سلمان الفارسي","صهيب الرومي"], c:1, i:"بلال بن رباح رضي الله عنه، اختاره النبي ﷺ لندى صوته."},
-      {q:"ما السورة التي لا تبدأ بالبسملة؟", o:["الأنفال","التوبة","يونس","هود"], c:1, i:"سورة التوبة هي الوحيدة التي لم تُفتتح بالبسملة."},
-      {q:"كم عدد الخلفاء الراشدين؟", o:["ثلاثة","أربعة","خمسة","ستة"], c:1, i:"أبو بكر، وعمر، وعثمان، وعلي رضي الله عنهم."},
-      {q:"كم سنة استمرت الدعوة في مكة قبل الهجرة؟", o:["١٠","١٣","١٥","٢٠"], c:1, i:"ثلاث عشرة سنة، ثم هاجر النبي ﷺ إلى المدينة."},
-      {q:"كم عدد الأنبياء المذكورين بأسمائهم في القرآن؟", o:["٢٠","٢٥","٣٠","٤٠"], c:1, i:"خمسة وعشرون نبيًّا ذُكروا بأسمائهم صراحةً في القرآن."},
-      {q:"ما اسم أم النبي ﷺ؟", o:["حليمة","آمنة","فاطمة","خديجة"], c:1, i:"آمنة بنت وهب، وحليمة السعدية مرضعته ﷺ."}
-    ]
-  },
-  { id:3, name:"المستوى الثالث", title:"زاد العالم", icon:"🎓", color:"#a78bfa", time:26,
-    desc:"علوم القرآن والتفاسير وأخبار الأمم",
-    qs:[
-      {q:"من الصحابي الذي اهتز لموته عرش الرحمن؟", o:["سعد بن معاذ","سعد بن عبادة","أنس بن مالك","معاذ بن جبل"], c:0, i:"سعد بن معاذ رضي الله عنه، قال النبي ﷺ: «اهتز عرش الرحمن لموت سعد بن معاذ». (البخاري)"},
-      {q:"من هي المرأة الوحيدة التي ذُكر اسمها صريحًا في القرآن؟", o:["آسية","مريم","خديجة","سارة"], c:1, i:"مريم بنت عمران، وسُمّيت بها سورة كاملة."},
-      {q:"ما أول مسجد بُني في الإسلام؟", o:["المسجد النبوي","مسجد قباء","المسجد الحرام","المسجد الأقصى"], c:1, i:"مسجد قباء، بناه النبي ﷺ عند وصوله المدينة مهاجرًا."},
-      {q:"كم سنة دعا نوح عليه السلام قومه؟", o:["٥٠٠","٧٠٠","٩٥٠","١٠٠٠"], c:2, i:"قال تعالى: «فَلَبِثَ فِيهِمْ أَلْفَ سَنَةٍ إِلَّا خَمْسِينَ عَامًا» — العنكبوت ١٤."},
-      {q:"من هو النبي الملقب بـ«كليم الله»؟", o:["إبراهيم","موسى","عيسى","هارون"], c:1, i:"موسى عليه السلام، قال تعالى: «وَكَلَّمَ اللَّهُ مُوسَى تَكْلِيمًا» — النساء ١٦٤."},
-      {q:"ما السورة التي تعدل ثلث القرآن؟", o:["الفاتحة","الإخلاص","الكوثر","يس"], c:1, i:"قال النبي ﷺ: «قل هو الله أحد تعدل ثلث القرآن». (البخاري)"},
-      {q:"كم عدد آيات سورة الكهف؟", o:["٩٩","١١٠","١٢٠","١٣٥"], c:1, i:"مئة وعشر آيات."},
-      {q:"من هو النبي الذي سُخّرت له الجن والريح؟", o:["داود","سليمان","أيوب","يوسف"], c:1, i:"سليمان عليه السلام، قال تعالى: «وَلِسُلَيْمَانَ الرِّيحَ عَاصِفَةً» — الأنبياء ٨١."},
-      {q:"من الصحابي الملقب بـ«أمين هذه الأمة»؟", o:["أبو بكر","أبو عبيدة بن الجراح","الزبير بن العوام","طلحة بن عبيد الله"], c:1, i:"قال النبي ﷺ: «أبو عبيدة أمين هذه الأمة». (البخاري)"},
-      {q:"كم عدد أبواب الجنة؟", o:["سبعة","ثمانية","تسعة","عشرة"], c:1, i:"قال ﷺ: «للجنة ثمانية أبواب». (البخاري)"}
-    ]
-  },
-  { id:4, name:"المستوى الرابع", title:"زاد الخبير", icon:"💎", color:"#f59e0b", time:24,
-    desc:"دقائق علوم الحديث والأرقام القرآنية",
-    qs:[
-      {q:"من أكثر الصحابة روايةً لحديث النبي ﷺ؟", o:["أنس بن مالك","أبو هريرة","عبد الله بن عمر","عائشة"], c:1, i:"أبو هريرة رضي الله عنه، روى نحو ٥٣٧٤ حديثًا."},
-      {q:"كم مرة ذُكر اسم النبي محمد ﷺ صريحًا في القرآن؟", o:["مرة","مرتين","أربع مرات","سبع مرات"], c:2, i:"أربع مرات: آل عمران ١٤٤، الأحزاب ٤٠، محمد ٢، الصف ٦."},
-      {q:"ما آخر سورة نزلت كاملةً من القرآن؟", o:["النصر","الفاتحة","الناس","الكوثر"], c:0, i:"سورة النصر، قال ابن عباس: «آخر سورة نزلت كاملة سورة النصر». (مسلم)"},
-      {q:"ما اسم الملك الموكل بالوحي؟", o:["ميكائيل","إسرافيل","جبريل","مالك"], c:2, i:"جبريل عليه السلام، قال تعالى: «نَزَلَ بِهِ الرُّوحُ الْأَمِينُ» — الشعراء ١٩٣."},
-      {q:"كم عدد أبواب جهنم؟", o:["خمسة","ستة","سبعة","ثمانية"], c:2, i:"قال تعالى: «لَهَا سَبْعَةُ أَبْوَابٍ» — الحجر ٤٤."},
-      {q:"من الصحابي الذي وُكّل إليه جمع القرآن في عهد أبي بكر؟", o:["عثمان بن عفان","زيد بن ثابت","علي بن أبي طالب","أُبي بن كعب"], c:1, i:"زيد بن ثابت رضي الله عنه، بأمر أبي بكر ومشورة عمر. (البخاري)"},
-      {q:"ما السورة التي تُسمى «تبارك»؟", o:["الملك","القلم","الحاقة","نوح"], c:0, i:"سورة الملك، تبدأ بـ«تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ»."},
-      {q:"من هو أول من أسلم من الرجال؟", o:["علي بن أبي طالب","أبو بكر الصديق","عمر بن الخطاب","زيد بن حارثة"], c:1, i:"أبو بكر الصديق رضي الله عنه أول من أسلم من الرجال الأحرار."},
-      {q:"كم عدد سجدات التلاوة في القرآن الكريم؟", o:["١١","١٣","١٥","١٧"], c:2, i:"خمس عشرة سجدة في مواضعها المعروفة عند جمهور الفقهاء."},
-      {q:"في أي سنة هجرية فُرض صيام رمضان؟", o:["الأولى","الثانية","الثالثة","الرابعة"], c:1, i:"فُرض في السنة الثانية للهجرة."}
-    ]
-  },
-  { id:5, name:"المستوى الخامس", title:"زاد الأسطورة", icon:"👑", color:"#ef4444", time:22,
-    desc:"للمتخصصين… أسئلة الحسم والتحدي",
-    qs:[
-      {q:"كم كان عمر النبي ﷺ عند وفاته؟", o:["٦٠","٦٣","٦٥","٦٨"], c:1, i:"ثلاث وستون سنة، كما في حديث ابن عباس في البخاري."},
-      {q:"من هي أول شهيدة في الإسلام؟", o:["سمية بنت خياط","أم أيمن","سودة بنت زمعة","رقية بنت النبي"], c:0, i:"سمية بنت خياط أم عمار بن ياسر رضي الله عنها، قتلها أبو جهل."},
-      {q:"من الصحابي الملقب بـ«حبر الأمة»؟", o:["عبد الله بن عباس","عبد الله بن عمر","ابن مسعود","معاذ بن جبل"], c:0, i:"عبد الله بن عباس رضي الله عنهما، دعا له النبي ﷺ: «اللهم فقهه في الدين»."},
-      {q:"كم سنة استمر نزول القرآن الكريم؟", o:["١٣","٢٠","٢٣","٢٥"], c:2, i:"ثلاث وعشرون سنة: ثلاث عشرة بمكة وعشر بالمدينة."},
-      {q:"من النبي الذي كان يُحيي الموتى بإذن الله؟", o:["عيسى","موسى","إبراهيم","داود"], c:0, i:"قال تعالى: «وَتُحْيِي الْمَوْتَى بِإِذْنِي» — المائدة ١١٠، وهو عيسى عليه السلام."},
-      {q:"من أول من وضع التاريخ الهجري؟", o:["عمر بن الخطاب","أبو بكر الصديق","عثمان بن عفان","علي بن أبي طالب"], c:0, i:"عمر بن الخطاب رضي الله عنه، وجعل بدايته من هجرة النبي ﷺ."},
-      {q:"من أم المؤمنين التي روت أكثر الأحاديث بعد أبي هريرة؟", o:["حفصة","عائشة","أم سلمة","ميمونة"], c:1, i:"عائشة رضي الله عنها، روت نحو ٢٢١٠ أحاديث."},
-      {q:"كم عدد الغزوات التي خرج فيها النبي ﷺ بنفسه؟", o:["١٥","١٩","٢٧","٣٥"], c:2, i:"سبع وعشرون غزوة على المشهور عند أهل السير."},
-      {q:"من الصحابي الذي قال له النبي ﷺ «ارمِ سعد فداك أبي وأمي»؟", o:["سعد بن أبي وقاص","أبو بكر","الزبير","طلحة"], c:0, i:"سعد بن أبي وقاص رضي الله عنه، في غزوة أُحد. (البخاري)"},
-      {q:"ما السورة التي بدأت بـ«قد أفلح»؟", o:["المؤمنون","النور","الفرقان","النمل"], c:0, i:"سورة المؤمنون تبدأ بـ«قَدْ أَفْلَحَ الْمُؤْمِنُونَ»."}
-    ]
-  }
+    body:`قادمة قريباً بإذن الله…
+
+قصة الملك المؤمن الذي مكّن الله له في الأرض، وسار إلى المشارق والمغارب، وبنى السدّ بين الجبلين، وحبس يأجوج ومأجوج. قصة فيها دروس في العدل والرحمة.`,
+    locked:true, tags:['تاريخ','ذو القرنين'] }
 ];
 
-/* الصوت */
+const LEVELS = [
+  { id:1, name:"المستوى الأول", title:"زاد المبتدئ", icon:"🌱", color:"#22c55e", time:30, desc:"أساسيات الدين",
+    qs:[
+      {q:"كم عدد أركان الإسلام؟", o:["ثلاثة","أربعة","خمسة","ستة"], c:2, i:"خمسة: الشهادتان، والصلاة، والزكاة، وصوم رمضان، وحج البيت. (متفق عليه)"},
+      {q:"ما أول سورة في المصحف؟", o:["البقرة","الفاتحة","الناس","الإخلاص"], c:1, i:"سورة الفاتحة، وتسمى أم الكتاب."},
+      {q:"كم عدد الصلوات المفروضة يوميًا؟", o:["ثلاث","أربع","خمس","ست"], c:2, i:"خمس صلوات فرضها الله في ليلة الإسراء."},
+      {q:"في أي شهر فُرض الصيام؟", o:["شعبان","رمضان","شوال","رجب"], c:1, i:"قال تعالى: «شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ»."},
+      {q:"من النبي الذي ابتلعه الحوت؟", o:["يوسف","يونس","أيوب","إلياس"], c:1, i:"يونس عليه السلام."},
+      {q:"كم عدد أركان الإيمان؟", o:["خمسة","ستة","سبعة","أربعة"], c:1, i:"ستة أركان. (مسلم)"},
+      {q:"ما أطول سورة في القرآن؟", o:["آل عمران","النساء","البقرة","الأعراف"], c:2, i:"سورة البقرة ٢٨٦ آية."},
+      {q:"ما أقصر سورة في القرآن؟", o:["الإخلاص","الكوثر","الفلق","الناس"], c:1, i:"سورة الكوثر (٣ آيات)."},
+      {q:"ما أول ما نزل من القرآن؟", o:["اقرأ باسم ربك","الحمد لله","يا أيها المدثر","الم"], c:0, i:"صدر سورة العلق."},
+      {q:"كم عدد أجزاء القرآن؟", o:["٢٠","٢٥","٣٠","٦٠"], c:2, i:"ثلاثون جزءًا."}
+    ]},
+  { id:2, name:"المستوى الثاني", title:"زاد الطالب", icon:"📖", color:"#38bdf8", time:28, desc:"السيرة والصحابة",
+    qs:[
+      {q:"من الملقب بـ«سيف الله المسلول»؟", o:["عمر","خالد بن الوليد","سعد","أبو عبيدة"], c:1, i:"خالد بن الوليد رضي الله عنه."},
+      {q:"ما السورة الملقبة بـ«قلب القرآن»؟", o:["الرحمن","يس","الكهف","الملك"], c:1, i:"سورة يس."},
+      {q:"من أول زوجات النبي ﷺ؟", o:["عائشة","خديجة","سودة","حفصة"], c:1, i:"خديجة بنت خويلد رضي الله عنها."},
+      {q:"في أي غار نزل الوحي أول مرة؟", o:["ثور","حراء","الكهف","عرفة"], c:1, i:"غار حراء."},
+      {q:"من أول مؤذن في الإسلام؟", o:["ابن مسعود","بلال","سلمان","صهيب"], c:1, i:"بلال بن رباح رضي الله عنه."},
+      {q:"ما السورة التي لا تبدأ بالبسملة؟", o:["الأنفال","التوبة","يونس","هود"], c:1, i:"سورة التوبة."},
+      {q:"كم عدد الخلفاء الراشدين؟", o:["ثلاثة","أربعة","خمسة","ستة"], c:1, i:"أبو بكر، وعمر، وعثمان، وعلي."},
+      {q:"كم سنة استمرت الدعوة في مكة؟", o:["١٠","١٣","١٥","٢٠"], c:1, i:"ثلاث عشرة سنة."},
+      {q:"كم عدد الأنبياء المذكورين بالاسم في القرآن؟", o:["٢٠","٢٥","٣٠","٤٠"], c:1, i:"٢٥ نبيًّا."},
+      {q:"ما اسم أم النبي ﷺ؟", o:["حليمة","آمنة","فاطمة","خديجة"], c:1, i:"آمنة بنت وهب."}
+    ]},
+  { id:3, name:"المستوى الثالث", title:"زاد العالم", icon:"🎓", color:"#a78bfa", time:26, desc:"علوم القرآن",
+    qs:[
+      {q:"من الصحابي الذي اهتز لموته عرش الرحمن؟", o:["سعد بن معاذ","سعد بن عبادة","أنس","معاذ"], c:0, i:"سعد بن معاذ رضي الله عنه. (البخاري)"},
+      {q:"من المرأة الوحيدة المذكورة بالاسم في القرآن؟", o:["آسية","مريم","خديجة","سارة"], c:1, i:"مريم بنت عمران."},
+      {q:"ما أول مسجد بُني في الإسلام؟", o:["النبوي","قباء","الحرام","الأقصى"], c:1, i:"مسجد قباء."},
+      {q:"كم سنة دعا نوح قومه؟", o:["٥٠٠","٧٠٠","٩٥٠","١٠٠٠"], c:2, i:"«أَلْفَ سَنَةٍ إِلَّا خَمْسِينَ عَامًا»."},
+      {q:"من الملقب بـ«كليم الله»؟", o:["إبراهيم","موسى","عيسى","هارون"], c:1, i:"موسى عليه السلام."},
+      {q:"ما السورة التي تعدل ثلث القرآن؟", o:["الفاتحة","الإخلاص","الكوثر","يس"], c:1, i:"سورة الإخلاص. (البخاري)"},
+      {q:"كم عدد آيات سورة الكهف؟", o:["٩٩","١١٠","١٢٠","١٣٥"], c:1, i:"١١٠ آيات."},
+      {q:"من النبي الذي سُخّرت له الجن؟", o:["داود","سليمان","أيوب","يوسف"], c:1, i:"سليمان عليه السلام."},
+      {q:"من الملقب بـ«أمين هذه الأمة»؟", o:["أبو بكر","أبو عبيدة","الزبير","طلحة"], c:1, i:"أبو عبيدة بن الجراح. (البخاري)"},
+      {q:"كم عدد أبواب الجنة؟", o:["سبعة","ثمانية","تسعة","عشرة"], c:1, i:"ثمانية أبواب. (البخاري)"}
+    ]},
+  { id:4, name:"المستوى الرابع", title:"زاد الخبير", icon:"💎", color:"#f59e0b", time:24, desc:"دقائق علوم الحديث",
+    qs:[
+      {q:"من أكثر الصحابة روايةً للحديث؟", o:["أنس","أبو هريرة","ابن عمر","عائشة"], c:1, i:"أبو هريرة (٥٣٧٤ حديثًا)."},
+      {q:"كم مرة ذُكر اسم النبي ﷺ في القرآن؟", o:["مرة","مرتين","أربع مرات","سبع"], c:2, i:"أربع مرات."},
+      {q:"ما آخر سورة نزلت كاملة؟", o:["النصر","الفاتحة","الناس","الكوثر"], c:0, i:"سورة النصر. (مسلم)"},
+      {q:"ما اسم الملك الموكل بالوحي؟", o:["ميكائيل","إسرافيل","جبريل","مالك"], c:2, i:"جبريل عليه السلام."},
+      {q:"كم عدد أبواب جهنم؟", o:["خمسة","ستة","سبعة","ثمانية"], c:2, i:"«لَهَا سَبْعَةُ أَبْوَابٍ»."},
+      {q:"من الذي وُكّل إليه جمع القرآن في عهد أبي بكر؟", o:["عثمان","زيد بن ثابت","علي","أُبي"], c:1, i:"زيد بن ثابت. (البخاري)"},
+      {q:"ما السورة المسماة «تبارك»؟", o:["الملك","القلم","الحاقة","نوح"], c:0, i:"سورة الملك."},
+      {q:"من أول من أسلم من الرجال؟", o:["علي","أبو بكر","عمر","زيد"], c:1, i:"أبو بكر الصديق."},
+      {q:"كم عدد سجدات التلاوة؟", o:["١١","١٣","١٥","١٧"], c:2, i:"خمس عشرة سجدة."},
+      {q:"في أي سنة فُرض صيام رمضان؟", o:["الأولى","الثانية","الثالثة","الرابعة"], c:1, i:"السنة الثانية للهجرة."}
+    ]},
+  { id:5, name:"المستوى الخامس", title:"زاد الأسطورة", icon:"👑", color:"#ef4444", time:22, desc:"للمتخصصين",
+    qs:[
+      {q:"كم كان عمر النبي ﷺ عند وفاته؟", o:["٦٠","٦٣","٦٥","٦٨"], c:1, i:"٦٣ سنة. (البخاري)"},
+      {q:"من أول شهيدة في الإسلام؟", o:["سمية","أم أيمن","سودة","رقية"], c:0, i:"سمية بنت خياط رضي الله عنها."},
+      {q:"من الملقب بـ«حبر الأمة»؟", o:["ابن عباس","ابن عمر","ابن مسعود","معاذ"], c:0, i:"عبد الله بن عباس."},
+      {q:"كم سنة استمر نزول القرآن؟", o:["١٣","٢٠","٢٣","٢٥"], c:2, i:"٢٣ سنة."},
+      {q:"من النبي الذي أحيا الموتى بإذن الله؟", o:["عيسى","موسى","إبراهيم","داود"], c:0, i:"عيسى عليه السلام."},
+      {q:"من أول من وضع التاريخ الهجري؟", o:["عمر","أبو بكر","عثمان","علي"], c:0, i:"عمر بن الخطاب."},
+      {q:"من أم المؤمنين الأكثر رواية للأحاديث؟", o:["حفصة","عائشة","أم سلمة","ميمونة"], c:1, i:"عائشة رضي الله عنها."},
+      {q:"كم عدد الغزوات التي خرج فيها النبي ﷺ بنفسه؟", o:["١٥","١٩","٢٧","٣٥"], c:2, i:"٢٧ غزوة."},
+      {q:"من قال له ﷺ «ارمِ سعد فداك أبي وأمي»؟", o:["سعد بن أبي وقاص","أبو بكر","الزبير","طلحة"], c:0, i:"سعد بن أبي وقاص."},
+      {q:"ما السورة التي بدأت بـ«قد أفلح»؟", o:["المؤمنون","النور","الفرقان","النمل"], c:0, i:"سورة المؤمنون."}
+    ]}
+];
+
+/* ============ الصوت والكونفيتي ============ */
 let actx = null;
 function beep(freq, dur, type='sine', vol=0.07, delay=0){
   if(!state.settings.sound) return;
@@ -1357,7 +1607,6 @@ const sndTick=()=>{beep(1000,.04,'square',.03,0)};
 const sndClick=()=>{beep(520,.06,'triangle',.05,0)};
 const sndWin=()=>{[523,659,784,1047,1319].forEach((f,i)=>beep(f,.3,'sine',.075,i*.11))};
 
-/* الكونفيتي */
 const cv = $('#fx'), cx = cv.getContext('2d');
 let parts = [], rafId = null;
 function resizeCv(){ cv.width = innerWidth; cv.height = innerHeight; }
@@ -1382,7 +1631,12 @@ function loopFx(){
   else { rafId = null; cx.clearRect(0,0,cv.width,cv.height); }
 }
 
-/* التنقل */
+function toast(m){
+  const t = $('#toast'); t.textContent = m; t.classList.add('show');
+  clearTimeout(t._tm); t._tm = setTimeout(()=>t.classList.remove('show'), 2600);
+}
+
+/* ============ التنقل ============ */
 function go(id){
   $$('.screen').forEach(s=>s.classList.remove('active'));
   const sc = $('#screen-'+id);
@@ -1392,9 +1646,8 @@ function go(id){
   if(id === 'favorites') renderFavorites();
   if(id === 'prayer') loadPrayerTimes();
   if(id === 'board') renderBoard();
+  if(id === 'dashboard') renderDashboard();
 }
-
-/* قائمة الموبايل */
 function closeMenu(){
   $('#navMain').classList.remove('open');
   $('#navOverlay').classList.remove('show');
@@ -1406,35 +1659,12 @@ $('#menuBtn').onclick = ()=>{ sndClick(); $('#navMain').classList.toggle('open')
 $('#navOverlay').onclick = closeMenu;
 addEventListener('resize', ()=>{ if(innerWidth > 820) closeMenu(); });
 
-function toast(m){
-  const t = $('#toast'); t.textContent = m; t.classList.add('show');
-  clearTimeout(t._tm); t._tm = setTimeout(()=>t.classList.remove('show'), 2600);
-}
-
-/* الوضع */
+/* ============ الوضع ============ */
 function applyTheme(){
   document.documentElement.setAttribute('data-theme', state.settings.theme);
-  $('#themeBtn').textContent = state.settings.theme === 'dark' ? '🌙' : '☀️';
 }
-$('#themeBtn').onclick = ()=>{
-  state.settings.theme = state.settings.theme === 'dark' ? 'light' : 'dark';
-  LS.set('zq_settings', state.settings);
-  applyTheme(); sndClick();
-};
-function updateSoundBtn(){
-  const b = $('#soundBtn');
-  b.textContent = state.settings.sound ? '🔊' : '🔇';
-  b.classList.toggle('off', !state.settings.sound);
-}
-$('#soundBtn').onclick = ()=>{
-  state.settings.sound = !state.settings.sound;
-  LS.set('zq_settings', state.settings);
-  updateSoundBtn();
-  if(state.settings.sound){ sndOk(); toast('🔊 الصوت مفعّل'); }
-  else toast('🔇 الصوت مكتوم');
-};
 
-/* المفضلة */
+/* ============ المفضلة ============ */
 function isFav(id){ return state.favorites.includes(id); }
 function toggleFav(id){
   if(isFav(id)) state.favorites = state.favorites.filter(x=>x!==id);
@@ -1447,7 +1677,6 @@ function updateFavCount(){
   $('#favCount').textContent = n ? '('+toAr(n)+')' : '';
 }
 
-/* المحتوى */
 function allItems(){ return [...INFO_DATA, ...STORIES_DATA]; }
 function getItem(id){ return allItems().find(x=>x.id === id); }
 
@@ -1462,13 +1691,13 @@ function renderItemCard(it){
     <div class="snip">${snip}</div>
     <div class="foot">
       <span>${it.tags.slice(0,2).map(t=>'#'+t).join(' ')}</span>
-      <button class="fav-btn ${fav?'active':''}" data-fav="${it.id}" title="المفضلة">${fav?'❤️':'🤍'}</button>
+      <button class="fav-btn ${fav?'active':''}">${fav?'❤️':'🤍'}</button>
     </div>
     ${it.locked ? '<div class="lock-overlay">🔒 قريباً</div>' : ''}
   `;
   div.onclick = e => {
     if(e.target.closest('.fav-btn')) return;
-    if(it.locked){ sndBad(); toast('🔒 هذا المحتوى قادم قريباً'); return; }
+    if(it.locked){ sndBad(); toast('🔒 قادم قريباً'); return; }
     sndClick(); openReader(it);
   };
   div.querySelector('.fav-btn').onclick = e => {
@@ -1486,12 +1715,11 @@ function renderItemCard(it){
 function renderGrid(container, items){
   container.innerHTML = '';
   if(!items.length){
-    container.innerHTML = '<div class="empty" style="grid-column:1/-1">لا يوجد محتوى بعد 🌱</div>';
+    container.innerHTML = '<div class="empty" style="grid-column:1/-1">لا يوجد محتوى 🌱</div>';
     return;
   }
   items.forEach(it=> container.appendChild(renderItemCard(it)));
 }
-
 function renderHomeLatest(){
   const latest = [...INFO_DATA.slice(-3), ...STORIES_DATA.filter(s=>!s.locked).slice(-2)].slice(0,6);
   renderGrid($('#homeLatest'), latest);
@@ -1535,13 +1763,13 @@ function renderFavorites(){
   const items = state.favorites.map(id=>getItem(id)).filter(Boolean);
   const g = $('#favGrid');
   if(!items.length){
-    g.innerHTML = '<div class="empty" style="grid-column:1/-1">لم تحفظ شيئاً بعد 🔖<br>اضغط على 🤍 في أي بطاقة لحفظها هنا</div>';
+    g.innerHTML = '<div class="empty" style="grid-column:1/-1">لم تحفظ شيئاً بعد 🔖</div>';
     return;
   }
   renderGrid(g, items);
 }
 
-/* القارئ */
+/* ============ القارئ ============ */
 let currentReaderId = null;
 function openReader(it){
   currentReaderId = it.id;
@@ -1549,11 +1777,18 @@ function openReader(it){
   $('#rmTitle').textContent = it.title;
   const body = it.body.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
   $('#rmBody').innerHTML = body;
+  $('#rmBody').style.fontSize = (state.settings.readerFont||17)+'px';
+  $('#rmBody').style.lineHeight = state.settings.readerLine||2.1;
   const fav = isFav(it.id);
   $('#rmFav').textContent = fav ? '❤️ في المفضلة' : '🤍 أضف للمفضلة';
   renderComments(it.id);
   $('#readerModal').classList.add('show');
   document.body.style.overflow = 'hidden';
+  if(!it.locked && !it.id.startsWith('i') && !state.readStories.includes(it.id)){
+    state.readStories.push(it.id);
+    LS.set('zq_readStories', state.readStories);
+    addXP(15); logDailyActivity(1); checkBadges();
+  }
 }
 function closeReader(){
   $('#readerModal').classList.remove('show');
@@ -1566,7 +1801,7 @@ $('#rmFav').onclick = ()=>{
   toggleFav(currentReaderId);
   const fav = isFav(currentReaderId);
   $('#rmFav').textContent = fav ? '❤️ في المفضلة' : '🤍 أضف للمفضلة';
-  if(fav){ sndOk(); toast('❤️ أضيف للمفضلة'); } else toast('أُزيل من المفضلة');
+  if(fav){ sndOk(); toast('❤️ أضيف للمفضلة'); } else toast('أُزيل');
   renderInfoContent(); renderStoriesContent(); renderFavorites(); renderHomeLatest();
 };
 $('#rmShare').onclick = async ()=>{
@@ -1578,6 +1813,7 @@ $('#rmShare').onclick = async ()=>{
     else { await navigator.clipboard.writeText(txt); toast('✅ تم نسخ النص'); }
   }catch(e){ toast('تعذّرت المشاركة'); }
 };
+
 function renderComments(itemId){
   const arr = state.comments[itemId] || [];
   const list = $('#cList');
@@ -1601,14 +1837,14 @@ $('#cSend').onclick = ()=>{
   if(!state.comments[currentReaderId]) state.comments[currentReaderId] = [];
   state.comments[currentReaderId].push({
     name: name.slice(0,24), text: text.slice(0,300),
-    date: new Date().toLocaleString('ar-EG', {dateStyle:'short', timeStyle:'short'})
+    date: new Date().toLocaleString('ar-EG',{dateStyle:'short',timeStyle:'short'})
   });
   LS.set('zq_comments', state.comments);
   sndOk(); toast('💬 تم إرسال تعليقك');
   renderComments(currentReaderId);
 };
 
-/* البحث */
+/* ============ البحث ============ */
 $('#searchBtn').onclick = ()=>{ $('#searchOverlay').classList.add('show'); setTimeout(()=>$('#searchInput').focus(), 100); };
 $('#searchClose').onclick = ()=> $('#searchOverlay').classList.remove('show');
 $('#searchOverlay').onclick = e => { if(e.target.id === 'searchOverlay') $('#searchOverlay').classList.remove('show'); };
@@ -1617,18 +1853,12 @@ $('#searchInput').oninput = ()=>{
   const res = $('#searchResults');
   if(q.length < 2){ res.innerHTML = ''; return; }
   const hits = [];
-  INFO_DATA.forEach(it=>{
-    if((it.title + ' ' + it.body + ' ' + it.tags.join(' ')).toLowerCase().includes(q))
-      hits.push({type:'معلومة', ...it});
-  });
-  STORIES_DATA.forEach(it=>{
-    if(!it.locked && (it.title + ' ' + it.body + ' ' + it.tags.join(' ')).toLowerCase().includes(q))
-      hits.push({type:'قصة', ...it});
-  });
+  INFO_DATA.forEach(it=>{ if((it.title+' '+it.body+' '+it.tags.join(' ')).toLowerCase().includes(q)) hits.push({type:'معلومة',...it}); });
+  STORIES_DATA.forEach(it=>{ if(!it.locked && (it.title+' '+it.body+' '+it.tags.join(' ')).toLowerCase().includes(q)) hits.push({type:'قصة',...it}); });
   LEVELS.forEach(lvl=>{
-    lvl.qs.forEach((qq, idx)=>{
-      if((qq.q + ' ' + qq.o.join(' ')).toLowerCase().includes(q))
-        hits.push({type:'سؤال', id:'q-'+lvl.id+'-'+idx, title: qq.q, body: 'الإجابة: ' + qq.o[qq.c] + '\n\n' + qq.i, cat: lvl.title, tags: ['مسابقات']});
+    lvl.qs.forEach((qq,idx)=>{
+      if((qq.q+' '+qq.o.join(' ')).toLowerCase().includes(q))
+        hits.push({type:'سؤال',id:'q-'+lvl.id+'-'+idx,title:qq.q,body:'الإجابة: '+qq.o[qq.c]+'\n\n'+qq.i,cat:lvl.title,tags:['مسابقات']});
     });
   });
   if(!hits.length){ res.innerHTML = '<div class="empty">لا توجد نتائج 🔍</div>'; return; }
@@ -1643,24 +1873,23 @@ $('#searchInput').oninput = ()=>{
       const h = hits.find(x=>String(x.id) === String(el.dataset.id));
       if(!h) return;
       $('#searchOverlay').classList.remove('show');
-      setTimeout(()=> openReader({id:h.id, cat:h.cat, title:h.title, body:h.body, tags:h.tags||[]}), 200);
+      setTimeout(()=> openReader({id:h.id,cat:h.cat,title:h.title,body:h.body,tags:h.tags||[]}), 200);
     };
   });
 };
 
-/* مواقيت الصلاة */
-let prayerData = null;
-let clockTimer = null;
+/* ============ مواقيت الصلاة ============ */
+let prayerData = null, clockTimer = null;
 function loadPrayerTimes(){
   if(prayerData){ renderPrayer(); return; }
   if(navigator.geolocation){
     $('#pLoc').textContent = '📍 جاري تحديد موقعك…';
     navigator.geolocation.getCurrentPosition(
       p => fetchPrayer(p.coords.latitude, p.coords.longitude, 'موقعك الحالي'),
-      e => { $('#pLoc').textContent = '📍 يتعذّر تحديد الموقع — استخدم "اختيار مدينة يدوياً"'; fetchPrayer(30.0444, 31.2357, 'القاهرة (افتراضي)'); },
+      e => { $('#pLoc').textContent = '📍 يتعذّر تحديد الموقع'; fetchPrayer(30.0444, 31.2357, 'القاهرة'); },
       {timeout:7000}
     );
-  } else fetchPrayer(30.0444, 31.2357, 'القاهرة (افتراضي)');
+  } else fetchPrayer(30.0444, 31.2357, 'القاهرة');
 }
 async function fetchPrayer(lat, lng, cityName){
   try{
@@ -1671,9 +1900,8 @@ async function fetchPrayer(lat, lng, cityName){
     const j = await r.json();
     prayerData = { timings: j.data.timings, hijri: j.data.date.hijri, city: cityName };
     renderPrayer();
-  }catch(e){
-    $('#pLoc').textContent = '⚠️ تعذّر تحميل المواقيت، حاول مرة أخرى';
-  }
+    schedulePrayerNotifications();
+  }catch(e){ $('#pLoc').textContent = '⚠️ تعذّر تحميل المواقيت'; }
 }
 function renderPrayer(){
   if(!prayerData) return;
@@ -1681,9 +1909,9 @@ function renderPrayer(){
   $('#pLoc').textContent = '📍 ' + prayerData.city;
   $('#pHijri').textContent = `${toAr(prayerData.hijri.day)} ${prayerData.hijri.month.ar} ${toAr(prayerData.hijri.year)} هـ`;
   const list = [
-    {n:'الفجر', k:'Fajr', i:'🌅'},{n:'الشروق', k:'Sunrise', i:'☀️'},
-    {n:'الظهر', k:'Dhuhr', i:'🌞'},{n:'العصر', k:'Asr', i:'🌤️'},
-    {n:'المغرب', k:'Maghrib', i:'🌇'},{n:'العشاء', k:'Isha', i:'🌙'}
+    {n:'الفجر',k:'Fajr',i:'🌅'},{n:'الشروق',k:'Sunrise',i:'☀️'},
+    {n:'الظهر',k:'Dhuhr',i:'🌞'},{n:'العصر',k:'Asr',i:'🌤️'},
+    {n:'المغرب',k:'Maghrib',i:'🌇'},{n:'العشاء',k:'Isha',i:'🌙'}
   ];
   const grid = $('#pGrid'); grid.innerHTML = '';
   const nowMin = new Date().getHours()*60 + new Date().getMinutes();
@@ -1722,23 +1950,22 @@ $('#pLocBtn').onclick = ()=>{ sndClick(); prayerData = null; loadPrayerTimes(); 
 $('#pCityBtn').onclick = ()=>{
   sndClick();
   const cities = {
-    'القاهرة':[30.0444,31.2357], 'الإسكندرية':[31.2001,29.9187], 'الجيزة':[30.0131,31.2089],
-    'المنصورة':[31.0409,31.3785], 'أسوان':[24.0889,32.8998], 'الأقصر':[25.6872,32.6396],
-    'طنطا':[30.7865,31.0004], 'بورسعيد':[31.2653,32.3019], 'السويس':[29.9668,32.5498],
-    'الرياض':[24.7136,46.6753], 'جدة':[21.4858,39.1925], 'مكة':[21.3891,39.8579],
-    'المدينة':[24.5247,39.5692], 'دبي':[25.2048,55.2708], 'أبوظبي':[24.4539,54.3773],
-    'الدوحة':[25.2854,51.5310], 'الكويت':[29.3759,47.9774], 'المنامة':[26.2285,50.5860],
-    'مسقط':[23.5880,58.3829], 'عمّان':[31.9454,35.9284], 'بيروت':[33.8938,35.5018],
-    'بغداد':[33.3152,44.3661], 'الخرطوم':[15.5007,32.5599], 'طرابلس':[32.8872,13.1913],
-    'تونس':[36.8065,10.1815], 'الجزائر':[36.7538,3.0588], 'الرباط':[33.5731,-7.5898],
-    'الدار البيضاء':[33.5731,-7.5898]
+    'القاهرة':[30.0444,31.2357],'الإسكندرية':[31.2001,29.9187],'الجيزة':[30.0131,31.2089],
+    'المنصورة':[31.0409,31.3785],'أسوان':[24.0889,32.8998],'الأقصر':[25.6872,32.6396],
+    'طنطا':[30.7865,31.0004],'بورسعيد':[31.2653,32.3019],'السويس':[29.9668,32.5498],
+    'الرياض':[24.7136,46.6753],'جدة':[21.4858,39.1925],'مكة':[21.3891,39.8579],
+    'المدينة':[24.5247,39.5692],'دبي':[25.2048,55.2708],'أبوظبي':[24.4539,54.3773],
+    'الدوحة':[25.2854,51.5310],'الكويت':[29.3759,47.9774],'المنامة':[26.2285,50.5860],
+    'مسقط':[23.5880,58.3829],'عمّان':[31.9454,35.9284],'بيروت':[33.8938,35.5018],
+    'بغداد':[33.3152,44.3661],'الخرطوم':[15.5007,32.5599],'طرابلس':[32.8872,13.1913],
+    'تونس':[36.8065,10.1815],'الجزائر':[36.7538,3.0588],'الرباط':[33.5731,-7.5898]
   };
   const city = prompt('اكتب اسم المدينة:\n' + Object.keys(cities).join(' · '));
   if(city && cities[city]){ prayerData = null; fetchPrayer(cities[city][0], cities[city][1], city); }
-  else if(city) toast('⚠️ المدينة غير مدعومة، اختر من القائمة');
+  else if(city) toast('⚠️ المدينة غير مدعومة');
 };
 
-/* المسابقة */
+/* ============ المسابقة ============ */
 let quiz = null;
 function updateHome(){
   let total=0, done=0, best=0;
@@ -1781,7 +2008,7 @@ function renderLevels(){
       <div class="bar"><i style="width:${p.best||0}%;background:linear-gradient(90deg,${l.color},#d4af37)"></i></div>
     `;
     if(!locked) el.onclick = ()=>{ sndClick(); startQuiz(l.id); };
-    else el.onclick = ()=> toast('🔒 أكمل ٦٠٪ من المستوى السابق أولاً');
+    else el.onclick = ()=> toast('🔒 أكمل ٦٠٪ من المستوى السابق');
     g.appendChild(el);
   });
 }
@@ -1856,7 +2083,7 @@ function answer(pick, btn){
 function showFeedback(ok, q, timeout){
   const fb = $('#feedback');
   fb.className = 'feedback show ' + (ok ? 'good' : 'bad');
-  const head = ok ? '✅ إجابة صحيحة! أحسنت.' : (timeout ? '⏰ انتهى الوقت!' : '❌ إجابة خاطئة.');
+  const head = ok ? '✅ إجابة صحيحة!' : (timeout ? '⏰ انتهى الوقت!' : '❌ إجابة خاطئة.');
   fb.innerHTML = `<b>${head}</b><br>الإجابة الصحيحة: <b>${q.o[q.c]}</b><br>📚 ${q.i}`;
   $('#nextBtn').style.display = 'inline-flex';
   $('#nextBtn').textContent = (quiz.idx === quiz.lvl.qs.length-1) ? 'عرض النتيجة 🎯' : 'السؤال التالي ←';
@@ -1877,12 +2104,13 @@ function finishQuiz(){
     done: (prev.done || pct >= 60)
   };
   LS.set('zq_progress', state.progress);
-  state.scores.push({name:state.player||'مشارك', level:lvl.title, pct, pts:quiz.score, date:new Date().toLocaleDateString('ar-EG')});
+  state.scores.push({name:state.player||'مشارك',level:lvl.title,pct,pts:quiz.score,date:new Date().toLocaleDateString('ar-EG')});
   state.scores.sort((a,b)=> b.pct-a.pct || b.pts-a.pts);
   state.scores = state.scores.slice(0,50);
   LS.set('zq_scores', state.scores);
   showResult(pct);
   updateHome(); renderLevels();
+  addXP(30); logDailyActivity(2);
 }
 function showResult(pct){
   $('#quizIntro').style.display = 'none';
@@ -1890,11 +2118,11 @@ function showResult(pct){
   $('#quizResult').style.display = 'block';
   $('#certArea').style.display = 'none';
   let title, grade, medal, stars;
-  if(pct >= 95){ title='ما شاء الله! أسطورة'; grade='تقدير: ممتاز مرتفع 🏆'; medal='👑'; stars='★★★'; }
-  else if(pct >= 85){ title='ما شاء الله! خبير'; grade='تقدير: ممتاز 🌟'; medal='🥇'; stars='★★★'; }
-  else if(pct >= 70){ title='أحسنت! متقدم'; grade='تقدير: جيد جداً ✨'; medal='🥈'; stars='★★☆'; }
-  else if(pct >= 50){ title='جيد! واصل التقدم'; grade='تقدير: جيد 👍'; medal='🥉'; stars='★☆☆'; }
-  else { title='لا بأس، حاول مجدداً'; grade='تقدير: يحتاج مراجعة 📖'; medal='📘'; stars='☆☆☆'; }
+  if(pct>=95){title='ما شاء الله! أسطورة';grade='تقدير: ممتاز مرتفع 🏆';medal='👑';stars='★★★';}
+  else if(pct>=85){title='ما شاء الله! خبير';grade='تقدير: ممتاز 🌟';medal='🥇';stars='★★★';}
+  else if(pct>=70){title='أحسنت! متقدم';grade='تقدير: جيد جداً ✨';medal='🥈';stars='★★☆';}
+  else if(pct>=50){title='جيد! واصل';grade='تقدير: جيد 👍';medal='🥉';stars='★☆☆';}
+  else {title='حاول مجدداً';grade='يحتاج مراجعة 📖';medal='📘';stars='☆☆☆';}
   $('#medal').textContent = medal;
   $('#resTitle').textContent = title;
   $('#resGrade').textContent = grade;
@@ -1919,12 +2147,13 @@ function showResult(pct){
   else setTimeout(()=>confetti(60), 400);
 }
 $('#retryBtn').onclick = ()=>{ sndClick(); startQuiz(quiz.lvl.id); };
-$('#backToQuiz').onclick = ()=>{ $('#quizResult').style.display = 'none'; $('#quizIntro').style.display = 'block'; sndClick(); };
+$('#backToQuiz').onclick = ()=>{ $('#quizResult').style.display='none'; $('#quizIntro').style.display='block'; sndClick(); };
 $('#quitBtn').onclick = ()=>{
-  if(confirm('هل تريد الخروج من المسابقة؟')){
+  if(confirm('الخروج من المسابقة؟')){
     clearInterval(quiz.timer);
     $('#quizPlay').style.display = 'none';
-    $('#quizIntro').style.display = 'block'; sndClick();
+    $('#quizIntro').style.display = 'block';
+    sndClick();
   }
 };
 $('#certBtn').onclick = ()=>{
@@ -1951,7 +2180,7 @@ function renderBoard(){
   const s = state.scores;
   if(!s.length){ list.innerHTML = '<div class="empty">لا توجد نتائج بعد 🌱</div>'; return; }
   list.innerHTML = s.slice(0,20).map((r,i)=>`
-    <div class="b-row ${i<3?'g'+(i+1):''}" style="animation-delay:${i*.045}s">
+    <div class="b-row ${i<3?'g'+(i+1):''}">
       <div class="rank">${i<3?['🥇','🥈','🥉'][i]:toAr(i+1)}</div>
       <div class="nm">${r.name}<div class="dt">${r.level} · ${r.date}</div></div>
       <div class="sc">${toAr(r.pct)}%</div>
@@ -1959,26 +2188,25 @@ function renderBoard(){
   `).join('');
 }
 $('#clearBoard').onclick = ()=>{
-  if(confirm('مسح كل نتائج لوحة الصدارة؟')){
+  if(confirm('مسح كل النتائج؟')){
     state.scores = []; LS.set('zq_scores',[]); renderBoard(); toast('🗑️ تم المسح');
   }
 };
 $('#dlData').onclick = ()=>{
   let total=0, done=0;
-  let lines = ['═══════════════════════════════════','   زاد القلوب — تقرير الإنجازات','   إشراف: أحمد جعفر','═══════════════════════════════════',
-    'الاسم: '+(state.player||'مشارك'),'التاريخ: '+new Date().toLocaleString('ar-EG'),'','── نتائج المستويات ──'];
+  let lines = ['═══ زاد القلوب — تقرير الإنجازات ═══','الاسم: '+(state.player||'مشارك'),'التاريخ: '+new Date().toLocaleString('ar-EG'),'','── المستويات ──'];
   LEVELS.forEach(l=>{
     const p = state.progress[l.id] || {best:0,pts:0,done:false};
     total += p.pts||0; if(p.done) done++;
-    lines.push(`${l.name} — ${l.title}: ${p.best||0}% | ${p.pts||0} نقطة | ${p.done?'مكتمل ✓':'غير مكتمل'}`);
+    lines.push(`${l.name} — ${l.title}: ${p.best||0}% | ${p.pts||0} نقطة`);
   });
-  lines.push('','── الإجمالي ──','مجموع النقاط: '+total,'المستويات المكتملة: '+done+'/5','','«وَقُل رَّبِّ زِدْنِي عِلْمًا»');
+  lines.push('','مجموع النقاط: '+total,'المستويات: '+done+'/5');
   const blob = new Blob(['\ufeff'+lines.join('\n')], {type:'text/plain;charset=utf-8'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = 'زاد-القلوب-إنجازاتي.txt';
   a.click(); URL.revokeObjectURL(a.href);
-  toast('⬇️ تم تحميل التقرير');
+  toast('⬇️ تم التحميل');
 };
 
 function askName(cb){
@@ -2010,9 +2238,468 @@ document.addEventListener('keydown', e=>{
   }
 });
 
+/* =========================================================
+   المميزات الجديدة
+   ========================================================= */
+
+/* ---------- الأناشيد ---------- */
+const NASHEED_LIST = [
+  { title:'سورة الفاتحة', reciter:'مشاري العفاسي', url:'https://server8.mp3quran.net/afs/001.mp3' },
+  { title:'سورة يس', reciter:'مشاري العفاسي', url:'https://server8.mp3quran.net/afs/036.mp3' },
+  { title:'سورة الرحمن', reciter:'مشاري العفاسي', url:'https://server8.mp3quran.net/afs/055.mp3' },
+  { title:'سورة الملك', reciter:'مشاري العفاسي', url:'https://server8.mp3quran.net/afs/067.mp3' },
+  { title:'سورة النبأ', reciter:'مشاري العفاسي', url:'https://server8.mp3quran.net/afs/078.mp3' },
+  { title:'سورة الكهف', reciter:'مشاري العفاسي', url:'https://server8.mp3quran.net/afs/018.mp3' }
+];
+let audio = new Audio();
+audio.preload = 'metadata';
+state.nasheedState = LS.get('zq_nasheed',{current:0,playing:false,shuffle:false,repeat:false});
+
+function fmtTime(s){
+  if(!s || isNaN(s)) return '٠:٠٠';
+  const m = Math.floor(s/60), sec = Math.floor(s%60);
+  return toAr(m) + ':' + toAr(String(sec).padStart(2,'0'));
+}
+function loadNasheed(idx){
+  idx = (idx + NASHEED_LIST.length) % NASHEED_LIST.length;
+  state.nasheedState.current = idx;
+  const n = NASHEED_LIST[idx];
+  audio.src = n.url;
+  $('#npTitle').textContent = n.title;
+  $('#npReciter').textContent = n.reciter;
+  $('#npArt').textContent = ['🎵','🎧','📻','🎼'][idx%4];
+  renderNasheedList();
+  LS.set('zq_nasheed', state.nasheedState);
+}
+function renderNasheedList(){
+  const list = $('#npList');
+  list.innerHTML = NASHEED_LIST.map((n,i)=>`
+    <div class="np-item ${i===state.nasheedState.current?'active':''}" data-idx="${i}">
+      <span>${n.title}</span><small>${n.reciter}</small>
+    </div>
+  `).join('');
+  list.querySelectorAll('.np-item').forEach(el=>{
+    el.onclick = ()=>{ sndClick(); loadNasheed(+el.dataset.idx); playNasheed(); };
+  });
+}
+function playNasheed(){
+  audio.play().then(()=>{
+    state.nasheedState.playing = true;
+    $('#npPlay').textContent = '⏸';
+    LS.set('zq_nasheed', state.nasheedState);
+  }).catch(()=> toast('⚠️ تعذّر التشغيل'));
+}
+function pauseNasheed(){
+  audio.pause();
+  state.nasheedState.playing = false;
+  $('#npPlay').textContent = '▶';
+  LS.set('zq_nasheed', state.nasheedState);
+}
+function nextNasheed(){
+  if(state.nasheedState.shuffle) loadNasheed(Math.floor(Math.random()*NASHEED_LIST.length));
+  else loadNasheed(state.nasheedState.current+1);
+  playNasheed();
+}
+$('#nasheedBtn').onclick = ()=>{
+  sndClick();
+  $('#nasheedPlayer').classList.toggle('show');
+  if(!audio.src) loadNasheed(state.nasheedState.current);
+};
+$('#npClose').onclick = ()=>{ sndClick(); $('#nasheedPlayer').classList.remove('show'); pauseNasheed(); };
+$('#npPlay').onclick = ()=>{ sndClick(); state.nasheedState.playing ? pauseNasheed() : playNasheed(); };
+$('#npNext').onclick = ()=>{ sndClick(); nextNasheed(); };
+$('#npPrev').onclick = ()=>{ sndClick(); loadNasheed(state.nasheedState.current-1); playNasheed(); };
+$('#npShuffle').onclick = ()=>{
+  sndClick();
+  state.nasheedState.shuffle = !state.nasheedState.shuffle;
+  $('#npShuffle').classList.toggle('active', state.nasheedState.shuffle);
+  LS.set('zq_nasheed', state.nasheedState);
+};
+$('#npRepeat').onclick = ()=>{
+  sndClick();
+  state.nasheedState.repeat = !state.nasheedState.repeat;
+  $('#npRepeat').classList.toggle('active', state.nasheedState.repeat);
+  LS.set('zq_nasheed', state.nasheedState);
+};
+audio.onended = ()=>{ if(state.nasheedState.repeat) playNasheed(); else nextNasheed(); };
+audio.ontimeupdate = ()=>{
+  if(!audio.duration) return;
+  $('#npCurrent').textContent = fmtTime(audio.currentTime);
+  $('#npDuration').textContent = fmtTime(audio.duration);
+  $('#npSeek').value = (audio.currentTime / audio.duration) * 100;
+};
+$('#npSeek').oninput = e => {
+  if(audio.duration) audio.currentTime = (e.target.value/100) * audio.duration;
+};
+
+/* ---------- السبحة ---------- */
+function openTasbih(){ $('#tasbihModal').classList.add('show'); renderTasbih(); }
+function closeTasbih(){ $('#tasbihModal').classList.remove('show'); }
+$('#tasbihBtn').onclick = ()=>{ sndClick(); openTasbih(); };
+
+function renderTasbih(){
+  const t = state.tasbih;
+  if(t.day !== new Date().toDateString()){
+    t.count = 0; t.day = new Date().toDateString();
+    LS.set('zq_tasbih', t);
+  }
+  $('#tbCount').textContent = toAr(t.count);
+  $('#tbText').textContent = t.text;
+  $('#tbTarget').textContent = 'من ' + toAr(t.max);
+  $('#tbTotal').textContent = 'إجمالي تسبيحاتك اليوم: ' + toAr(t.total || 0);
+  const C = 2 * Math.PI * 88;
+  $('#tbFg').style.strokeDasharray = C;
+  $('#tbFg').style.strokeDashoffset = C - (C * Math.min(t.count / t.max, 1));
+  $$('.tb-pick').forEach(b => b.classList.toggle('active', b.dataset.tb === t.text));
+  $('#tbVibrate').textContent = '📳 اهتزاز: ' + (state.settings.vibrate ? 'مفعّل' : 'مطفأ');
+  $('#tbSound').textContent = '🔊 صوت: ' + (state.settings.tasbihSound ? 'مفعّل' : 'مطفأ');
+}
+function tapTasbih(){
+  const t = state.tasbih;
+  t.count = (t.count || 0) + 1;
+  t.total = (t.total || 0) + 1;
+  if(state.settings.vibrate && navigator.vibrate) navigator.vibrate(25);
+  if(state.settings.tasbihSound) beep(880, .05, 'triangle', .06, 0);
+  if(t.count === t.max){
+    if(state.settings.vibrate && navigator.vibrate) navigator.vibrate([80,50,80]);
+    if(state.settings.tasbihSound){ beep(660,.15,'sine',.08,0); beep(880,.2,'sine',.08,.1); }
+    confetti(50);
+    toast('🎉 أكملت ' + toAr(t.max) + ' من ' + t.text);
+  }
+  LS.set('zq_tasbih', t);
+  renderTasbih();
+  addXP(1);
+}
+$('#tasbihTap').onclick = tapTasbih;
+$('#tasbihRing').onclick = tapTasbih;
+$('#tbReset').onclick = ()=>{
+  if(!confirm('تصفير العداد؟')) return;
+  state.tasbih.count = 0;
+  LS.set('zq_tasbih', state.tasbih);
+  renderTasbih(); sndClick();
+};
+$('#tbVibrate').onclick = ()=>{
+  state.settings.vibrate = !state.settings.vibrate;
+  LS.set('zq_settings', state.settings);
+  renderTasbih(); sndClick();
+};
+$('#tbSound').onclick = ()=>{
+  state.settings.tasbihSound = !state.settings.tasbihSound;
+  LS.set('zq_settings', state.settings);
+  renderTasbih(); sndClick();
+};
+$$('.tb-pick').forEach(b=>{
+  b.onclick = ()=>{
+    state.tasbih.text = b.dataset.tb;
+    state.tasbih.max = +b.dataset.max;
+    state.tasbih.count = 0;
+    LS.set('zq_tasbih', state.tasbih);
+    sndClick(); renderTasbih();
+  };
+});
+
+/* ---------- XP والشارات ---------- */
+const BADGES = [
+  { id:'first_step', name:'الخطوة الأولى', desc:'أكمل مستوى واحد', icon:'🎯', check:()=> Object.values(state.progress).some(p=>p.done) },
+  { id:'perfect', name:'الكمال', desc:'حقق ١٠٠٪', icon:'💯', check:()=> Object.values(state.progress).some(p=>p.best === 100) },
+  { id:'master', name:'المتقن', desc:'أكمل ٣ مستويات', icon:'🏆', check:()=> Object.values(state.progress).filter(p=>p.done).length >= 3 },
+  { id:'reader', name:'القارئ', desc:'اقرأ ٥ قصص', icon:'📖', check:()=> state.readStories.length >= 5 },
+  { id:'tasbih_100', name:'الذاكر', desc:'١٠٠ تسبيحة', icon:'📿', check:()=> (state.tasbih.total||0) >= 100 },
+  { id:'tasbih_1000', name:'الذكّار', desc:'١٠٠٠ تسبيحة', icon:'✨', check:()=> (state.tasbih.total||0) >= 1000 },
+  { id:'fav_collector', name:'المحبّ', desc:'٣ في المفضلة', icon:'❤️', check:()=> state.favorites.length >= 3 },
+  { id:'night_owl', name:'ساهر العبادة', desc:'الاستخدام بعد منتصف الليل', icon:'🌙', check:()=> state.badges._night === true },
+  { id:'prayer_user', name:'حافظ الصلاة', desc:'فعّل تذكير الصلاة', icon:'🕌', check:()=> state.settings.notifications === true },
+  { id:'xp_500', name:'النشيط', desc:'٥٠٠ خبرة', icon:'⚡', check:()=> (state.xp||0) >= 500 }
+];
+function addXP(amount){
+  state.xp = (state.xp || 0) + amount;
+  LS.set('zq_xp', state.xp);
+  checkBadges();
+}
+function checkBadges(){
+  if(new Date().getHours() >= 0 && new Date().getHours() < 4) state.badges._night = true;
+  BADGES.forEach(b=>{
+    if(!state.badges[b.id] && b.check()){
+      state.badges[b.id] = true;
+      setTimeout(()=>{
+        toast('🏅 حصلت على شارة: ' + b.name);
+        sndWin(); confetti(70);
+      }, 400);
+    }
+  });
+  LS.set('zq_badges', state.badges);
+}
+function logDailyActivity(amount = 1){
+  const key = new Date().toDateString();
+  state.daily[key] = (state.daily[key] || 0) + amount;
+  LS.set('zq_daily', state.daily);
+}
+
+/* ---------- لوحة التحكم ---------- */
+function renderDashboard(){
+  $('#dashName').textContent = state.player || 'زائر';
+  const xp = state.xp || 0;
+  const level = Math.floor(xp / 100);
+  const xpInLevel = xp % 100;
+  const ranks = ['مبتدئ','مجتهد','متقدم','خبير','أسطورة','شيخ الموقع'];
+  $('#dashRank').textContent = '⭐ ' + ranks[Math.min(level, ranks.length-1)] + ' — المستوى ' + toAr(level+1);
+  $('#dashXpFill').style.width = xpInLevel + '%';
+  $('#dashXpText').textContent = toAr(xpInLevel) + ' / ١٠٠ خبرة';
+  $('#dashAvatar').textContent = ['🧑','👤','🧕','👨','👩','🧔'][level % 6];
+
+  let totalPts = 0, doneLvls = 0, bestPct = 0;
+  LEVELS.forEach(l=>{
+    const p = state.progress[l.id];
+    if(p){ totalPts += (p.pts||0); if(p.done) doneLvls++; bestPct = Math.max(bestPct, p.best||0); }
+  });
+  const stats = [
+    {ico:'🎯',val: toAr(doneLvls)+'/٥',lab:'مستويات مكتملة'},
+    {ico:'⭐',val: toAr(totalPts),lab:'مجموع النقاط'},
+    {ico:'💯',val: toAr(bestPct)+'%',lab:'أفضل نسبة'},
+    {ico:'📖',val: toAr(state.readStories.length),lab:'قصص مقروءة'},
+    {ico:'📿',val: toAr(state.tasbih.total||0),lab:'إجمالي التسبيح'},
+    {ico:'❤️',val: toAr(state.favorites.length),lab:'في المفضلة'},
+    {ico:'🏅',val: toAr(Object.keys(state.badges).filter(k=>k!=='_night').length),lab:'شارات'},
+    {ico:'⚡',val: toAr(xp),lab:'مجموع الخبرة'}
+  ];
+  $('#dashStats').innerHTML = stats.map(s=>`
+    <div class="dash-stat">
+      <div class="ds-ico">${s.ico}</div>
+      <b>${s.val}</b><span>${s.lab}</span>
+    </div>
+  `).join('');
+
+  $('#dashBadges').innerHTML = BADGES.map(b=>{
+    const earned = state.badges[b.id];
+    return `<div class="badge ${earned?'earned':'locked'}">
+      <span class="b-ico">${earned ? b.icon : '🔒'}</span>
+      <div class="b-name">${b.name}</div>
+      <div class="b-desc">${b.desc}</div>
+    </div>`;
+  }).join('');
+
+  const days = [];
+  const dayNames = ['أحد','إثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'];
+  for(let i=6; i>=0; i--){
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    days.push({name: dayNames[d.getDay()], val: (state.daily[d.toDateString()] || 0)});
+  }
+  const max = Math.max(...days.map(d=>d.val), 1);
+  $('#dashChart').innerHTML = days.map(d=>`
+    <div class="chart-day">
+      <b>${d.val ? toAr(d.val) : ''}</b>
+      <div class="chart-bar"><i style="height:${Math.max((d.val/max)*100, 4)}%"></i></div>
+      <span>${d.name}</span>
+    </div>
+  `).join('');
+}
+$('#dashBtn').onclick = ()=>{ sndClick(); go('dashboard'); renderDashboard(); };
+$('#dashEditName').onclick = ()=>{ sndClick(); askName(()=>{ renderDashboard(); toast('✅ تم التحديث'); }); };
+$('#dashExport').onclick = ()=>{
+  let lines = ['═══ زاد القلوب — تقرير النشاط ═══','الاسم: '+(state.player||'زائر'),'الخبرة: '+(state.xp||0),'المستوى: '+(Math.floor((state.xp||0)/100)+1),'','── الشارات ──'];
+  BADGES.forEach(b=> lines.push((state.badges[b.id]?'✅':'❌') + ' ' + b.name));
+  lines.push('','التسبيح: '+(state.tasbih.total||0),'القصص: '+toAr(state.readStories.length));
+  const blob = new Blob(['\ufeff'+lines.join('\n')], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'تقرير-النشاط.txt';
+  a.click(); URL.revokeObjectURL(a.href);
+  toast('⬇️ تم التحميل');
+};
+
+/* ---------- الإعدادات ---------- */
+function openSettings(){ $('#settingsModal').classList.add('show'); renderSettings(); }
+function closeSettings(){ $('#settingsModal').classList.remove('show'); }
+$('#settingsBtn').onclick = ()=>{ sndClick(); openSettings(); };
+
+function renderSettings(){
+  $$('.theme-opt').forEach(b => b.classList.toggle('active', b.dataset.theme === state.settings.theme));
+  $$('.bg-opt').forEach(b => b.classList.toggle('active', b.dataset.bg === (state.settings.bg || 'default')));
+  $('#setSound').textContent = state.settings.sound ? '🔊 الصوت: مفعّل' : '🔇 الصوت: مكتوم';
+  $('#notifStatus').textContent = state.settings.notifications ? '✅ مفعّلة' : 'غير مفعّلة';
+  $('#setNotif').textContent = state.settings.notifications ? '🔕 إلغاء' : '🔔 تفعيل';
+  $('#rsFont').value = state.settings.readerFont;
+  $('#rsLine').value = state.settings.readerLine;
+}
+$$('.theme-opt').forEach(b=>{
+  b.onclick = ()=>{
+    state.settings.theme = b.dataset.theme;
+    LS.set('zq_settings', state.settings);
+    applyTheme(); renderSettings(); sndClick();
+    toast('🎨 تم تغيير المظهر');
+  };
+});
+$$('.bg-opt').forEach(b=>{
+  b.onclick = ()=>{
+    state.settings.bg = b.dataset.bg;
+    document.body.setAttribute('data-bg', b.dataset.bg);
+    LS.set('zq_settings', state.settings);
+    renderSettings(); sndClick();
+    toast('🖼️ تم تغيير الخلفية');
+  };
+});
+$('#setSound').onclick = ()=>{
+  state.settings.sound = !state.settings.sound;
+  LS.set('zq_settings', state.settings);
+  renderSettings();
+  if(state.settings.sound) sndOk();
+};
+$('#rsFont').oninput = e => {
+  state.settings.readerFont = +e.target.value;
+  LS.set('zq_settings', state.settings);
+  const b = $('#rmBody'); if(b) b.style.fontSize = state.settings.readerFont + 'px';
+};
+$('#rsLine').oninput = e => {
+  state.settings.readerLine = +e.target.value;
+  LS.set('zq_settings', state.settings);
+  const b = $('#rmBody'); if(b) b.style.lineHeight = state.settings.readerLine;
+};
+$('#rsReset').onclick = ()=>{
+  state.settings.readerFont = 17;
+  state.settings.readerLine = 2.1;
+  LS.set('zq_settings', state.settings);
+  renderSettings();
+  const b = $('#rmBody'); if(b){ b.style.fontSize='17px'; b.style.lineHeight='2.1'; }
+  toast('↺ تم الاستعادة');
+};
+
+/* ---------- الإشعارات ---------- */
+let prayerTimeouts = [];
+function schedulePrayerNotifications(){
+  prayerTimeouts.forEach(t=>clearTimeout(t));
+  prayerTimeouts = [];
+  if(!state.settings.notifications || !prayerData) return;
+  const t = prayerData.timings;
+  const prayers = [
+    {n:'الفجر',k:'Fajr'},{n:'الظهر',k:'Dhuhr'},
+    {n:'العصر',k:'Asr'},{n:'المغرب',k:'Maghrib'},{n:'العشاء',k:'Isha'}
+  ];
+  const now = new Date();
+  prayers.forEach(p=>{
+    const [h,m] = t[p.k].split(':').map(Number);
+    const target = new Date(now);
+    target.setHours(h, m, 0, 0);
+    const diff = target - now;
+    if(diff > 0 && diff < 24*60*60*1000){
+      prayerTimeouts.push(setTimeout(()=>{
+        try{
+          new Notification('🕌 حان وقت صلاة ' + p.n, {body:'قال ﷺ: «أفضل الأعمال الصلاة على وقتها»'});
+        }catch(e){}
+      }, diff));
+    }
+  });
+}
+$('#setNotif').onclick = async ()=>{
+  if(state.settings.notifications){
+    state.settings.notifications = false;
+    LS.set('zq_settings', state.settings);
+    renderSettings(); toast('🔕 تم الإلغاء');
+    return;
+  }
+  if(!('Notification' in window)){ toast('⚠️ المتصفح لا يدعم'); return; }
+  const perm = await Notification.requestPermission();
+  if(perm === 'granted'){
+    state.settings.notifications = true;
+    LS.set('zq_settings', state.settings);
+    renderSettings(); sndOk();
+    toast('✅ تم التفعيل');
+    try{ new Notification('زاد القلوب', {body:'تم تفعيل تذكير الصلاة'}); }catch(e){}
+    schedulePrayerNotifications();
+    checkBadges();
+  } else toast('⚠️ رفضت الإشعارات');
+};
+$('#setNotifTest').onclick = ()=>{
+  if(!state.settings.notifications){ toast('فعّل الإشعارات أولاً'); return; }
+  try{ new Notification('زاد القلوب — تجربة', {body:'إشعار تجريبي ✅'}); }catch(e){}
+};
+
+/* ---------- مشاركة صورة ---------- */
+function loadScript(src){
+  return new Promise((res, rej)=>{
+    if(document.querySelector(`script[src="${src}"]`)) return res();
+    const s = document.createElement('script');
+    s.src = src; s.onload = res; s.onerror = rej;
+    document.head.appendChild(s);
+  });
+}
+$('#rmShareImg').onclick = async ()=>{
+  const it = getItem(currentReaderId);
+  if(!it) return;
+  toast('🖼️ جاري إنشاء الصورة…');
+  try{
+    const box = document.createElement('div');
+    box.style.cssText = `width:800px;padding:50px 45px;background:linear-gradient(150deg,#0b4a38,#04120e);color:#eef6f2;font-family:'Cairo',sans-serif;direction:rtl;position:fixed;left:-99999px;top:0;z-index:-1`;
+    const bodyText = it.body.length > 800 ? it.body.slice(0,800)+'…' : it.body;
+    box.innerHTML = `
+      <div style="text-align:center;margin-bottom:26px">
+        <div style="font-size:52px;margin-bottom:8px">☪️</div>
+        <div style="font-family:'Reem Kufi';font-size:32px;color:#f7e7a3;margin-bottom:4px">زاد القلوب</div>
+        <div style="font-size:13px;color:#9fb8af;font-weight:700">إشراف: أحمد جعفر</div>
+      </div>
+      <div style="border-top:1px solid rgba(212,175,55,.4);padding-top:22px">
+        <div style="display:inline-block;padding:5px 14px;border-radius:9px;background:rgba(212,175,55,.15);color:#f7e7a3;font-size:12px;font-weight:800;margin-bottom:14px">${it.cat}</div>
+        <h1 style="font-family:'Reem Kufi';font-size:26px;line-height:1.5;color:#f7e7a3;margin-bottom:18px">${it.title}</h1>
+        <div style="font-size:15.5px;line-height:2;font-weight:500;white-space:pre-wrap;color:#eef6f2">${bodyText}</div>
+      </div>
+      <div style="text-align:center;margin-top:36px;padding-top:20px;border-top:1px solid rgba(212,175,55,.3);font-size:12.5px;color:#9fb8af;font-weight:700">«وَقُل رَّبِّ زِدْنِي عِلْمًا»</div>
+    `;
+    document.body.appendChild(box);
+    await loadScript('https://html2canvas.hertzen.com/dist/html2canvas.min.js');
+    const canvas = await html2canvas(box, {backgroundColor:null, scale:2});
+    document.body.removeChild(box);
+    canvas.toBlob(async blob => {
+      const file = new File([blob], 'zad-alqolob.png', {type:'image/png'});
+      if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+        try{ await navigator.share({files:[file], title: it.title}); }
+        catch(e){ downloadImg(blob); }
+      } else downloadImg(blob);
+    }, 'image/png');
+  }catch(e){
+    console.error(e);
+    toast('⚠️ تعذّر إنشاء الصورة');
+  }
+};
+function downloadImg(blob){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'زاد-القلوب.png';
+  a.click(); URL.revokeObjectURL(url);
+  toast('✅ تم تحميل الصورة');
+}
+
+/* ---------- وضع القراءة ---------- */
+$('#rmReadingMode').onclick = ()=>{
+  $('#readerModal').querySelector('.reader-box').classList.toggle('reading-mode');
+  sndClick();
+  toast('📖 تم تفعيل وضع القراءة');
+};
+$('#rmZoomIn').onclick = ()=>{
+  state.settings.readerFont = Math.min(26, (state.settings.readerFont||17) + 2);
+  LS.set('zq_settings', state.settings);
+  const b = $('#rmBody'); if(b) b.style.fontSize = state.settings.readerFont+'px';
+  sndClick();
+};
+$('#rmZoomOut').onclick = ()=>{
+  state.settings.readerFont = Math.max(14, (state.settings.readerFont||17) - 2);
+  LS.set('zq_settings', state.settings);
+  const b = $('#rmBody'); if(b) b.style.fontSize = state.settings.readerFont+'px';
+  sndClick();
+};
+
+/* ---------- إغلاق المودالات ---------- */
+$('#tasbihModal').onclick = e => { if(e.target.id === 'tasbihModal') closeTasbih(); };
+$('#settingsModal').onclick = e => { if(e.target.id === 'settingsModal') closeSettings(); };
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){ closeTasbih(); closeSettings(); }
+});
+
+/* =========================================================
+   الإقلاع
+   ========================================================= */
 (function init(){
   applyTheme();
-  updateSoundBtn();
+  document.body.setAttribute('data-bg', state.settings.bg || 'default');
   updateFavCount();
   updateHome();
   renderLevels();
@@ -2022,6 +2709,9 @@ document.addEventListener('keydown', e=>{
   renderStoryCats();
   renderStoriesContent();
   renderBoard();
+  renderNasheedList();
+  if(new Date().getHours() >= 0 && new Date().getHours() < 4) state.badges._night = true;
+  checkBadges();
   if(!state.player) setTimeout(()=> askName(()=> toast('أهلاً بك في زاد القلوب 🌿')), 700);
   else setTimeout(()=> toast('أهلاً بعودتك يا '+state.player+' 🌿'), 800);
 })();
